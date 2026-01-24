@@ -154,7 +154,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Store className="w-6 h-6 text-primary-400" />
-                <span className="text-lg font-bold">Artisan Baltic</span>
+                <span className="text-lg font-bold">Crafts And Hands</span>
               </div>
               <p className="text-gray-400 text-sm">
                 Discover unique handcrafted goods from talented artisans across the Baltic region and Europe.
