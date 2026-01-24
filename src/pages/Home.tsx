@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Star, TrendingUp, Award } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 
 interface Product {
@@ -24,6 +25,7 @@ export const Home: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
   const [topMakers, setTopMakers] = useState<Maker[]>([])
   const [loading, setLoading] = useState(true)
+  const { t } = useTranslation()
 
   useEffect(() => {
     loadData()
@@ -68,24 +70,23 @@ export const Home: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                Discover Unique <span className="text-amber-600">Handcrafted</span> Treasures
+                {t('home.hero.title')} <span className="text-amber-600">{t('home.hero.titleHighlight')}</span>
               </h1>
               <p className="mt-6 text-lg text-gray-600">
-                Connect with talented artisans from Lithuania and across Europe.
-                Every piece tells a story of tradition, skill, and passion.
+                {t('home.hero.subtitle')}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
                   to="/products"
                   className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors flex items-center gap-2"
                 >
-                  Shop Now <ArrowRight className="w-5 h-5" />
+                  {t('home.hero.exploreProducts')} <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
                   to="/makers"
                   className="bg-white text-amber-600 border-2 border-amber-600 px-6 py-3 rounded-lg font-semibold hover:bg-amber-50 transition-colors"
                 >
-                  Meet Our Artisans
+                  {t('home.hero.meetMakers')}
                 </Link>
               </div>
             </div>
@@ -110,19 +111,19 @@ export const Home: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <p className="text-3xl font-bold text-amber-600">500+</p>
-              <p className="text-gray-600">Artisan Products</p>
+              <p className="text-gray-600">{t('home.features.unique.title')}</p>
             </div>
             <div>
               <p className="text-3xl font-bold text-amber-600">150+</p>
-              <p className="text-gray-600">Verified Makers</p>
+              <p className="text-gray-600">{t('makers.verified')}</p>
             </div>
             <div>
               <p className="text-3xl font-bold text-amber-600">15+</p>
-              <p className="text-gray-600">European Countries</p>
+              <p className="text-gray-600">{t('home.features.support.title')}</p>
             </div>
             <div>
               <p className="text-3xl font-bold text-amber-600">10k+</p>
-              <p className="text-gray-600">Happy Customers</p>
+              <p className="text-gray-600">{t('home.features.events.title')}</p>
             </div>
           </div>
         </div>
@@ -134,12 +135,12 @@ export const Home: React.FC = () => {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                 <TrendingUp className="w-8 h-8 text-amber-600" />
-                Featured Products
+                {t('home.featured')}
               </h2>
-              <p className="text-gray-600 mt-2">Handpicked treasures from our artisans</p>
+              <p className="text-gray-600 mt-2">{t('home.features.unique.description')}</p>
             </div>
             <Link to="/products" className="text-amber-600 hover:text-amber-700 font-semibold flex items-center gap-1">
-              View All <ArrowRight className="w-4 h-4" />
+              {t('home.viewAll')} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -171,7 +172,7 @@ export const Home: React.FC = () => {
                       </h3>
                       <p className="text-sm text-gray-500 mt-1">{product.makers?.business_name}</p>
                       <div className="flex items-center justify-between mt-2">
-                        <span className="text-lg font-bold text-amber-600">€{product.price.toFixed(2)}</span>
+                        <span className="text-lg font-bold text-amber-600">{product.price.toFixed(2)}</span>
                         {product.rating > 0 && (
                           <div className="flex items-center gap-1 text-sm text-gray-500">
                             <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
@@ -194,12 +195,12 @@ export const Home: React.FC = () => {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                 <Award className="w-8 h-8 text-amber-600" />
-                Top Artisans
+                {t('makers.title')}
               </h2>
-              <p className="text-gray-600 mt-2">Meet the talented makers behind our products</p>
+              <p className="text-gray-600 mt-2">{t('makers.subtitle')}</p>
             </div>
             <Link to="/makers" className="text-amber-600 hover:text-amber-700 font-semibold flex items-center gap-1">
-              View All <ArrowRight className="w-4 h-4" />
+              {t('home.viewAll')} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -218,7 +219,7 @@ export const Home: React.FC = () => {
                     <div className="flex items-center gap-2">
                       <h3 className="font-semibold text-gray-900">{maker.business_name}</h3>
                       {maker.verified && (
-                        <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">Verified</span>
+                        <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">{t('makers.verified')}</span>
                       )}
                     </div>
                     {maker.rating > 0 && (
@@ -237,16 +238,15 @@ export const Home: React.FC = () => {
 
       <section className="py-16 bg-amber-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white">Ready to Share Your Craft?</h2>
+          <h2 className="text-3xl font-bold text-white">{t('home.becomeMakerCTA.title')}</h2>
           <p className="mt-4 text-amber-100 max-w-2xl mx-auto">
-            Join our community of artisans and reach customers across Europe.
-            We handle the platform, you focus on your craft.
+            {t('home.becomeMakerCTA.subtitle')}
           </p>
           <Link
             to="/become-maker"
             className="mt-8 inline-block bg-white text-amber-600 px-8 py-3 rounded-lg font-semibold hover:bg-amber-50 transition-colors"
           >
-            Become a Maker
+            {t('home.becomeMakerCTA.button')}
           </Link>
         </div>
       </section>
