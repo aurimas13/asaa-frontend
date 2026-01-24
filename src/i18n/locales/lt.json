@@ -112,13 +112,85 @@
   "categories": {
     "jewelry": "Juvelyrika",
     "pottery": "Keramika",
-    "textiles": "Tekstilė",
-    "woodwork": "Medžio dirbiniai",
+    "textiles": "Tekstile",
+    "woodwork": "Medzio dirbiniai",
     "leatherGoods": "Odos gaminiai",
     "glassArt": "Stiklo menas",
     "weaving": "Audimas",
     "basketry": "Pynimas",
-    "felting": "Vėlimas",
-    "blacksmithing": "Kalvystė"
+    "felting": "Velimas",
+    "blacksmithing": "Kalvyste",
+    "paperArt": "Popieriaus menas",
+    "leather": "Oda"
+  },
+  "becomeMaker": {
+    "title": "Tapkite amatininku",
+    "subtitle": "Prisijunkite prie talentingu Lietuvos amatininku bendruomenes ir pasidalinkite savo kūriniais su pirkėjais visoje Europoje.",
+    "growingCommunity": "Auganti bendruomene",
+    "growingCommunityDesc": "Prisijunkite prie 150+ patvirtintu Lietuvos amatininku",
+    "globalReach": "Pasaulinis pasiekiamumas",
+    "globalReachDesc": "Parduokite pirkejams visoje Europoje",
+    "lowFees": "Maži mokesciai",
+    "lowFeesDesc": "Tik 10% komisinis nuo pardavimu",
+    "verifiedBadge": "Patvirtinimo ženklelis",
+    "verifiedBadgeDesc": "Sukurkite pasitikejima su patvirtinimu",
+    "whySell": "Kodel parduoti su mumis?",
+    "benefits": {
+      "freeSetup": "Nemokama parduotuves sukurimas ir gaminiu sarašai",
+      "photoTips": "Profesionalūs fotografijos patarimai ir ištekliai",
+      "marketing": "Rinkodaros ir reklamos parama",
+      "securePayment": "Saugus apmokejimo apdorojimas",
+      "shippingLabels": "Siuntimo etikečiu generavimas",
+      "customerService": "Klientu aptarnavimo palaikymas",
+      "analytics": "Analitika ir pardavimu isvalgos",
+      "communityEvents": "Bendruomenes renginiai ir tinklaveika"
+    },
+    "eligibleCrafts": "Tinkantys amatai",
+    "crafts": {
+      "pottery": "Keramika",
+      "weaving": "Audimas",
+      "basketry": "Pynimas",
+      "woodwork": "Medzio dirbiniai",
+      "blacksmithing": "Kalvyste",
+      "jewelry": "Juvelyrika",
+      "felting": "Velimas",
+      "leather": "Oda",
+      "paperArt": "Popieriaus menas",
+      "textiles": "Tekstile"
+    },
+    "applyTitle": "Pateikite paraiska tapti amatininku",
+    "form": {
+      "fullName": "Vardas ir pavarde",
+      "email": "El. paštas",
+      "phone": "Telefonas",
+      "businessName": "Verslo/Studijos pavadinimas",
+      "craftType": "Amato tipas",
+      "selectCraft": "Pasirinkite savo amata...",
+      "craftOptions": {
+        "pottery": "Keramika / Puodžiudirbystė",
+        "weaving": "Audimas / Tekstilė",
+        "basketry": "Pynimas",
+        "woodwork": "Medžio dirbiniai",
+        "blacksmithing": "Kalvystė",
+        "jewelry": "Juvelyrika",
+        "felting": "Vilnos velimas",
+        "leather": "Odos gaminiai",
+        "paper": "Popieriaus menas / Karpiniai",
+        "other": "Kitas tradicinis amatas"
+      },
+      "experience": "Patirties metai",
+      "selectExperience": "Pasirinkite...",
+      "portfolio": "Portfelio nuoroda (neprivaloma)",
+      "portfolioPlaceholder": "https://instagram.com/jusu-profilis",
+      "motivation": "Kodel norite prisijungti?",
+      "motivationPlaceholder": "Papasakokite apie savo amata ir kas ji išskiria...",
+      "submit": "Pateikti paraiska",
+      "submitting": "Siunčiama..."
+    },
+    "success": {
+      "title": "Paraiška pateikta!",
+      "message": "Dekojame uz susidomejima prisijungimu prie Crafts And Hands. Mūsu komanda perziures jūsu paraiska ir susisieks per 5-7 darbo dienas."
+    },
+    "error": "Kazkas nepavyko. Bandykite dar karta."
   }
 }

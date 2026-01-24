@@ -119,6 +119,78 @@
     "weaving": "Weaving",
     "basketry": "Basketry",
     "felting": "Felting",
-    "blacksmithing": "Blacksmithing"
+    "blacksmithing": "Blacksmithing",
+    "paperArt": "Paper Art",
+    "leather": "Leather"
+  },
+  "becomeMaker": {
+    "title": "Become a Maker",
+    "subtitle": "Join our community of talented Lithuanian artisans and share your craft with customers across Europe.",
+    "growingCommunity": "Growing Community",
+    "growingCommunityDesc": "Join 150+ verified Lithuanian artisans",
+    "globalReach": "Global Reach",
+    "globalReachDesc": "Sell to customers across Europe",
+    "lowFees": "Low Fees",
+    "lowFeesDesc": "Only 10% commission on sales",
+    "verifiedBadge": "Verified Badge",
+    "verifiedBadgeDesc": "Build trust with verification",
+    "whySell": "Why Sell With Us?",
+    "benefits": {
+      "freeSetup": "Free shop setup and product listings",
+      "photoTips": "Professional photography tips and resources",
+      "marketing": "Marketing and promotion support",
+      "securePayment": "Secure payment processing",
+      "shippingLabels": "Shipping label generation",
+      "customerService": "Customer service support",
+      "analytics": "Analytics and sales insights",
+      "communityEvents": "Community events and networking"
+    },
+    "eligibleCrafts": "Eligible Crafts",
+    "crafts": {
+      "pottery": "Pottery",
+      "weaving": "Weaving",
+      "basketry": "Basketry",
+      "woodwork": "Woodwork",
+      "blacksmithing": "Blacksmithing",
+      "jewelry": "Jewelry",
+      "felting": "Felting",
+      "leather": "Leather",
+      "paperArt": "Paper Art",
+      "textiles": "Textiles"
+    },
+    "applyTitle": "Apply to Become a Maker",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "businessName": "Business/Studio Name",
+      "craftType": "Craft Type",
+      "selectCraft": "Select your craft...",
+      "craftOptions": {
+        "pottery": "Pottery / Ceramics",
+        "weaving": "Weaving / Textiles",
+        "basketry": "Basketry",
+        "woodwork": "Woodwork",
+        "blacksmithing": "Blacksmithing",
+        "jewelry": "Jewelry",
+        "felting": "Wool Felting",
+        "leather": "Leather Goods",
+        "paper": "Paper Art / Karpiniai",
+        "other": "Other Traditional Craft"
+      },
+      "experience": "Years of Experience",
+      "selectExperience": "Select...",
+      "portfolio": "Portfolio Link (optional)",
+      "portfolioPlaceholder": "https://instagram.com/your-profile",
+      "motivation": "Why do you want to join?",
+      "motivationPlaceholder": "Tell us about your craft and what makes it special...",
+      "submit": "Submit Application",
+      "submitting": "Submitting..."
+    },
+    "success": {
+      "title": "Application Submitted!",
+      "message": "Thank you for your interest in joining Crafts And Hands. Our team will review your application and contact you within 5-7 business days."
+    },
+    "error": "Something went wrong. Please try again."
   }
 }

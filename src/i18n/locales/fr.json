@@ -119,6 +119,78 @@
     "weaving": "Tissage",
     "basketry": "Vannerie",
     "felting": "Feutrage",
-    "blacksmithing": "Forge"
+    "blacksmithing": "Forge",
+    "paperArt": "Art du papier",
+    "leather": "Cuir"
+  },
+  "becomeMaker": {
+    "title": "Devenir artisan",
+    "subtitle": "Rejoignez notre communaute d'artisans lituaniens talentueux et partagez votre metier avec des clients dans toute l'Europe.",
+    "growingCommunity": "Communaute grandissante",
+    "growingCommunityDesc": "Rejoignez 150+ artisans lituaniens verifies",
+    "globalReach": "Portee mondiale",
+    "globalReachDesc": "Vendez a des clients dans toute l'Europe",
+    "lowFees": "Frais reduits",
+    "lowFeesDesc": "Seulement 10% de commission sur les ventes",
+    "verifiedBadge": "Badge verifie",
+    "verifiedBadgeDesc": "Renforcez la confiance avec la verification",
+    "whySell": "Pourquoi vendre avec nous?",
+    "benefits": {
+      "freeSetup": "Creation de boutique gratuite et listes de produits",
+      "photoTips": "Conseils et ressources de photographie professionnelle",
+      "marketing": "Support marketing et promotion",
+      "securePayment": "Traitement securise des paiements",
+      "shippingLabels": "Generation d'etiquettes d'expedition",
+      "customerService": "Support service client",
+      "analytics": "Analyses et aperçus des ventes",
+      "communityEvents": "Evenements communautaires et reseautage"
+    },
+    "eligibleCrafts": "Metiers eligibles",
+    "crafts": {
+      "pottery": "Poterie",
+      "weaving": "Tissage",
+      "basketry": "Vannerie",
+      "woodwork": "Travail du bois",
+      "blacksmithing": "Forge",
+      "jewelry": "Bijouterie",
+      "felting": "Feutrage",
+      "leather": "Cuir",
+      "paperArt": "Art du papier",
+      "textiles": "Textiles"
+    },
+    "applyTitle": "Postuler pour devenir artisan",
+    "form": {
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "phone": "Telephone",
+      "businessName": "Nom d'entreprise/atelier",
+      "craftType": "Type de metier",
+      "selectCraft": "Selectionnez votre metier...",
+      "craftOptions": {
+        "pottery": "Poterie / Ceramique",
+        "weaving": "Tissage / Textiles",
+        "basketry": "Vannerie",
+        "woodwork": "Travail du bois",
+        "blacksmithing": "Forge",
+        "jewelry": "Bijouterie",
+        "felting": "Feutrage de laine",
+        "leather": "Maroquinerie",
+        "paper": "Art du papier / Karpiniai",
+        "other": "Autre artisanat traditionnel"
+      },
+      "experience": "Annees d'experience",
+      "selectExperience": "Selectionnez...",
+      "portfolio": "Lien portfolio (optionnel)",
+      "portfolioPlaceholder": "https://instagram.com/votre-profil",
+      "motivation": "Pourquoi voulez-vous nous rejoindre?",
+      "motivationPlaceholder": "Parlez-nous de votre artisanat et de ce qui le rend special...",
+      "submit": "Soumettre la candidature",
+      "submitting": "Envoi en cours..."
+    },
+    "success": {
+      "title": "Candidature soumise!",
+      "message": "Merci pour votre interet a rejoindre Crafts And Hands. Notre equipe examinera votre candidature et vous contactera dans les 5-7 jours ouvrables."
+    },
+    "error": "Une erreur s'est produite. Veuillez reessayer."
   }
 }
