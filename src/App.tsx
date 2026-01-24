@@ -15,6 +15,13 @@ import { SignUp } from './pages/SignUp'
 import { Profile } from './pages/Profile'
 import { Orders } from './pages/Orders'
 import { Search } from './pages/Search'
+import { Contact } from './pages/Contact'
+import { BecomeMaker } from './pages/BecomeMaker'
+import { Help } from './pages/Help'
+import { Shipping } from './pages/Shipping'
+import { Returns } from './pages/Returns'
+import { MakerResources } from './pages/MakerResources'
+import { SuccessStories } from './pages/SuccessStories'
 
 function App() {
   return (
@@ -36,6 +43,13 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/become-maker" element={<BecomeMaker />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/returns" element={<Returns />} />
+            <Route path="/maker-resources" element={<MakerResources />} />
+            <Route path="/success-stories" element={<SuccessStories />} />
           </Routes>
         </Layout>
       </BrowserRouter>
