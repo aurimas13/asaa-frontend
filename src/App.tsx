@@ -23,6 +23,7 @@ import { Help } from './pages/Help'
 import { Shipping } from './pages/Shipping'
 import { Returns } from './pages/Returns'
 import { MakerResources } from './pages/MakerResources'
+import { MakerGuidelines } from './pages/MakerGuidelines'
 import { SuccessStories } from './pages/SuccessStories'
 import { Privacy } from './pages/Privacy'
 import { Terms } from './pages/Terms'
@@ -56,6 +57,7 @@ function App() {
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/returns" element={<Returns />} />
             <Route path="/maker-resources" element={<MakerResources />} />
+            <Route path="/maker-guidelines" element={<MakerGuidelines />} />
             <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />

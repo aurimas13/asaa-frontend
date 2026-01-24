@@ -89,6 +89,74 @@ export function validateImageFile(file: File): { valid: boolean; error?: string 
   return { valid: true };
 }
 
+export async function validateImageDimensions(
+  file: File,
+  minWidth: number = 1200,
+  minHeight: number = 1200
+): Promise<{ valid: boolean; error?: string; width?: number; height?: number }> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+
+      if (img.width < minWidth || img.height < minHeight) {
+        resolve({
+          valid: false,
+          error: `Image must be at least ${minWidth}x${minHeight} pixels. Your image is ${img.width}x${img.height} pixels.`,
+          width: img.width,
+          height: img.height,
+        });
+      } else {
+        resolve({
+          valid: true,
+          width: img.width,
+          height: img.height,
+        });
+      }
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      resolve({
+        valid: false,
+        error: 'Failed to load image. Please try a different file.',
+      });
+    };
+
+    img.src = url;
+  });
+}
+
+export async function validateProductImages(
+  files: File[]
+): Promise<{ valid: boolean; errors: string[] }> {
+  const errors: string[] = [];
+
+  if (files.length < 3) {
+    errors.push('At least 3 photos required for product listings.');
+  }
+
+  for (let i = 0; i < files.length; i++) {
+    const fileValidation = validateImageFile(files[i]);
+    if (!fileValidation.valid) {
+      errors.push(`Photo ${i + 1}: ${fileValidation.error}`);
+      continue;
+    }
+
+    const dimensionValidation = await validateImageDimensions(files[i]);
+    if (!dimensionValidation.valid) {
+      errors.push(`Photo ${i + 1}: ${dimensionValidation.error}`);
+    }
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors,
+  };
+}
+
 export function getImageUrl(path: string): string {
   const { data } = supabase.storage
     .from('images')
