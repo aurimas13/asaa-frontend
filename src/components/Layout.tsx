@@ -3,14 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ShoppingCart, Heart, User, Search, Menu, X, Store } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import { useTranslation } from 'react-i18next'
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const { user, signOut } = useAuth()
   const navigate = useNavigate()
-  const { t } = useTranslation()
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -194,7 +192,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
-            <p>&copy; 2026 Crafts And Hands. {t('footer.copyright')}</p>
+            <p>&copy; 2026 Crafts And Hands. All rights reserved.</p>
           </div>
         </div>
       </footer>
