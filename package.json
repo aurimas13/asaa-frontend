@@ -4,7 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Lithuanian Traditional Crafts & Artisan Marketplace - Connecting certified craftspeople with global customers",
-  "keywords": ["lithuanian-crafts", "traditional-artisans", "handmade", "ecommerce", "marketplace"],
+  "keywords": [
+    "lithuanian-crafts",
+    "traditional-artisans",
+    "handmade",
+    "ecommerce",
+    "marketplace"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
