@@ -24,6 +24,9 @@ import { Shipping } from './pages/Shipping'
 import { Returns } from './pages/Returns'
 import { MakerResources } from './pages/MakerResources'
 import { SuccessStories } from './pages/SuccessStories'
+import { Privacy } from './pages/Privacy'
+import { Terms } from './pages/Terms'
+import { CookieConsent } from './components/CookieConsent'
 
 function App() {
   return (
@@ -54,8 +57,11 @@ function App() {
             <Route path="/returns" element={<Returns />} />
             <Route path="/maker-resources" element={<MakerResources />} />
             <Route path="/success-stories" element={<SuccessStories />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </Layout>
+        <CookieConsent />
       </BrowserRouter>
     </AuthProvider>
   )

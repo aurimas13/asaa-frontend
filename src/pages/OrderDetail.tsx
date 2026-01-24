@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { Package, Clock, Truck, CheckCircle, XCircle, ArrowLeft, MapPin, CreditCard } from 'lucide-react'
+import { Package, Clock, Truck, CheckCircle, XCircle, ArrowLeft, MapPin, CreditCard, ExternalLink, RotateCcw } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 
@@ -34,7 +34,9 @@ interface Order {
     phone: string
   }
   tracking_number: string | null
+  tracking_url: string | null
   shipping_method: string | null
+  shipping_cost: number | null
   notes: string | null
   created_at: string
   updated_at: string
@@ -190,9 +192,37 @@ export const OrderDetail: React.FC = () => {
             </div>
             {order.tracking_number && (
               <div className="mt-6 p-4 bg-white rounded-lg border border-gray-200">
-                <p className="text-sm text-gray-600">
-                  <span className="font-medium">Tracking Number:</span> {order.tracking_number}
-                </p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-gray-600">
+                      <span className="font-medium">Tracking Number:</span> {order.tracking_number}
+                    </p>
+                    {order.shipping_method && (
+                      <p className="text-xs text-gray-500 mt-1 capitalize">
+                        Shipping Method: {order.shipping_method}
+                      </p>
+                    )}
+                  </div>
+                  {order.tracking_url ? (
+                    <a
+                      href={order.tracking_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
+                    >
+                      Track Package <ExternalLink className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <a
+                      href={`https://www.17track.net/en/track?nums=${order.tracking_number}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-amber-700 transition-colors"
+                    >
+                      Track Package <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -266,7 +296,9 @@ export const OrderDetail: React.FC = () => {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Shipping</span>
-                <span className="text-green-600">Free</span>
+                <span className={order.shipping_cost === 0 ? 'text-green-600' : ''}>
+                  {order.shipping_cost === 0 || !order.shipping_cost ? 'Free' : `€${order.shipping_cost.toFixed(2)}`}
+                </span>
               </div>
               <div className="flex justify-between pt-2 border-t border-gray-200 font-semibold">
                 <span>Total</span>
@@ -280,6 +312,25 @@ export const OrderDetail: React.FC = () => {
           <div className="p-6 border-t border-gray-100">
             <h3 className="font-semibold text-gray-900 mb-2">Order Notes</h3>
             <p className="text-gray-600 text-sm">{order.notes}</p>
+          </div>
+        )}
+
+        {order.status === 'delivered' && (
+          <div className="p-6 border-t border-gray-100 bg-gray-50">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="font-semibold text-gray-900">Need to return an item?</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  You have 30 days from delivery to request a return
+                </p>
+              </div>
+              <Link
+                to={`/returns?order=${order.id}`}
+                className="flex items-center gap-2 border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors"
+              >
+                <RotateCcw className="w-4 h-4" /> Request Return
+              </Link>
+            </div>
           </div>
         )}
       </div>

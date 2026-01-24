@@ -22,7 +22,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-amber-600 text-white px-4 py-2 rounded-lg z-[60]">
+        Skip to main content
+      </a>
+      <header className="bg-white shadow-sm sticky top-0 z-50" role="banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
@@ -64,15 +67,15 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <LanguageSwitcher />
               {user ? (
                 <>
-                  <Link to="/wishlist" className="p-2 text-gray-700 hover:text-amber-600 transition-colors">
-                    <Heart className="w-6 h-6" />
+                  <Link to="/wishlist" className="p-2 text-gray-700 hover:text-amber-600 transition-colors" aria-label="View wishlist">
+                    <Heart className="w-6 h-6" aria-hidden="true" />
                   </Link>
-                  <Link to="/cart" className="p-2 text-gray-700 hover:text-amber-600 transition-colors">
-                    <ShoppingCart className="w-6 h-6" />
+                  <Link to="/cart" className="p-2 text-gray-700 hover:text-amber-600 transition-colors" aria-label="View shopping cart">
+                    <ShoppingCart className="w-6 h-6" aria-hidden="true" />
                   </Link>
                   <div className="relative group">
-                    <button className="p-2 text-gray-700 hover:text-amber-600 transition-colors">
-                      <User className="w-6 h-6" />
+                    <button className="p-2 text-gray-700 hover:text-amber-600 transition-colors" aria-label="User menu" aria-haspopup="true">
+                      <User className="w-6 h-6" aria-hidden="true" />
                     </button>
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden group-hover:block z-50">
                       <Link to="/profile" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
@@ -113,8 +116,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <button
                 className="md:hidden p-2"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileMenuOpen}
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
               </button>
             </div>
           </div>
@@ -149,9 +154,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         )}
       </header>
 
-      <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+      <main className="min-h-[calc(100vh-4rem)]" id="main-content" role="main">{children}</main>
 
-      <footer className="bg-gray-900 text-white mt-16">
+      <footer className="bg-gray-900 text-white mt-16" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
@@ -194,8 +199,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+          <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
             <p>&copy; 2026 {t('footer.copyright')}</p>
+            <div className="flex gap-6">
+              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            </div>
           </div>
         </div>
       </footer>
