@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "products": "Products",
+    "makers": "Makers",
+    "events": "Events",
+    "categories": "Categories",
+    "search": "Search traditional crafts...",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "profile": "Profile",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "myOrders": "My Orders",
+    "becomeMaker": "Become a Maker"
+  },
+  "home": {
+    "hero": {
+      "title": "Discover Authentic",
+      "titleHighlight": "Lithuanian Handcrafted Treasures",
+      "subtitle": "Support local artisans from Lithuania. Each piece tells a unique story of tradition and craftsmanship.",
+      "exploreProducts": "Explore Products",
+      "meetMakers": "Meet the Makers"
+    },
+    "features": {
+      "unique": {
+        "title": "Unique Handmade",
+        "description": "Every item is crafted with care by skilled artisans, making each piece one-of-a-kind."
+      },
+      "support": {
+        "title": "Support Local",
+        "description": "Directly support talented Lithuanian makers and help preserve traditional crafts."
+      },
+      "events": {
+        "title": "Events & Workshops",
+        "description": "Join craft markets, workshops and exhibitions to meet makers and learn new skills."
+      }
+    },
+    "categories": "Shop by Category",
+    "featured": "Featured Products",
+    "newArrivals": "New Arrivals",
+    "viewAll": "View All",
+    "becomeMakerCTA": {
+      "title": "Become a Maker",
+      "subtitle": "Share your crafts with thousands of customers across Lithuania and Europe. Join our growing community of talented artisans.",
+      "button": "Start Selling Today"
+    }
+  },
+  "products": {
+    "title": "All Products",
+    "items": "handcrafted items",
+    "by": "by",
+    "addToCart": "Add to Cart",
+    "addToWishlist": "Add to Wishlist",
+    "outOfStock": "Out of Stock",
+    "inStock": "in stock",
+    "customizable": "Customizable"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "startShopping": "Start Shopping",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "freeShipping": "FREE",
+    "checkout": "Proceed to Checkout",
+    "continueShop": "Continue Shopping"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to your account",
+      "email": "Email",
+      "password": "Password",
+      "button": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up"
+    },
+    "signUp": {
+      "title": "Create Account",
+      "subtitle": "Join our community of artisans and craft lovers",
+      "fullName": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "button": "Sign Up",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in"
+    }
+  },
+  "makers": {
+    "title": "Meet Our Artisans",
+    "subtitle": "Discover talented makers from across Lithuania",
+    "verified": "Verified",
+    "sales": "sales",
+    "location": "Location"
+  },
+  "footer": {
+    "description": "Discover unique handcrafted goods from talented artisans across Lithuania.",
+    "shop": "Shop",
+    "allProducts": "All Products",
+    "support": "Support",
+    "helpCenter": "Help Center",
+    "shipping": "Shipping Info",
+    "returns": "Returns",
+    "contact": "Contact Us",
+    "sell": "Sell",
+    "makerResources": "Resources",
+    "successStories": "Success Stories",
+    "copyright": "Crafts And Hands. Empowering Lithuanian craftspeople, one creation at a time."
+  },
+  "categories": {
+    "jewelry": "Jewelry",
+    "pottery": "Pottery",
+    "textiles": "Textiles",
+    "woodwork": "Woodwork",
+    "leatherGoods": "Leather Goods",
+    "glassArt": "Glass Art",
+    "weaving": "Weaving",
+    "basketry": "Basketry",
+    "felting": "Felting",
+    "blacksmithing": "Blacksmithing"
+  }
+}

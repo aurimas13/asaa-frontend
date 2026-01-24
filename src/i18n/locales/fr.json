@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "products": "Produits",
+    "makers": "Artisans",
+    "events": "Événements",
+    "categories": "Catégories",
+    "search": "Rechercher des métiers traditionnels...",
+    "cart": "Panier",
+    "wishlist": "Liste de souhaits",
+    "profile": "Profil",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "signOut": "Se déconnecter",
+    "myOrders": "Mes commandes",
+    "becomeMaker": "Devenir artisan"
+  },
+  "home": {
+    "hero": {
+      "title": "Découvrez des",
+      "titleHighlight": "Trésors Artisanaux Lituaniens Authentiques",
+      "subtitle": "Soutenez les artisans locaux de Lituanie. Chaque pièce raconte une histoire unique de tradition et de savoir-faire.",
+      "exploreProducts": "Explorer les produits",
+      "meetMakers": "Rencontrer les artisans"
+    },
+    "features": {
+      "unique": {
+        "title": "Fait main unique",
+        "description": "Chaque article est fabriqué avec soin par des artisans qualifiés, ce qui rend chaque pièce unique."
+      },
+      "support": {
+        "title": "Soutenir local",
+        "description": "Soutenez directement les artisans talentueux de Lituanie et aidez à préserver l'artisanat traditionnel."
+      },
+      "events": {
+        "title": "Événements et ateliers",
+        "description": "Participez à des marchés artisanaux, des ateliers et des expositions pour rencontrer des artisans."
+      }
+    },
+    "categories": "Acheter par catégorie",
+    "featured": "Produits en vedette",
+    "newArrivals": "Nouveautés",
+    "viewAll": "Voir tout",
+    "becomeMakerCTA": {
+      "title": "Devenir artisan",
+      "subtitle": "Partagez vos créations avec des milliers de clients en Lituanie et en Europe. Rejoignez notre communauté grandissante d'artisans talentueux.",
+      "button": "Commencer à vendre aujourd'hui"
+    }
+  },
+  "products": {
+    "title": "Tous les produits",
+    "items": "articles artisanaux",
+    "by": "par",
+    "addToCart": "Ajouter au panier",
+    "addToWishlist": "Ajouter à la liste",
+    "outOfStock": "Rupture de stock",
+    "inStock": "en stock",
+    "customizable": "Personnalisable"
+  },
+  "cart": {
+    "title": "Panier",
+    "empty": "Votre panier est vide",
+    "startShopping": "Commencer les achats",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "total": "Total",
+    "freeShipping": "GRATUIT",
+    "checkout": "Passer la commande",
+    "continueShop": "Continuer les achats"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Bon retour",
+      "subtitle": "Connectez-vous à votre compte",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "button": "Se connecter",
+      "noAccount": "Vous n'avez pas de compte?",
+      "signUpLink": "S'inscrire"
+    },
+    "signUp": {
+      "title": "Créer un compte",
+      "subtitle": "Rejoignez notre communauté d'artisans et d'amateurs d'artisanat",
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "button": "S'inscrire",
+      "haveAccount": "Vous avez déjà un compte?",
+      "signInLink": "Se connecter"
+    }
+  },
+  "makers": {
+    "title": "Rencontrez nos artisans",
+    "subtitle": "Découvrez des artisans talentueux de toute la Lituanie",
+    "verified": "Vérifié",
+    "sales": "ventes",
+    "location": "Emplacement"
+  },
+  "footer": {
+    "description": "Découvrez des produits artisanaux uniques d'artisans talentueux de toute la Lituanie.",
+    "shop": "Boutique",
+    "allProducts": "Tous les produits",
+    "support": "Assistance",
+    "helpCenter": "Centre d'aide",
+    "shipping": "Livraison",
+    "returns": "Retours",
+    "contact": "Contact",
+    "sell": "Vendre",
+    "makerResources": "Ressources",
+    "successStories": "Success stories",
+    "copyright": "Crafts And Hands. Autonomiser les artisans lituaniens, une création à la fois."
+  },
+  "categories": {
+    "jewelry": "Bijouterie",
+    "pottery": "Poterie",
+    "textiles": "Textiles",
+    "woodwork": "Travail du bois",
+    "leatherGoods": "Maroquinerie",
+    "glassArt": "Art du verre",
+    "weaving": "Tissage",
+    "basketry": "Vannerie",
+    "felting": "Feutrage",
+    "blacksmithing": "Forge"
+  }
+}

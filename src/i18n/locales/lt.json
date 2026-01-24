@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "products": "Gaminiai",
+    "makers": "Amatininkai",
+    "events": "Renginiai",
+    "categories": "Kategorijos",
+    "search": "Ieškoti tradicinių amatų...",
+    "cart": "Krepšelis",
+    "wishlist": "Norų sąrašas",
+    "profile": "Profilis",
+    "signIn": "Prisijungti",
+    "signUp": "Registruotis",
+    "signOut": "Atsijungti",
+    "myOrders": "Mano užsakymai",
+    "becomeMaker": "Tapti amatininku"
+  },
+  "home": {
+    "hero": {
+      "title": "Atraskite Autentiškus",
+      "titleHighlight": "Lietuviškus Amatų Kūrinius",
+      "subtitle": "Remkite vietinius amatininkus iš Lietuvos. Kiekvienas kūrinys pasakoja unikalią tradicijos ir meistriškumo istoriją.",
+      "exploreProducts": "Naršyti gaminius",
+      "meetMakers": "Susipažinti su amatininkais"
+    },
+    "features": {
+      "unique": {
+        "title": "Unikalūs rankų darbai",
+        "description": "Kiekvienas daiktas pagamintas su meile ir kruopštumu, todėl yra vienintelis."
+      },
+      "support": {
+        "title": "Remkite vietinius",
+        "description": "Tiesiogiai remkite talentingus Lietuvos amatininkus ir padėkite išsaugoti tradicijas."
+      },
+      "events": {
+        "title": "Renginiai ir dirbtuvės",
+        "description": "Dalyvaukite amatų mugėse, dirbtuvėse ir parodose, susipažinkite su meistrais."
+      }
+    },
+    "categories": "Naršyti pagal kategoriją",
+    "featured": "Išskirtiniai gaminiai",
+    "newArrivals": "Nauji gaminiai",
+    "viewAll": "Žiūrėti viską",
+    "becomeMakerCTA": {
+      "title": "Tapkite amatininku",
+      "subtitle": "Pasidalinkite savo kūriniais su tūkstančiais pirkėjų visoje Lietuvoje ir Europoje. Prisijunkite prie augančios amatininkų bendruomenės.",
+      "button": "Pradėkite parduoti šiandien"
+    }
+  },
+  "products": {
+    "title": "Visi gaminiai",
+    "items": "rankų darbo kūrinių",
+    "by": "pagamino",
+    "addToCart": "Į krepšelį",
+    "addToWishlist": "Į norų sąrašą",
+    "outOfStock": "Išparduota",
+    "inStock": "sandėlyje",
+    "customizable": "Galima personalizuoti"
+  },
+  "cart": {
+    "title": "Pirkinių krepšelis",
+    "empty": "Jūsų krepšelis tuščias",
+    "startShopping": "Pradėti apsipirkimą",
+    "subtotal": "Tarpinė suma",
+    "shipping": "Pristatymas",
+    "total": "Iš viso",
+    "freeShipping": "NEMOKAMAS",
+    "checkout": "Apmokėti užsakymą",
+    "continueShop": "Tęsti apsipirkimą"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sveiki sugrįžę",
+      "subtitle": "Prisijunkite prie savo paskyros",
+      "email": "El. paštas",
+      "password": "Slaptažodis",
+      "button": "Prisijungti",
+      "noAccount": "Neturite paskyros?",
+      "signUpLink": "Registruotis"
+    },
+    "signUp": {
+      "title": "Sukurti paskyrą",
+      "subtitle": "Prisijunkite prie amatininkų ir meno mylėtojų bendruomenės",
+      "fullName": "Vardas ir pavardė",
+      "email": "El. paštas",
+      "password": "Slaptažodis",
+      "button": "Registruotis",
+      "haveAccount": "Jau turite paskyrą?",
+      "signInLink": "Prisijungti"
+    }
+  },
+  "makers": {
+    "title": "Susipažinkite su mūsų amatininkais",
+    "subtitle": "Atraskite talentingus meistrus iš visos Lietuvos",
+    "verified": "Patvirtintas",
+    "sales": "pardavimų",
+    "location": "Vietovė"
+  },
+  "footer": {
+    "description": "Atraskite unikalius rankų darbo kūrinius iš talentingų amatininkų visoje Lietuvoje.",
+    "shop": "Parduotuvė",
+    "allProducts": "Visi gaminiai",
+    "support": "Pagalba",
+    "helpCenter": "Pagalbos centras",
+    "shipping": "Pristatymas",
+    "returns": "Grąžinimai",
+    "contact": "Kontaktai",
+    "sell": "Parduokite",
+    "makerResources": "Ištekliai",
+    "successStories": "Sėkmės istorijos",
+    "copyright": "Crafts And Hands. Įgaliname Lietuvos amatininkus, vienas kūrinys vienu metu."
+  },
+  "categories": {
+    "jewelry": "Juvelyrika",
+    "pottery": "Keramika",
+    "textiles": "Tekstilė",
+    "woodwork": "Medžio dirbiniai",
+    "leatherGoods": "Odos gaminiai",
+    "glassArt": "Stiklo menas",
+    "weaving": "Audimas",
+    "basketry": "Pynimas",
+    "felting": "Vėlimas",
+    "blacksmithing": "Kalvystė"
+  }
+}
