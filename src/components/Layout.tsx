@@ -4,7 +4,7 @@ import { ShoppingCart, Heart, User, Search, Menu, X, Store } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../contexts/AuthContext'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import { ChatWidget } from './ChatWidget'
+import { CraftConcierge } from './CraftConcierge'
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -200,7 +200,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         </div>
       </footer>
 
-      <ChatWidget />
+      <CraftConcierge />
     </div>
   )
 }

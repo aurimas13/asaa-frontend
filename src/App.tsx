@@ -14,6 +14,8 @@ import { SignIn } from './pages/SignIn'
 import { SignUp } from './pages/SignUp'
 import { Profile } from './pages/Profile'
 import { Orders } from './pages/Orders'
+import { OrderDetail } from './pages/OrderDetail'
+import { OrderConfirmation } from './pages/OrderConfirmation'
 import { Search } from './pages/Search'
 import { Contact } from './pages/Contact'
 import { BecomeMaker } from './pages/BecomeMaker'
@@ -42,6 +44,8 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/order/:id" element={<OrderDetail />} />
+            <Route path="/order-confirmation" element={<OrderConfirmation />} />
             <Route path="/search" element={<Search />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/become-maker" element={<BecomeMaker />} />

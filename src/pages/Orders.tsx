@@ -118,7 +118,7 @@ export const Orders: React.FC = () => {
 
       <div className="space-y-4">
         {orders.map((order) => (
-          <div key={order.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <Link key={order.id} to={`/order/${order.id}`} className="block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
             <div className="p-4 border-b border-gray-100 flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export const Orders: React.FC = () => {
                 )}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

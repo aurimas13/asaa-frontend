@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { CheckCircle, Users, Globe, TrendingUp, Shield, Send } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { supabase } from '../lib/supabase'
 
 export const BecomeMaker: React.FC = () => {
   const { t } = useTranslation()
@@ -21,23 +22,22 @@ export const BecomeMaker: React.FC = () => {
     setStatus('submitting')
 
     try {
-      const response = await fetch('https://formspree.io/f/xrblgezj', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ...formData,
-          type: 'maker_application'
-        })
+      const { error } = await supabase.from('maker_applications').insert({
+        full_name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone || null,
+        business_name: formData.businessName,
+        craft_type: formData.craftType,
+        experience_years: formData.experience,
+        portfolio_url: formData.portfolio || null,
+        motivation: formData.motivation,
+        status: 'pending'
       })
 
-      if (response.ok) {
-        setStatus('success')
-      } else {
-        setStatus('error')
-      }
-    } catch {
+      if (error) throw error
+      setStatus('success')
+    } catch (err) {
+      console.error('Application error:', err)
       setStatus('error')
     }
   }

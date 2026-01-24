@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { Star, Heart, ShoppingCart, Truck, Shield, ArrowLeft } from 'lucide-react'
+import { Star, Heart, ShoppingCart, Truck, Shield, ArrowLeft, Edit3, CheckCircle } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
+import { WriteReview } from '../components/WriteReview'
 
 interface Product {
   id: string
@@ -33,6 +34,8 @@ interface Review {
   title: string
   comment: string
   created_at: string
+  verified_purchase: boolean
+  maker_response: string | null
   profiles: { full_name: string }
 }
 
@@ -46,12 +49,17 @@ export const ProductDetail: React.FC = () => {
   const [quantity, setQuantity] = useState(1)
   const [isInWishlist, setIsInWishlist] = useState(false)
   const [addingToCart, setAddingToCart] = useState(false)
+  const [showReviewModal, setShowReviewModal] = useState(false)
+  const [canReview, setCanReview] = useState(false)
 
   useEffect(() => {
     if (id) {
       loadProduct()
       loadReviews()
-      if (user) checkWishlist()
+      if (user) {
+        checkWishlist()
+        checkCanReview()
+      }
     }
   }, [id, user])
 
@@ -70,12 +78,25 @@ export const ProductDetail: React.FC = () => {
   const loadReviews = async () => {
     const { data } = await supabase
       .from('reviews')
-      .select('id, rating, title, comment, created_at, profiles(full_name)')
+      .select('id, rating, title, comment, created_at, verified_purchase, maker_response, profiles(full_name)')
       .eq('product_id', id)
+      .eq('moderation_status', 'approved')
       .order('created_at', { ascending: false })
-      .limit(5)
+      .limit(10)
 
     if (data) setReviews(data as unknown as Review[])
+  }
+
+  const checkCanReview = async () => {
+    if (!user) return
+    const { data: existingReview } = await supabase
+      .from('reviews')
+      .select('id')
+      .eq('product_id', id)
+      .eq('user_id', user.id)
+      .maybeSingle()
+
+    setCanReview(!existingReview)
   }
 
   const checkWishlist = async () => {
@@ -330,32 +351,77 @@ export const ProductDetail: React.FC = () => {
         </div>
       </div>
 
-      {reviews.length > 0 && (
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Customer Reviews</h2>
-          <div className="space-y-6">
-            {reviews.map((review) => (
-              <div key={review.id} className="bg-white p-6 rounded-xl border border-gray-100">
-                <div className="flex items-center gap-4">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${i < review.rating ? 'fill-amber-400 text-amber-400' : 'text-gray-300'}`}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm text-gray-500">
-                    {new Date(review.created_at).toLocaleDateString()}
-                  </span>
-                </div>
-                {review.title && <h4 className="font-semibold mt-2">{review.title}</h4>}
-                <p className="text-gray-600 mt-2">{review.comment}</p>
-                <p className="text-sm text-gray-500 mt-2">- {review.profiles?.full_name || 'Anonymous'}</p>
-              </div>
-            ))}
+      <div className="mt-16">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Customer Reviews</h2>
+            {user && canReview && (
+              <button
+                onClick={() => setShowReviewModal(true)}
+                className="flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-amber-700 transition-colors"
+              >
+                <Edit3 className="w-4 h-4" /> Write a Review
+              </button>
+            )}
           </div>
+          {reviews.length > 0 ? (
+            <div className="space-y-6">
+              {reviews.map((review) => (
+                <div key={review.id} className="bg-white p-6 rounded-xl border border-gray-100">
+                  <div className="flex items-center gap-4 flex-wrap">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${i < review.rating ? 'fill-amber-400 text-amber-400' : 'text-gray-300'}`}
+                        />
+                      ))}
+                    </div>
+                    {review.verified_purchase && (
+                      <span className="flex items-center gap-1 text-xs text-green-700 bg-green-50 px-2 py-1 rounded-full">
+                        <CheckCircle className="w-3 h-3" /> Verified Purchase
+                      </span>
+                    )}
+                    <span className="text-sm text-gray-500">
+                      {new Date(review.created_at).toLocaleDateString()}
+                    </span>
+                  </div>
+                  {review.title && <h4 className="font-semibold mt-2">{review.title}</h4>}
+                  <p className="text-gray-600 mt-2">{review.comment}</p>
+                  <p className="text-sm text-gray-500 mt-2">- {review.profiles?.full_name || 'Anonymous'}</p>
+                  {review.maker_response && (
+                    <div className="mt-4 pl-4 border-l-2 border-amber-300 bg-amber-50 p-3 rounded-r-lg">
+                      <p className="text-sm font-medium text-amber-800">Maker Response:</p>
+                      <p className="text-sm text-gray-700 mt-1">{review.maker_response}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 bg-gray-50 rounded-xl">
+              <p className="text-gray-500 mb-4">No reviews yet. Be the first to review!</p>
+              {user && canReview && (
+                <button
+                  onClick={() => setShowReviewModal(true)}
+                  className="text-amber-600 hover:text-amber-700 font-medium"
+                >
+                  Write a Review
+                </button>
+              )}
+            </div>
+          )}
         </div>
+
+      {showReviewModal && product && (
+        <WriteReview
+          productId={product.id}
+          productTitle={product.title}
+          onClose={() => setShowReviewModal(false)}
+          onSuccess={() => {
+            loadReviews()
+            setCanReview(false)
+          }}
+        />
       )}
     </div>
   )
