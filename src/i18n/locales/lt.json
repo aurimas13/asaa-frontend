@@ -170,6 +170,15 @@
       "desc": "Prisijunkite prie augančios meistrų bendruomenės ir pasidalinkite savo tradiciniais amatais su pirkėjais visoje Europoje."
     }
   },
+  "makerDetail": {
+    "notFound": "Meistras nerastas",
+    "browseAll": "Naršyti visus meistrus",
+    "backToMakers": "Grįžti prie meistrų",
+    "website": "Svetainė",
+    "follow": "Sekti",
+    "following": "Sekate",
+    "productsBy": "Gaminiai nuo"
+  },
   "events": {
     "title": "Meistrų renginiai",
     "subtitle": "Atraskite dirbtuves, muges ir parodas",

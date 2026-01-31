@@ -3,11 +3,14 @@ import { useParams, Link } from 'react-router-dom'
 import { Star, MapPin, CheckCircle, Globe, Instagram, ArrowLeft } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
+import { useTranslation } from 'react-i18next'
 
 interface Maker {
   id: string
   business_name: string
   description: string
+  description_lt: string | null
+  description_fr: string | null
   cover_image: string
   country: string
   city: string
@@ -29,10 +32,18 @@ interface Product {
 export const MakerDetail: React.FC = () => {
   const { id } = useParams()
   const { user } = useAuth()
+  const { t, i18n } = useTranslation()
   const [maker, setMaker] = useState<Maker | null>(null)
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [isFollowing, setIsFollowing] = useState(false)
+
+  const getLocalizedDescription = (m: Maker) => {
+    const lang = i18n.language
+    if (lang === 'lt' && m.description_lt) return m.description_lt
+    if (lang === 'fr' && m.description_fr) return m.description_fr
+    return m.description
+  }
 
   useEffect(() => {
     if (id) {
@@ -105,9 +116,9 @@ export const MakerDetail: React.FC = () => {
   if (!maker) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h2 className="text-2xl font-bold">Maker not found</h2>
+        <h2 className="text-2xl font-bold">{t('makerDetail.notFound', 'Maker not found')}</h2>
         <Link to="/makers" className="text-amber-600 hover:underline mt-4 inline-block">
-          Browse all makers
+          {t('makerDetail.browseAll', 'Browse all makers')}
         </Link>
       </div>
     )
@@ -116,7 +127,7 @@ export const MakerDetail: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Link to="/makers" className="flex items-center gap-2 text-gray-600 hover:text-amber-600 mb-6">
-        <ArrowLeft className="w-4 h-4" /> Back to Makers
+        <ArrowLeft className="w-4 h-4" /> {t('makerDetail.backToMakers', 'Back to Makers')}
       </Link>
 
       <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
@@ -132,7 +143,7 @@ export const MakerDetail: React.FC = () => {
               <h1 className="text-3xl font-bold">{maker.business_name}</h1>
               {maker.verified && (
                 <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full flex items-center gap-1">
-                  <CheckCircle className="w-4 h-4" /> Verified
+                  <CheckCircle className="w-4 h-4" /> {t('makers.verified')}
                 </span>
               )}
             </div>
@@ -154,11 +165,11 @@ export const MakerDetail: React.FC = () => {
               </div>
             )}
             {maker.total_sales > 0 && (
-              <span className="text-gray-600">{maker.total_sales} sales</span>
+              <span className="text-gray-600">{maker.total_sales} {t('makers.sales')}</span>
             )}
             {maker.website && (
               <a href={maker.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-amber-600 hover:underline">
-                <Globe className="w-4 h-4" /> Website
+                <Globe className="w-4 h-4" /> {t('makerDetail.website', 'Website')}
               </a>
             )}
             {maker.instagram && (
@@ -168,7 +179,7 @@ export const MakerDetail: React.FC = () => {
             )}
           </div>
 
-          <p className="text-gray-700 leading-relaxed">{maker.description}</p>
+          <p className="text-gray-700 leading-relaxed">{getLocalizedDescription(maker)}</p>
 
           <button
             onClick={toggleFollow}
@@ -178,14 +189,14 @@ export const MakerDetail: React.FC = () => {
                 : 'bg-amber-600 text-white hover:bg-amber-700'
             }`}
           >
-            {isFollowing ? 'Following' : 'Follow'}
+            {isFollowing ? t('makerDetail.following', 'Following') : t('makerDetail.follow', 'Follow')}
           </button>
         </div>
       </div>
 
       {products.length > 0 && (
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Products by {maker.business_name}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('makerDetail.productsBy', 'Products by')} {maker.business_name}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product) => (
               <Link key={product.id} to={`/product/${product.id}`} className="group">

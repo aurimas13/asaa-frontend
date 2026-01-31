@@ -8,6 +8,8 @@ interface Maker {
   id: string
   business_name: string
   description: string
+  description_lt: string | null
+  description_fr: string | null
   cover_image: string
   country: string
   city: string
@@ -27,7 +29,14 @@ export const Makers: React.FC = () => {
   const [counts, setCounts] = useState<MakerCounts>({ total: 0, verified: 0, unverified: 0 })
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('')
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  const getLocalizedDescription = (maker: Maker) => {
+    const lang = i18n.language
+    if (lang === 'lt' && maker.description_lt) return maker.description_lt
+    if (lang === 'fr' && maker.description_fr) return maker.description_fr
+    return maker.description
+  }
 
   useEffect(() => {
     loadCounts()
@@ -55,7 +64,7 @@ export const Makers: React.FC = () => {
     setLoading(true)
     let query = supabase
       .from('makers')
-      .select('id, business_name, description, cover_image, country, city, verified, rating, total_sales')
+      .select('id, business_name, description, description_lt, description_fr, cover_image, country, city, verified, rating, total_sales')
       .order('rating', { ascending: false })
 
     if (filter === 'verified') {
@@ -190,7 +199,7 @@ export const Makers: React.FC = () => {
                       {[maker.city, maker.country].filter(Boolean).join(', ')}
                     </p>
                   )}
-                  <p className="text-sm text-gray-600 mt-3 line-clamp-2">{maker.description}</p>
+                  <p className="text-sm text-gray-600 mt-3 line-clamp-2">{getLocalizedDescription(maker)}</p>
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
                     {maker.rating > 0 ? (
                       <div className="flex items-center gap-1.5">

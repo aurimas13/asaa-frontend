@@ -170,6 +170,15 @@
       "desc": "Rejoignez notre communaute grandissante d'artisans et partagez vos metiers traditionnels avec des clients a travers l'Europe."
     }
   },
+  "makerDetail": {
+    "notFound": "Artisan non trouve",
+    "browseAll": "Parcourir tous les artisans",
+    "backToMakers": "Retour aux artisans",
+    "website": "Site web",
+    "follow": "Suivre",
+    "following": "Suivi",
+    "productsBy": "Produits de"
+  },
   "events": {
     "title": "Evenements artisanaux",
     "subtitle": "Decouvrez des ateliers, marches et expositions",

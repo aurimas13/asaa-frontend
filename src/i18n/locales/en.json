@@ -170,6 +170,15 @@
       "desc": "Join our growing community of makers and share your traditional crafts with customers across Europe."
     }
   },
+  "makerDetail": {
+    "notFound": "Maker not found",
+    "browseAll": "Browse all makers",
+    "backToMakers": "Back to Makers",
+    "website": "Website",
+    "follow": "Follow",
+    "following": "Following",
+    "productsBy": "Products by"
+  },
   "events": {
     "title": "Maker Events",
     "subtitle": "Discover workshops, markets, and exhibitions",
