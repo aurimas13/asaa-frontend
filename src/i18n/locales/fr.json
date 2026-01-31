@@ -16,7 +16,7 @@
     "returns": "Retours"
   },
   "announcement": {
-    "kaziukoMuge": "Kaziuko Muge 2026 arrive! 6-8 mars a Vilnius",
+    "kaziukoMuge": "Preparation pour Kaziuko Muge 2026 – 6-8 mars, Vilnius",
     "learnMore": "En savoir plus"
   },
   "home": {
@@ -103,6 +103,8 @@
   "cart": {
     "title": "Panier",
     "empty": "Votre panier est vide",
+    "signInRequired": "Veuillez vous connecter pour voir votre panier",
+    "signInButton": "Se connecter",
     "startShopping": "Commencer les achats",
     "subtotal": "Sous-total",
     "shipping": "Livraison",
@@ -139,6 +141,8 @@
     "subtitle": "Decouvrez des artisans talentueux de toute la Lituanie",
     "verified": "Verifie",
     "unverified": "Non verifie",
+    "verifiedPlural": "Verifies",
+    "unverifiedPlural": "Non verifies",
     "sales": "ventes",
     "location": "Emplacement",
     "total": "Total des artisans",
@@ -150,7 +154,7 @@
     },
     "verificationNotice": {
       "title": "Avis de verification",
-      "desc": "Nous contactons actuellement les artisans pour verification avant Kaziuko muge 2026 (6-8 mars). Les artisans non verifies attendent la confirmation d'approbation."
+      "desc": "Apres Kaziuko muge 2026 (6-8 mars), nous contacterons les artisans souhaitant promouvoir leurs produits sur notre site. Les artisans non verifies sont en attente de verification."
     },
     "becomeMaker": {
       "title": "Etes-vous un artisan lituanien?",
@@ -190,48 +194,84 @@
     "makerResources": "Ressources",
     "makerGuidelines": "Guide des artisans",
     "successStories": "Histoires de reussite",
+    "privacy": "Politique de confidentialite",
+    "terms": "Conditions d'utilisation",
     "copyright": "Crafts And Hands. Autonomiser les artisans lituaniens, une creation a la fois."
   },
   "categories": {
     "title": "Categories",
-    "subtitle": "Explorez nos categories d'artisanat",
-    "jewelry": "Bijouterie",
-    "pottery": "Poterie",
-    "ceramics": "Ceramique",
-    "textiles": "Textiles",
-    "woodwork": "Travail du bois",
-    "leatherGoods": "Maroquinerie",
-    "glassArt": "Art du verre",
-    "weaving": "Tissage",
-    "basketry": "Vannerie",
-    "felting": "Feutrage",
-    "blacksmithing": "Forge",
-    "paperArt": "Art du papier",
-    "leather": "Cuir",
+    "subtitle": "Parcourir les produits par categorie",
     "amber": "Ambre",
     "strawArt": "Art de la paille",
-    "multiCraft": "Multi-artisanat"
+    "straw-art": "Art de la paille",
+    "weaving": "Tissage",
+    "textiles": "Textiles",
+    "basketry": "Vannerie",
+    "woodwork": "Travail du bois",
+    "blacksmithing": "Forge",
+    "jewelry": "Bijouterie",
+    "woolFelting": "Feutrage de laine",
+    "wool-felting": "Feutrage de laine",
+    "leatherGoods": "Maroquinerie",
+    "leather-goods": "Maroquinerie",
+    "paperArt": "Art du papier",
+    "paper-art": "Art du papier",
+    "multiCraft": "Autres",
+    "multi-craft": "Autres",
+    "pottery": "Poterie",
+    "ceramics": "Ceramique",
+    "glassArt": "Art du verre",
+    "glass-art": "Art du verre"
   },
   "returns": {
     "title": "Retours et remboursements",
-    "subtitle": "Retours faciles sous 30 jours pour la plupart des articles",
-    "policy": {
-      "title": "Politique de retour",
-      "description": "Nous voulons que vous soyez completement satisfait de votre achat. Si vous n'etes pas content de votre commande, vous pouvez retourner la plupart des articles dans les 30 jours suivant la livraison.",
-      "eligible": "Articles eligibles",
-      "eligibleDesc": "La plupart des articles peuvent etre retournes dans les 30 jours suivant la livraison dans leur etat d'origine.",
-      "nonEligible": "Articles non retournables",
-      "nonEligibleDesc": "Les articles personnalises ou sur mesure, les produits perissables et les articles marques comme vente finale ne peuvent pas etre retournes.",
-      "process": "Comment retourner",
-      "processSteps": {
-        "step1": "Contactez-nous dans les 30 jours suivant la livraison",
-        "step2": "Recevez votre autorisation de retour",
-        "step3": "Renvoyez l'article dans son emballage d'origine",
-        "step4": "Recevez le remboursement dans les 5-7 jours ouvrables"
+    "subtitle": "Nous voulons que votre achat artisanal vous plaise. Si quelque chose ne va pas, nous sommes la pour vous aider.",
+    "thirtyDayReturns": "Retours sous 30 jours",
+    "thirtyDayReturnsDesc": "Retournez les articles eligibles dans les 30 jours suivant la livraison",
+    "easyProcess": "Processus facile",
+    "easyProcessDesc": "Commencez un retour depuis votre historique de commandes",
+    "originalCondition": "Etat d'origine",
+    "originalConditionDesc": "Les articles doivent etre non utilises et dans leur emballage d'origine",
+    "eligibleTitle": "Eligible au retour",
+    "eligibleItems": {
+      "standard": "Articles standards (non personnalises) dans leur etat d'origine",
+      "defects": "Articles avec defauts de fabrication ou dommages pendant l'expedition",
+      "different": "Articles significativement differents de la description du produit",
+      "wrong": "Mauvais article recu"
+    },
+    "notEligibleTitle": "Non eligible au retour",
+    "notEligibleItems": {
+      "custom": "Articles personnalises ou faits sur mesure selon vos specifications",
+      "used": "Articles utilises, portes ou modifies",
+      "late": "Articles retournes apres 30 jours",
+      "food": "Produits alimentaires ou perissables"
+    },
+    "howToReturn": "Comment retourner un article",
+    "steps": {
+      "step1": {
+        "title": "Demander un retour",
+        "desc": "Allez dans Commandes dans votre compte et selectionnez l'article a retourner"
+      },
+      "step2": {
+        "title": "Obtenir l'approbation",
+        "desc": "Attendez l'approbation du retour de l'artisan (generalement 1-2 jours)"
+      },
+      "step3": {
+        "title": "Expedier l'article",
+        "desc": "Emballez l'article en securite et expediez a l'adresse fournie"
+      },
+      "step4": {
+        "title": "Recevoir le remboursement",
+        "desc": "Remboursement traite dans les 5-7 jours apres reception de l'article"
       }
     },
-    "contact": "Besoin d'aide?",
-    "contactDesc": "Contactez notre equipe de support client pour toute question concernant les retours."
+    "handmadeNotice": {
+      "title": "Important: Variations artisanales",
+      "desc": "Chaque article est fabrique a la main par des artisans qualifies, ce qui signifie que de legeres variations de couleur, taille ou motif sont normales et font partie de ce qui rend chaque piece unique. Ces variations naturelles ne sont pas considerees comme des defauts et ne sont pas eligibles au retour."
+    },
+    "needHelp": "Besoin d'aide pour un retour?",
+    "viewOrders": "Voir mes commandes",
+    "contactSupport": "Contacter le support"
   },
   "successStories": {
     "title": "Histoires de reussite",
@@ -244,11 +284,168 @@
   },
   "privacy": {
     "title": "Politique de confidentialite",
-    "lastUpdated": "Derniere mise a jour"
+    "lastUpdated": "Derniere mise a jour",
+    "intro": {
+      "title": "Introduction",
+      "content": "Crafts And Hands (\"nous\", \"notre\") s'engage a proteger votre vie privee. Cette politique de confidentialite explique comment nous collectons, utilisons, divulguons et protegeons vos informations lorsque vous visitez notre site Web et utilisez nos services."
+    },
+    "infoCollect": {
+      "title": "Informations collectees",
+      "personal": "Informations personnelles",
+      "personalItems": {
+        "name": "Nom et coordonnees (e-mail, numero de telephone)",
+        "address": "Adresses de facturation et de livraison",
+        "payment": "Informations de paiement (traitees de maniere securisee par nos fournisseurs de paiement)",
+        "account": "Identifiants de compte",
+        "orders": "Historique des commandes et preferences"
+      },
+      "auto": "Informations collectees automatiquement",
+      "autoItems": {
+        "device": "Informations sur l'appareil (type de navigateur, systeme d'exploitation)",
+        "ip": "Adresse IP et donnees de localisation",
+        "usage": "Donnees d'utilisation (pages visitees, temps passe)",
+        "cookies": "Cookies et technologies de suivi similaires"
+      }
+    },
+    "howUse": {
+      "title": "Comment nous utilisons vos informations",
+      "items": {
+        "orders": "Pour traiter et executer vos commandes",
+        "communicate": "Pour communiquer avec vous concernant vos commandes et votre compte",
+        "promo": "Pour envoyer des communications promotionnelles (avec votre consentement)",
+        "improve": "Pour ameliorer notre site Web et nos services",
+        "fraud": "Pour prevenir la fraude et assurer la securite",
+        "legal": "Pour nous conformer aux obligations legales",
+        "connect": "Pour connecter les acheteurs avec les artisans"
+      }
+    },
+    "security": {
+      "title": "Securite des donnees",
+      "content": "Nous mettons en oeuvre des mesures techniques et organisationnelles appropriees pour proteger vos donnees personnelles contre l'acces, la modification, la divulgation ou la destruction non autorises.",
+      "measures": {
+        "ssl": "Chiffrement SSL/TLS pour la transmission des donnees",
+        "storage": "Stockage securise avec controles d'acces",
+        "audits": "Audits de securite et mises a jour reguliers",
+        "training": "Formation des employes sur la protection des donnees"
+      }
+    },
+    "gdpr": {
+      "title": "Vos droits (RGPD)",
+      "content": "En vertu du Reglement general sur la protection des donnees (RGPD), vous disposez des droits suivants:",
+      "rights": {
+        "access": "Droit d'acces: Demander une copie de vos donnees personnelles",
+        "rectify": "Droit de rectification: Demander la correction de donnees inexactes",
+        "erase": "Droit a l'effacement: Demander la suppression de vos donnees (\"droit a l'oubli\")",
+        "restrict": "Droit a la limitation: Demander un traitement limite de vos donnees",
+        "port": "Droit a la portabilite: Recevoir vos donnees dans un format portable",
+        "object": "Droit d'opposition: S'opposer au traitement de vos donnees",
+        "withdraw": "Droit de retirer le consentement: Retirer votre consentement a tout moment"
+      }
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "Nous utilisons des cookies et des technologies similaires pour ameliorer votre experience. Vous pouvez gerer vos preferences de cookies dans les parametres de votre navigateur ou via notre banniere de consentement aux cookies."
+    },
+    "retention": {
+      "title": "Conservation des donnees",
+      "content": "Nous conservons vos donnees personnelles uniquement le temps necessaire pour atteindre les objectifs pour lesquels elles ont ete collectees, y compris les exigences legales, comptables ou de reporting. Les donnees de commande sont conservees pendant 7 ans pour des raisons fiscales et legales."
+    },
+    "contact": {
+      "title": "Nous contacter",
+      "content": "Si vous avez des questions sur cette politique de confidentialite ou souhaitez exercer vos droits, contactez-nous:",
+      "email": "E-mail",
+      "address": "Adresse"
+    },
+    "changes": {
+      "title": "Modifications de cette politique",
+      "content": "Nous pouvons mettre a jour cette politique de confidentialite de temps a autre. Nous vous informerons de tout changement en publiant la nouvelle politique de confidentialite sur cette page et en mettant a jour la date de \"Derniere mise a jour\"."
+    }
   },
   "terms": {
     "title": "Conditions d'utilisation",
-    "lastUpdated": "Derniere mise a jour"
+    "lastUpdated": "Derniere mise a jour",
+    "intro": {
+      "title": "1. Introduction",
+      "content": "Bienvenue sur Crafts And Hands. Ces conditions d'utilisation (\"Conditions\") regissent votre utilisation de notre site Web et de nos services. En accedant ou en utilisant notre plateforme, vous acceptez d'etre lie par ces Conditions."
+    },
+    "platform": {
+      "title": "2. A propos de notre plateforme",
+      "content": "Crafts And Hands est une place de marche en ligne reliant les acheteurs aux artisans lituaniens. Nous facilitons les transactions entre acheteurs et artisans independants mais nous ne sommes pas nous-memes les vendeurs des produits listes sur notre plateforme."
+    },
+    "products": {
+      "title": "3. Produits et commandes",
+      "descriptions": "3.1 Descriptions des produits: Nous nous efforcons d'assurer l'exactitude des descriptions. Cependant, comme les produits sont faits main, de legeres variations de couleur, taille et motif sont normales et attendues.",
+      "pricing": "3.2 Prix: Tous les prix sont affiches en euros (EUR) et incluent les taxes applicables sauf indication contraire. Les frais d'expedition sont calcules lors du paiement en fonction de votre emplacement.",
+      "acceptance": "3.3 Acceptation des commandes: Votre commande constitue une offre d'achat. Nous nous reservons le droit de refuser ou d'annuler des commandes a notre discretion, notamment en raison de la disponibilite ou d'erreurs de prix.",
+      "custom": "3.4 Personnalisation: Les commandes personnalisees sont faites selon vos specifications et peuvent etre soumises a des politiques de retour differentes indiquees sur la page du produit."
+    },
+    "payment": {
+      "title": "4. Paiement",
+      "methods": "4.1 Modes de paiement: Nous acceptons les principales cartes de credit et autres modes de paiement affiches lors du paiement. Tous les paiements sont traites de maniere securisee par nos fournisseurs de paiement.",
+      "security": "4.2 Securite des paiements: Nous ne stockons pas vos coordonnees de carte de paiement completes. Toutes les informations de paiement sont cryptees et traitees conformement aux normes PCI DSS.",
+      "currency": "4.3 Devise: Toutes les transactions sont traitees en euros (EUR)."
+    },
+    "shipping": {
+      "title": "5. Expedition et livraison",
+      "times": "5.1 Delais de livraison: Les delais de livraison estimes varient selon l'emplacement et le mode d'expedition choisi. Ce sont des estimations et non des garanties.",
+      "costs": "5.2 Frais d'expedition: Les frais d'expedition sont calcules en fonction de votre adresse de livraison et affiches lors du paiement. La livraison gratuite peut etre disponible pour les commandes depassant certains seuils.",
+      "international": "5.3 Expedition internationale: Les commandes internationales peuvent etre soumises a des droits de douane et taxes, qui sont a la charge de l'acheteur.",
+      "risk": "5.4 Risque de perte: Le risque de perte vous est transfere lors de la remise des articles au transporteur."
+    },
+    "returnsSection": {
+      "title": "6. Retours et remboursements",
+      "policy": "6.1 Politique de retour: Les articles standards peuvent etre retournes dans les 30 jours suivant la livraison s'ils sont non utilises et dans leur etat d'origine. Les articles personnalises ne sont generalement pas eligibles au retour.",
+      "process": "6.2 Processus de retour: Pour initier un retour, faites une demande via votre compte. Les articles doivent etre renvoyes dans les 14 jours suivant l'approbation.",
+      "refunds": "6.3 Remboursements: Les remboursements sont traites dans les 5-7 jours ouvrables apres reception de l'article retourne. Les frais d'expedition initiaux ne sont pas remboursables sauf si le retour est du a notre erreur.",
+      "defective": "6.4 Articles defectueux: Si vous recevez un article defectueux ou endommage, contactez-nous dans les 48 heures suivant la livraison pour un remboursement complet ou un remplacement."
+    },
+    "accounts": {
+      "title": "7. Comptes utilisateurs",
+      "creation": "7.1 Creation de compte: Vous devrez peut-etre creer un compte pour acceder a certaines fonctionnalites. Vous etes responsable de la confidentialite de vos identifiants de compte.",
+      "accuracy": "7.2 Exactitude du compte: Vous acceptez de fournir des informations exactes et completes lors de la creation de votre compte et de les mettre a jour si necessaire.",
+      "termination": "7.3 Resiliation du compte: Nous nous reservons le droit de suspendre ou de resilier les comptes qui violent ces Conditions ou qui se livrent a des activites frauduleuses."
+    },
+    "ip": {
+      "title": "8. Propriete intellectuelle",
+      "content": "Tout le contenu de notre plateforme, y compris le texte, les graphiques, les logos et les images, est la propriete de Crafts And Hands ou de nos artisans et est protege par les lois sur la propriete intellectuelle. Les images et descriptions de produits restent la propriete des artisans respectifs."
+    },
+    "liability": {
+      "title": "9. Limitation de responsabilite",
+      "content": "Dans toute la mesure permise par la loi, Crafts And Hands ne sera pas responsable des dommages indirects, accessoires, speciaux, consecutifs ou punitifs decoulant de votre utilisation de nos services. Notre responsabilite totale ne depassera pas le montant que vous avez paye pour le produit en question."
+    },
+    "law": {
+      "title": "10. Droit applicable",
+      "content": "Ces Conditions sont regies par les lois de la Republique de Lituanie et de l'Union europeenne. Tout litige sera resolu devant les tribunaux de Vilnius, Lituanie, sauf si les lois obligatoires de protection des consommateurs de votre pays de residence en disposent autrement."
+    },
+    "changes": {
+      "title": "11. Modifications des Conditions",
+      "content": "Nous pouvons mettre a jour ces Conditions de temps a autre. L'utilisation continue de nos services apres les modifications constitue l'acceptation des nouvelles Conditions. Nous vous informerons des changements importants par e-mail ou via notre site Web."
+    },
+    "contact": {
+      "title": "12. Informations de contact",
+      "content": "Pour toute question concernant ces Conditions, contactez-nous:",
+      "email": "E-mail",
+      "address": "Adresse"
+    }
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "subtitle": "Vous avez des questions sur nos produits, artisans ou plateforme? Nous sommes la pour vous aider.",
+    "email": "E-mail",
+    "phone": "Telephone",
+    "location": "Emplacement",
+    "form": {
+      "title": "Envoyez-nous un message",
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "E-mail",
+      "emailPlaceholder": "votre@email.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Comment pouvons-nous vous aider?",
+      "message": "Message",
+      "messagePlaceholder": "Dites-nous en plus...",
+      "submit": "Envoyer le message"
+    }
   },
   "becomeMaker": {
     "title": "Devenir artisan",
@@ -279,18 +476,18 @@
     },
     "eligibleCrafts": "Metiers eligibles",
     "crafts": {
-      "pottery": "Poterie",
-      "weaving": "Tissage",
+      "amber": "Ambre",
+      "strawArt": "Art de la paille",
+      "weaving": "Tissage / Textiles",
       "basketry": "Vannerie",
       "woodwork": "Travail du bois",
       "blacksmithing": "Forge",
       "jewelry": "Bijouterie",
-      "felting": "Feutrage",
-      "leather": "Cuir",
+      "felting": "Feutrage de laine",
+      "leather": "Maroquinerie",
       "paperArt": "Art du papier",
-      "textiles": "Textiles",
-      "amber": "Ambre",
-      "strawArt": "Art de la paille"
+      "pottery": "Poterie",
+      "multiCraft": "Autres"
     },
     "requirements": {
       "title": "Exigences",
@@ -308,6 +505,8 @@
       "craftType": "Type de metier",
       "selectCraft": "Selectionnez votre metier...",
       "craftOptions": {
+        "amber": "Bijoux en ambre",
+        "strawArt": "Art de la paille",
         "pottery": "Poterie / Ceramique",
         "weaving": "Tissage / Textiles",
         "basketry": "Vannerie",
@@ -316,9 +515,7 @@
         "jewelry": "Bijouterie",
         "felting": "Feutrage de laine",
         "leather": "Maroquinerie",
-        "paper": "Art du papier / Karpiniai",
-        "amber": "Bijoux en ambre",
-        "strawArt": "Art de la paille / Sodai",
+        "paper": "Art du papier",
         "other": "Autre artisanat traditionnel"
       },
       "experience": "Annees d'experience",

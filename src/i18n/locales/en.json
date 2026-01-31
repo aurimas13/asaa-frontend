@@ -111,7 +111,9 @@
     "checkout": "Proceed to Checkout",
     "continueShop": "Continue Shopping",
     "remove": "Remove",
-    "quantity": "Quantity"
+    "quantity": "Quantity",
+    "signInRequired": "Please sign in to view your cart",
+    "signInButton": "Sign In"
   },
   "auth": {
     "signIn": {
@@ -139,6 +141,8 @@
     "subtitle": "Discover talented makers from across Lithuania",
     "verified": "Verified",
     "unverified": "Not Verified",
+    "verifiedPlural": "Verified",
+    "unverifiedPlural": "Unverified",
     "sales": "sales",
     "location": "Location",
     "total": "Total Makers",
@@ -150,7 +154,7 @@
     },
     "verificationNotice": {
       "title": "Verification Notice",
-      "desc": "We are currently contacting makers for verification before Kaziuko muge 2026 (March 6-8). Unverified makers are awaiting approval confirmation."
+      "desc": "After Kaziuko Muge 2026 (March 6-8), we will contact makers who wish to advertise their products on our website. Unverified makers are awaiting approval confirmation."
     },
     "becomeMaker": {
       "title": "Are you a Lithuanian craftsperson?",
@@ -190,11 +194,13 @@
     "makerResources": "Resources",
     "makerGuidelines": "Maker Guidelines",
     "successStories": "Success Stories",
-    "copyright": "Crafts And Hands. Empowering Lithuanian craftspeople, one creation at a time."
+    "copyright": "Crafts And Hands. Empowering Lithuanian craftspeople, one creation at a time.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
   "categories": {
     "title": "Categories",
-    "subtitle": "Explore our craft categories",
+    "subtitle": "Browse products by category",
     "jewelry": "Jewelry",
     "pottery": "Pottery",
     "ceramics": "Ceramics",
@@ -205,6 +211,7 @@
     "weaving": "Weaving",
     "basketry": "Basketry",
     "felting": "Felting",
+    "woolFelting": "Wool Felting",
     "blacksmithing": "Blacksmithing",
     "paperArt": "Paper Art",
     "leather": "Leather",
@@ -345,6 +352,33 @@
       "step1": "Our team will review your application within 5-7 business days",
       "step2": "We may contact you for additional information or photos",
       "step3": "Once approved, you will receive setup instructions"
+    },
+    "error": "Something went wrong. Please try again."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions about our products, makers, or platform? We're here to help.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "address": "Lithuania",
+    "form": {
+      "title": "Send us a message",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us more...",
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "success": {
+      "title": "Message Sent!",
+      "message": "Thank you for reaching out. We'll get back to you within 24-48 hours.",
+      "sendAnother": "Send Another Message"
     },
     "error": "Something went wrong. Please try again."
   },

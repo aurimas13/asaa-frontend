@@ -121,7 +121,7 @@ export const Makers: React.FC = () => {
               : 'bg-white text-gray-700 hover:bg-secondary-50 border border-gray-200'
           }`}
         >
-          <CheckCircle className="w-4 h-4" /> {t('makers.verified')} ({counts.verified})
+          <CheckCircle className="w-4 h-4" /> {t('makers.verifiedPlural', 'Verified')} ({counts.verified})
         </button>
         <button
           onClick={() => setFilter('unverified')}
@@ -131,7 +131,7 @@ export const Makers: React.FC = () => {
               : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
           }`}
         >
-          <XCircle className="w-4 h-4" /> {t('makers.unverified', 'Not Verified')} ({counts.unverified})
+          <XCircle className="w-4 h-4" /> {t('makers.unverifiedPlural', 'Unverified')} ({counts.unverified})
         </button>
       </div>
 

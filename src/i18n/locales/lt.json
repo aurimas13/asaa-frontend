@@ -16,7 +16,7 @@
     "returns": "Grąžinimai"
   },
   "announcement": {
-    "kaziukoMuge": "Kaziuko mugė 2026 jau greitai! Kovo 6-8 d. Vilniuje",
+    "kaziukoMuge": "Ruošiamės Kaziuko mugei 2026 – kovo 6–8 d., Vilnius",
     "learnMore": "Sužinoti daugiau"
   },
   "home": {
@@ -103,6 +103,8 @@
   "cart": {
     "title": "Pirkinių krepšelis",
     "empty": "Jūsų krepšelis tuščias",
+    "signInRequired": "Prisijunkite, kad pamatytumėte savo krepšelį",
+    "signInButton": "Prisijungti",
     "startShopping": "Pradėti apsipirkimą",
     "subtotal": "Tarpinė suma",
     "shipping": "Pristatymas",
@@ -137,8 +139,10 @@
   "makers": {
     "title": "Susipažinkite su mūsų meistrais",
     "subtitle": "Atraskite talentingus meistrus iš visos Lietuvos",
-    "verified": "Patvirtintas",
-    "unverified": "Nepatvirtintas",
+    "verified": "Patvirtinta",
+    "unverified": "Nepatvirtinta",
+    "verifiedPlural": "Patvirtinti",
+    "unverifiedPlural": "Nepatvirtinti",
     "sales": "pardavimų",
     "location": "Vietovė",
     "total": "Iš viso meistrų",
@@ -150,7 +154,7 @@
     },
     "verificationNotice": {
       "title": "Patvirtinimo pranešimas",
-      "desc": "Šiuo metu susisiekiame su meistrais dėl patvirtinimo prieš Kaziuko mugę 2026 (kovo 6-8 d.). Nepatvirtinti meistrai laukia patvirtinimo."
+      "desc": "Po Kaziuko mugės 2026 (kovo 6–8 d.) susisieksime su meistrais, norinčiais reklamuoti savo gaminius mūsų svetainėje. Nepatvirtinti meistrai laukia patvirtinimo."
     },
     "becomeMaker": {
       "title": "Ar esate Lietuvos amatininkas?",
@@ -190,48 +194,84 @@
     "makerResources": "Ištekliai",
     "makerGuidelines": "Meistrų gairės",
     "successStories": "Sėkmės istorijos",
+    "privacy": "Privatumo politika",
+    "terms": "Paslaugų teikimo sąlygos",
     "copyright": "Crafts And Hands. Įgaliname Lietuvos amatininkus, vienas kūrinys vienu metu."
   },
   "categories": {
     "title": "Kategorijos",
-    "subtitle": "Naršykite mūsų amatų kategorijas",
-    "jewelry": "Juvelyrika",
-    "pottery": "Keramika",
-    "ceramics": "Keramika",
-    "textiles": "Tekstilė",
-    "woodwork": "Medžio dirbiniai",
-    "leatherGoods": "Odos gaminiai",
-    "glassArt": "Stiklo menas",
-    "weaving": "Audimas",
-    "basketry": "Pynimas",
-    "felting": "Vėlimas",
-    "blacksmithing": "Kalvystė",
-    "paperArt": "Popieriaus menas",
-    "leather": "Oda",
+    "subtitle": "Naršykite gaminius pagal kategoriją",
     "amber": "Gintaras",
-    "strawArt": "Šiaudų pynimas",
-    "multiCraft": "Įvairūs amatai"
+    "strawArt": "Šiaudiniai sodai",
+    "straw-art": "Šiaudiniai sodai",
+    "weaving": "Audimas",
+    "textiles": "Tekstilė",
+    "basketry": "Pynimas",
+    "woodwork": "Medžio dirbiniai",
+    "blacksmithing": "Kalvystė",
+    "jewelry": "Juvelyrika",
+    "woolFelting": "Vilnos vėlimas",
+    "wool-felting": "Vilnos vėlimas",
+    "leatherGoods": "Odos gaminiai",
+    "leather-goods": "Odos gaminiai",
+    "paperArt": "Karpiniai",
+    "paper-art": "Karpiniai",
+    "multiCraft": "Kita",
+    "multi-craft": "Kita",
+    "pottery": "Puodystė",
+    "ceramics": "Keramika",
+    "glassArt": "Stiklo menas",
+    "glass-art": "Stiklo menas"
   },
   "returns": {
     "title": "Grąžinimai ir pinigų grąžinimas",
-    "subtitle": "Lengvi 30 dienų grąžinimai daugumai prekių",
-    "policy": {
-      "title": "Grąžinimo politika",
-      "description": "Norime, kad būtumėte visiškai patenkinti savo pirkiniu. Jei nesate patenkinti užsakymu, galite grąžinti daugumą prekių per 30 dienų nuo pristatymo.",
-      "eligible": "Tinkamos prekės",
-      "eligibleDesc": "Dauguma prekių gali būti grąžintos per 30 dienų nuo pristatymo originalioje būklėje.",
-      "nonEligible": "Negrąžinamos prekės",
-      "nonEligibleDesc": "Individualiai pagaminti ar personalizuoti daiktai, greitai gendančios prekės ir prekės, pažymėtos kaip galutinis pardavimas, negali būti grąžintos.",
-      "process": "Kaip grąžinti",
-      "processSteps": {
-        "step1": "Susisiekite su mumis per 30 dienų nuo pristatymo",
-        "step2": "Gaukite grąžinimo autorizaciją",
-        "step3": "Išsiųskite prekę originalioje pakuotėje",
-        "step4": "Gaukite pinigų grąžinimą per 5-7 darbo dienas"
+    "subtitle": "Norime, kad jūsų rankų darbo pirkinys jus džiugintų. Jei kažkas negerai, esame pasirengę padėti.",
+    "thirtyDayReturns": "30 dienų grąžinimai",
+    "thirtyDayReturnsDesc": "Grąžinkite tinkamas prekes per 30 dienų nuo pristatymo",
+    "easyProcess": "Paprastas procesas",
+    "easyProcessDesc": "Pradėkite grąžinimą iš užsakymų istorijos",
+    "originalCondition": "Originali būklė",
+    "originalConditionDesc": "Prekės turi būti nenaudotos ir originalioje pakuotėje",
+    "eligibleTitle": "Tinkamos grąžinimui",
+    "eligibleItems": {
+      "standard": "Standartinės (nepersonalizuotos) prekės originalioje būklėje",
+      "defects": "Prekės su gamybos defektais ar pažeidimu pristatymo metu",
+      "different": "Prekės, kurios labai skiriasi nuo gaminio aprašymo",
+      "wrong": "Gauta netinkama prekė"
+    },
+    "notEligibleTitle": "Negrąžinamos",
+    "notEligibleItems": {
+      "custom": "Individualiai pagamintos ar personalizuotos prekės pagal jūsų specifikacijas",
+      "used": "Naudotos, dėvėtos ar pakeistos prekės",
+      "late": "Prekės, grąžintos po 30 dienų",
+      "food": "Maisto produktai ar greitai gendančios prekės"
+    },
+    "howToReturn": "Kaip grąžinti prekę",
+    "steps": {
+      "step1": {
+        "title": "Pateikite užklausą",
+        "desc": "Eikite į Užsakymai savo paskyroje ir pasirinkite prekę grąžinimui"
+      },
+      "step2": {
+        "title": "Gaukite patvirtinimą",
+        "desc": "Palaukite grąžinimo patvirtinimo iš meistro (paprastai 1–2 dienos)"
+      },
+      "step3": {
+        "title": "Išsiųskite prekę",
+        "desc": "Saugiai supakuokite prekę ir išsiųskite nurodytu adresu"
+      },
+      "step4": {
+        "title": "Gaukite pinigus",
+        "desc": "Pinigai bus grąžinti per 5–7 dienas nuo prekės gavimo"
       }
     },
-    "contact": "Reikia pagalbos?",
-    "contactDesc": "Susisiekite su mūsų klientų aptarnavimo komanda dėl bet kokių klausimų apie grąžinimus."
+    "handmadeNotice": {
+      "title": "Svarbu: Rankų darbo skirtumai",
+      "desc": "Kiekvienas daiktas yra rankų darbo, sukurtas kvalifikuotų meistrų, todėl nedideli spalvos, dydžio ar rašto skirtumai yra normalūs ir daro kiekvieną kūrinį unikalų. Šie natūralūs skirtumai nėra laikomi defektais ir nėra grąžinimo priežastis."
+    },
+    "needHelp": "Reikia pagalbos su grąžinimu?",
+    "viewOrders": "Peržiūrėti užsakymus",
+    "contactSupport": "Susisiekti su pagalba"
   },
   "successStories": {
     "title": "Sėkmės istorijos",
@@ -244,11 +284,168 @@
   },
   "privacy": {
     "title": "Privatumo politika",
-    "lastUpdated": "Atnaujinta"
+    "lastUpdated": "Atnaujinta",
+    "intro": {
+      "title": "Įvadas",
+      "content": "Crafts And Hands (\"mes\", \"mūsų\") įsipareigoja saugoti jūsų privatumą. Ši Privatumo politika paaiškina, kaip renkame, naudojame, atskleidžiame ir saugome jūsų informaciją, kai lankotės mūsų svetainėje ir naudojatės mūsų paslaugomis."
+    },
+    "infoCollect": {
+      "title": "Renkama informacija",
+      "personal": "Asmeninė informacija",
+      "personalItems": {
+        "name": "Vardas ir kontaktinė informacija (el. paštas, telefono numeris)",
+        "address": "Atsiskaitymo ir pristatymo adresai",
+        "payment": "Mokėjimo informacija (saugiai apdorojama mūsų mokėjimo paslaugų teikėjų)",
+        "account": "Paskyros duomenys",
+        "orders": "Užsakymų istorija ir nuostatos"
+      },
+      "auto": "Automatiškai renkama informacija",
+      "autoItems": {
+        "device": "Įrenginio informacija (naršyklės tipas, operacinė sistema)",
+        "ip": "IP adresas ir vietos duomenys",
+        "usage": "Naudojimo duomenys (lankyti puslapiai, praleistas laikas)",
+        "cookies": "Slapukai ir panašios sekimo technologijos"
+      }
+    },
+    "howUse": {
+      "title": "Kaip naudojame jūsų informaciją",
+      "items": {
+        "orders": "Užsakymų apdorojimui ir įvykdymui",
+        "communicate": "Bendravimui apie užsakymus ir paskyrą",
+        "promo": "Reklaminių pranešimų siuntimui (su jūsų sutikimu)",
+        "improve": "Svetainės ir paslaugų tobulinimui",
+        "fraud": "Sukčiavimo prevencijai ir saugumo užtikrinimui",
+        "legal": "Teisinių įsipareigojimų vykdymui",
+        "connect": "Pirkėjų sujungimui su meistrais"
+      }
+    },
+    "security": {
+      "title": "Duomenų saugumas",
+      "content": "Taikome tinkamas technines ir organizacines priemones jūsų asmeniniams duomenims apsaugoti nuo neteisėtos prieigos, pakeitimo, atskleidimo ar sunaikinimo.",
+      "measures": {
+        "ssl": "SSL/TLS šifravimas duomenų perdavimui",
+        "storage": "Saugus saugojimas su prieigos kontrole",
+        "audits": "Reguliarūs saugumo auditai ir atnaujinimai",
+        "training": "Darbuotojų mokymai duomenų apsaugos srityje"
+      }
+    },
+    "gdpr": {
+      "title": "Jūsų teisės (BDAR)",
+      "content": "Pagal Bendrąjį duomenų apsaugos reglamentą (BDAR) turite šias teises:",
+      "rights": {
+        "access": "Teisė susipažinti: Prašyti savo asmeninių duomenų kopijos",
+        "rectify": "Teisė ištaisyti: Prašyti netikslių duomenų ištaisymo",
+        "erase": "Teisė ištrinti: Prašyti duomenų ištrynimo (\"teisė būti pamirštam\")",
+        "restrict": "Teisė apriboti: Prašyti apriboti duomenų tvarkymą",
+        "port": "Teisė į duomenų perkeliamumą: Gauti duomenis pernešamu formatu",
+        "object": "Teisė prieštarauti: Prieštarauti duomenų tvarkymui",
+        "withdraw": "Teisė atšaukti sutikimą: Bet kada atšaukti sutikimą"
+      }
+    },
+    "cookies": {
+      "title": "Slapukai",
+      "content": "Naudojame slapukus ir panašias technologijas jūsų patirčiai pagerinti. Galite valdyti slapukų nuostatas naršyklės nustatymuose arba mūsų slapukų sutikimo juostoje."
+    },
+    "retention": {
+      "title": "Duomenų saugojimas",
+      "content": "Saugome jūsų asmeninius duomenis tik tiek, kiek būtina tikslams, dėl kurių jie buvo surinkti, įskaitant teisinius, apskaitos ar ataskaitų teikimo reikalavimus. Užsakymų duomenys saugomi 7 metus dėl mokesčių ir teisinių reikalavimų."
+    },
+    "contact": {
+      "title": "Susisiekite su mumis",
+      "content": "Jei turite klausimų apie šią Privatumo politiką arba norite pasinaudoti savo teisėmis, susisiekite:",
+      "email": "El. paštas",
+      "address": "Adresas"
+    },
+    "changes": {
+      "title": "Politikos pakeitimai",
+      "content": "Galime retkarčiais atnaujinti šią Privatumo politiką. Apie pakeitimus informuosime paskelbdami naują Privatumo politiką šiame puslapyje ir atnaujindami \"Atnaujinta\" datą."
+    }
   },
   "terms": {
     "title": "Paslaugų teikimo sąlygos",
-    "lastUpdated": "Atnaujinta"
+    "lastUpdated": "Atnaujinta",
+    "intro": {
+      "title": "1. Įvadas",
+      "content": "Sveiki atvykę į Crafts And Hands. Šios Paslaugų teikimo sąlygos (\"Sąlygos\") reglamentuoja jūsų naudojimąsi mūsų svetaine ir paslaugomis. Naudodamiesi mūsų platforma, sutinkate laikytis šių Sąlygų."
+    },
+    "platform": {
+      "title": "2. Apie mūsų platformą",
+      "content": "Crafts And Hands yra internetinė prekyvietė, jungianti pirkėjus su Lietuvos meistrais ir amatininkais. Mes palengviname sandorius tarp pirkėjų ir nepriklausomų meistrų, bet patys nesame mūsų platformoje skelbiamų produktų pardavėjai."
+    },
+    "products": {
+      "title": "3. Produktai ir užsakymai",
+      "descriptions": "3.1 Produktų aprašymai: Siekiame užtikrinti, kad produktų aprašymai būtų tikslūs. Tačiau, kadangi produktai yra rankų darbo, nedideli spalvos, dydžio ir rašto skirtumai yra normalūs ir tikėtini.",
+      "pricing": "3.2 Kainos: Visos kainos rodomos eurais (EUR) ir apima taikytinus mokesčius, nebent nurodyta kitaip. Pristatymo išlaidos apskaičiuojamos atsiskaitant pagal jūsų vietą.",
+      "acceptance": "3.3 Užsakymo priėmimas: Jūsų užsakymas yra pasiūlymas pirkti. Pasiliekame teisę atsisakyti arba atšaukti užsakymus savo nuožiūra, įskaitant dėl prekių prieinamumo ar kainų klaidų.",
+      "custom": "3.4 Personalizavimas: Individualūs užsakymai gaminami pagal jūsų specifikacijas ir gali būti taikomos skirtingos grąžinimo sąlygos, nurodytos produkto puslapyje."
+    },
+    "payment": {
+      "title": "4. Mokėjimas",
+      "methods": "4.1 Mokėjimo būdai: Priimame pagrindines kredito korteles ir kitus mokėjimo būdus, rodomus atsiskaityme. Visi mokėjimai apdorojami saugiai per mūsų mokėjimo paslaugų teikėjus.",
+      "security": "4.2 Mokėjimo saugumas: Nesaugome pilnų mokėjimo kortelės duomenų. Visa mokėjimo informacija yra šifruojama ir apdorojama pagal PCI DSS standartus.",
+      "currency": "4.3 Valiuta: Visi sandoriai apdorojami eurais (EUR)."
+    },
+    "shipping": {
+      "title": "5. Pristatymas",
+      "times": "5.1 Pristatymo laikas: Numatomas pristatymo laikas priklauso nuo vietos ir pasirinkto pristatymo būdo. Tai yra įverčiai, o ne garantijos.",
+      "costs": "5.2 Pristatymo išlaidos: Pristatymo išlaidos apskaičiuojamos pagal jūsų pristatymo adresą ir rodomos atsiskaityme. Nemokamas pristatymas gali būti taikomas užsakymams virš tam tikrų sumų.",
+      "international": "5.3 Tarptautinis pristatymas: Tarptautiniams užsakymams gali būti taikomi muitai ir mokesčiai, kuriuos moka pirkėjas.",
+      "risk": "5.4 Nuostolių rizika: Nuostolių rizika pereina jums, kai prekės perduodamos vežėjui."
+    },
+    "returnsSection": {
+      "title": "6. Grąžinimai ir pinigų grąžinimas",
+      "policy": "6.1 Grąžinimo politika: Standartines prekes galima grąžinti per 30 dienų nuo pristatymo, jei jos nenaudotos ir originalios būklės. Individualiai pagamintos ar personalizuotos prekės paprastai negrąžinamos.",
+      "process": "6.2 Grąžinimo procesas: Norėdami pradėti grąžinimą, pateikite užklausą per savo paskyrą. Prekės turi būti išsiųstos atgal per 14 dienų nuo patvirtinimo.",
+      "refunds": "6.3 Pinigų grąžinimas: Pinigai grąžinami per 5–7 darbo dienas po to, kai gauname grąžintą prekę. Pradinis pristatymo mokestis negrąžinamas, nebent grąžinimas vyksta dėl mūsų klaidos.",
+      "defective": "6.4 Brokuotos prekės: Jei gavote brokuotą ar pažeistą prekę, susisiekite su mumis per 48 valandas nuo pristatymo dėl visiško pinigų grąžinimo ar keitimo."
+    },
+    "accounts": {
+      "title": "7. Vartotojų paskyros",
+      "creation": "7.1 Paskyros kūrimas: Norint pasiekti tam tikras funkcijas, gali reikėti sukurti paskyrą. Jūs esate atsakingi už paskyros duomenų konfidencialumą.",
+      "accuracy": "7.2 Paskyros tikslumas: Sutinkate pateikti tikslią ir išsamią informaciją kuriant paskyrą ir ją atnaujinti, kai reikia.",
+      "termination": "7.3 Paskyros nutraukimas: Pasiliekame teisę sustabdyti ar nutraukti paskyras, pažeidžiančias šias Sąlygas ar užsiimančias sukčiavimu."
+    },
+    "ip": {
+      "title": "8. Intelektinė nuosavybė",
+      "content": "Visas mūsų platformos turinys, įskaitant tekstą, grafiką, logotipus ir vaizdus, yra Crafts And Hands arba mūsų meistrų nuosavybė ir yra saugomas intelektinės nuosavybės įstatymų. Produktų vaizdai ir aprašymai lieka atitinkamų meistrų nuosavybė."
+    },
+    "liability": {
+      "title": "9. Atsakomybės apribojimas",
+      "content": "Kiek leidžia įstatymas, Crafts And Hands neatsako už jokius netiesioginius, atsitiktinius, specialius, pasekminius ar baudžiamuosius nuostolius, kylančius iš jūsų naudojimosi mūsų paslaugomis. Mūsų bendra atsakomybė neviršys sumos, kurią sumokėjote už aptariamą produktą."
+    },
+    "law": {
+      "title": "10. Taikoma teisė",
+      "content": "Šios Sąlygos reglamentuojamos Lietuvos Respublikos ir Europos Sąjungos įstatymais. Bet kokie ginčai sprendžiami Vilniaus teismuose, nebent jūsų gyvenamosios šalies privalomi vartotojų apsaugos įstatymai numato kitaip."
+    },
+    "changes": {
+      "title": "11. Sąlygų pakeitimai",
+      "content": "Galime retkarčiais atnaujinti šias Sąlygas. Tolimesnis mūsų paslaugų naudojimas po pakeitimų reiškia naujų Sąlygų priėmimą. Apie reikšmingus pakeitimus informuosime el. paštu arba per mūsų svetainę."
+    },
+    "contact": {
+      "title": "12. Kontaktinė informacija",
+      "content": "Jei turite klausimų dėl šių Sąlygų, susisiekite su mumis:",
+      "email": "El. paštas",
+      "address": "Adresas"
+    }
+  },
+  "contact": {
+    "title": "Susisiekite",
+    "subtitle": "Turite klausimų apie mūsų produktus, meistrus ar platformą? Esame pasiruošę padėti.",
+    "email": "El. paštas",
+    "phone": "Telefonas",
+    "location": "Vieta",
+    "form": {
+      "title": "Parašykite mums",
+      "name": "Vardas",
+      "namePlaceholder": "Jūsų vardas",
+      "email": "El. paštas",
+      "emailPlaceholder": "jusu@elpastas.lt",
+      "subject": "Tema",
+      "subjectPlaceholder": "Kaip galime padėti?",
+      "message": "Žinutė",
+      "messagePlaceholder": "Papasakokite daugiau...",
+      "submit": "Siųsti žinutę"
+    }
   },
   "becomeMaker": {
     "title": "Tapkite meistru",
@@ -279,18 +476,18 @@
     },
     "eligibleCrafts": "Tinkantys amatai",
     "crafts": {
-      "pottery": "Keramika",
-      "weaving": "Audimas",
+      "amber": "Gintaras",
+      "strawArt": "Šiaudiniai sodai",
+      "weaving": "Audimas / Tekstilė",
       "basketry": "Pynimas",
       "woodwork": "Medžio dirbiniai",
       "blacksmithing": "Kalvystė",
       "jewelry": "Juvelyrika",
-      "felting": "Vėlimas",
-      "leather": "Oda",
-      "paperArt": "Popieriaus menas",
-      "textiles": "Tekstilė",
-      "amber": "Gintaras",
-      "strawArt": "Šiaudų pynimas"
+      "felting": "Vilnos vėlimas",
+      "leather": "Odos gaminiai",
+      "paperArt": "Popieriaus menas / Karpiniai",
+      "pottery": "Puodystė",
+      "multiCraft": "Kita"
     },
     "requirements": {
       "title": "Reikalavimai",
@@ -308,7 +505,9 @@
       "craftType": "Amato tipas",
       "selectCraft": "Pasirinkite savo amatą...",
       "craftOptions": {
-        "pottery": "Keramika / Puodininkystė",
+        "amber": "Gintaro papuošalai",
+        "strawArt": "Šiaudiniai sodai",
+        "pottery": "Keramika / Puodystė",
         "weaving": "Audimas / Tekstilė",
         "basketry": "Pynimas",
         "woodwork": "Medžio dirbiniai",
@@ -317,8 +516,6 @@
         "felting": "Vilnos vėlimas",
         "leather": "Odos gaminiai",
         "paper": "Popieriaus menas / Karpiniai",
-        "amber": "Gintaro papuošalai",
-        "strawArt": "Šiaudų pynimas / Sodai",
         "other": "Kitas tradicinis amatas"
       },
       "experience": "Patirties metai",
