@@ -12,15 +12,30 @@
     "signUp": "Registruotis",
     "signOut": "Atsijungti",
     "myOrders": "Mano užsakymai",
-    "becomeMaker": "Tapti amatininku"
+    "becomeMaker": "Tapti amatininku",
+    "returns": "Grąžinimai"
+  },
+  "announcement": {
+    "kaziukoMuge": "Kaziuko mugė 2026 jau greitai! Kovo 6-8 d. Vilniuje",
+    "learnMore": "Sužinoti daugiau"
   },
   "home": {
     "hero": {
-      "title": "Atraskite Autentiškus",
-      "titleHighlight": "Lietuviškus Amatų Kūrinius",
+      "title": "Atraskite autentiškus",
+      "titleHighlight": "Lietuviškus rankų darbo lobius",
       "subtitle": "Remkite vietinius amatininkus iš Lietuvos. Kiekvienas kūrinys pasakoja unikalią tradicijos ir meistriškumo istoriją.",
       "exploreProducts": "Naršyti gaminius",
       "meetMakers": "Susipažinti su amatininkais"
+    },
+    "trustBadges": {
+      "freeShipping": "Nemokamas pristatymas",
+      "freeShippingDesc": "Užsakymams virš 50 EUR",
+      "securePayment": "Saugus mokėjimas",
+      "securePaymentDesc": "100% apsaugotas apmokėjimas",
+      "returns": "30 dienų grąžinimai",
+      "returnsDesc": "Lengvi ir paprasti grąžinimai",
+      "authentic": "Autentiški amatai",
+      "authenticDesc": "Patvirtinti Lietuvos amatininkai"
     },
     "features": {
       "unique": {
@@ -38,8 +53,18 @@
     },
     "categories": "Naršyti pagal kategoriją",
     "featured": "Išskirtiniai gaminiai",
+    "featuredMakers": "Išskirtiniai amatininkai",
     "newArrivals": "Nauji gaminiai",
     "viewAll": "Žiūrėti viską",
+    "viewAllMakers": "Žiūrėti visus amatininkus",
+    "kaziukoMuge": {
+      "title": "Kaziuko mugė 2026",
+      "subtitle": "Didžiausia Lietuvos tradicinių amatų mugė",
+      "date": "Kovo 6-8 d., 2026",
+      "location": "Vilniaus senamiestis",
+      "description": "Prisijunkite prie šios istorinės kasmetinės mugės, švenčiančios lietuvišką meistriškumą. Susitikite su mūsų patvirtintais amatininkais ir atraskite unikalius rankų darbo lobius.",
+      "learnMore": "Sužinoti daugiau apie renginį"
+    },
     "becomeMakerCTA": {
       "title": "Tapkite amatininku",
       "subtitle": "Pasidalinkite savo kūriniais su tūkstančiais pirkėjų visoje Lietuvoje ir Europoje. Prisijunkite prie augančios amatininkų bendruomenės.",
@@ -51,10 +76,13 @@
     "items": "rankų darbo kūrinių",
     "by": "pagamino",
     "addToCart": "Į krepšelį",
+    "buyNow": "Pirkti dabar",
     "addToWishlist": "Į norų sąrašą",
     "outOfStock": "Išparduota",
     "inStock": "sandėlyje",
-    "customizable": "Galima personalizuoti"
+    "customizable": "Galima personalizuoti",
+    "freeShipping": "Nemokamas pristatymas",
+    "freeReturns": "Nemokami grąžinimai"
   },
   "cart": {
     "title": "Pirkinių krepšelis",
@@ -65,7 +93,9 @@
     "total": "Iš viso",
     "freeShipping": "NEMOKAMAS",
     "checkout": "Apmokėti užsakymą",
-    "continueShop": "Tęsti apsipirkimą"
+    "continueShop": "Tęsti apsipirkimą",
+    "remove": "Pašalinti",
+    "quantity": "Kiekis"
   },
   "auth": {
     "signIn": {
@@ -92,8 +122,24 @@
     "title": "Susipažinkite su mūsų amatininkais",
     "subtitle": "Atraskite talentingus meistrus iš visos Lietuvos",
     "verified": "Patvirtintas",
+    "unverified": "Nepatvirtintas",
     "sales": "pardavimų",
-    "location": "Vietovė"
+    "location": "Vietovė",
+    "total": "Iš viso amatininkų",
+    "newMaker": "Naujas amatininkas",
+    "noResults": "Amatininkų nerasta",
+    "noResultsDesc": "Pabandykite pakeisti filtrus",
+    "filter": {
+      "all": "Visi amatininkai"
+    },
+    "verificationNotice": {
+      "title": "Patvirtinimo pranešimas",
+      "desc": "Šiuo metu susisiekiame su amatininkais dėl patvirtinimo prieš Kaziuko mugę 2026 (kovo 6-8 d.). Nepatvirtinti amatininkai laukia patvirtinimo."
+    },
+    "becomeMaker": {
+      "title": "Ar esate Lietuvos amatininkas?",
+      "desc": "Prisijunkite prie augančios amatininkų bendruomenės ir pasidalinkite savo tradiciniais amatais su pirkėjais visoje Europoje."
+    }
   },
   "footer": {
     "description": "Atraskite unikalius rankų darbo kūrinius iš talentingų amatininkų visoje Lietuvoje.",
@@ -106,91 +152,156 @@
     "contact": "Kontaktai",
     "sell": "Parduokite",
     "makerResources": "Ištekliai",
+    "makerGuidelines": "Amatininkų gairės",
     "successStories": "Sėkmės istorijos",
     "copyright": "Crafts And Hands. Įgaliname Lietuvos amatininkus, vienas kūrinys vienu metu."
   },
   "categories": {
     "jewelry": "Juvelyrika",
     "pottery": "Keramika",
-    "textiles": "Tekstile",
-    "woodwork": "Medzio dirbiniai",
+    "ceramics": "Keramika",
+    "textiles": "Tekstilė",
+    "woodwork": "Medžio dirbiniai",
     "leatherGoods": "Odos gaminiai",
     "glassArt": "Stiklo menas",
     "weaving": "Audimas",
     "basketry": "Pynimas",
-    "felting": "Velimas",
-    "blacksmithing": "Kalvyste",
+    "felting": "Vėlimas",
+    "blacksmithing": "Kalvystė",
     "paperArt": "Popieriaus menas",
-    "leather": "Oda"
+    "leather": "Oda",
+    "amber": "Gintaras",
+    "strawArt": "Šiaudų pynimas",
+    "multiCraft": "Įvairūs amatai"
+  },
+  "returns": {
+    "title": "Grąžinimai ir pinigų grąžinimas",
+    "subtitle": "Lengvi 30 dienų grąžinimai daugumai prekių",
+    "policy": {
+      "title": "Grąžinimo politika",
+      "description": "Norime, kad būtumėte visiškai patenkinti savo pirkiniu. Jei nesate patenkinti užsakymu, galite grąžinti daugumą prekių per 30 dienų nuo pristatymo.",
+      "eligible": "Tinkamos prekės",
+      "eligibleDesc": "Dauguma prekių gali būti grąžintos per 30 dienų nuo pristatymo originalioje būklėje.",
+      "nonEligible": "Negrąžinamos prekės",
+      "nonEligibleDesc": "Individualiai pagaminti ar personalizuoti daiktai, greitai gendančios prekės ir prekės, pažymėtos kaip galutinis pardavimas, negali būti grąžintos.",
+      "process": "Kaip grąžinti",
+      "processSteps": {
+        "step1": "Susisiekite su mumis per 30 dienų nuo pristatymo",
+        "step2": "Gaukite grąžinimo autorizaciją",
+        "step3": "Išsiųskite prekę originalioje pakuotėje",
+        "step4": "Gaukite pinigų grąžinimą per 5-7 darbo dienas"
+      }
+    },
+    "contact": "Reikia pagalbos?",
+    "contactDesc": "Susisiekite su mūsų klientų aptarnavimo komanda dėl bet kokių klausimų apie grąžinimus."
   },
   "becomeMaker": {
     "title": "Tapkite amatininku",
-    "subtitle": "Prisijunkite prie talentingu Lietuvos amatininku bendruomenes ir pasidalinkite savo kūriniais su pirkėjais visoje Europoje.",
-    "growingCommunity": "Auganti bendruomene",
-    "growingCommunityDesc": "Prisijunkite prie 150+ patvirtintu Lietuvos amatininku",
+    "subtitle": "Prisijunkite prie talentingų Lietuvos amatininkų bendruomenės ir pasidalinkite savo kūriniais su pirkėjais visoje Europoje.",
+    "kaziukoNotice": {
+      "title": "Kaziuko mugės 2026 registracija atidaryta",
+      "desc": "Pateikite paraišką dabar ir gaukite patvirtinimą prieš didžiausią Lietuvos amatų mugę (kovo 6-8 d.). Patvirtinti amatininkai bus išskirti renginyje."
+    },
+    "growingCommunity": "Auganti bendruomenė",
+    "growingCommunityDesc": "Prisijunkite prie 150+ patvirtintų Lietuvos amatininkų",
     "globalReach": "Pasaulinis pasiekiamumas",
-    "globalReachDesc": "Parduokite pirkejams visoje Europoje",
-    "lowFees": "Maži mokesciai",
-    "lowFeesDesc": "Tik 10% komisinis nuo pardavimu",
+    "globalReachDesc": "Parduokite pirkėjams visoje Europoje",
+    "lowFees": "Maži mokesčiai",
+    "lowFeesDesc": "Tik 10% komisinis nuo pardavimų",
     "verifiedBadge": "Patvirtinimo ženklelis",
-    "verifiedBadgeDesc": "Sukurkite pasitikejima su patvirtinimu",
-    "whySell": "Kodel parduoti su mumis?",
+    "verifiedBadgeDesc": "Sukurkite pasitikėjimą su patvirtinimu",
+    "whySell": "Kodėl parduoti su mumis?",
     "benefits": {
-      "freeSetup": "Nemokama parduotuves sukurimas ir gaminiu sarašai",
+      "freeSetup": "Nemokama parduotuvės sukūrimas ir gaminių sąrašai",
       "photoTips": "Profesionalūs fotografijos patarimai ir ištekliai",
       "marketing": "Rinkodaros ir reklamos parama",
-      "securePayment": "Saugus apmokejimo apdorojimas",
-      "shippingLabels": "Siuntimo etikečiu generavimas",
-      "customerService": "Klientu aptarnavimo palaikymas",
-      "analytics": "Analitika ir pardavimu isvalgos",
-      "communityEvents": "Bendruomenes renginiai ir tinklaveika"
+      "securePayment": "Saugus apmokėjimo apdorojimas",
+      "shippingLabels": "Siuntimo etikečių generavimas",
+      "customerService": "Klientų aptarnavimo palaikymas",
+      "analytics": "Analitika ir pardavimų įžvalgos",
+      "communityEvents": "Bendruomenės renginiai ir tinklaveika"
     },
     "eligibleCrafts": "Tinkantys amatai",
     "crafts": {
       "pottery": "Keramika",
       "weaving": "Audimas",
       "basketry": "Pynimas",
-      "woodwork": "Medzio dirbiniai",
-      "blacksmithing": "Kalvyste",
+      "woodwork": "Medžio dirbiniai",
+      "blacksmithing": "Kalvystė",
       "jewelry": "Juvelyrika",
-      "felting": "Velimas",
+      "felting": "Vėlimas",
       "leather": "Oda",
       "paperArt": "Popieriaus menas",
-      "textiles": "Tekstile"
+      "textiles": "Tekstilė",
+      "amber": "Gintaras",
+      "strawArt": "Šiaudų pynimas"
     },
-    "applyTitle": "Pateikite paraiska tapti amatininku",
+    "requirements": {
+      "title": "Reikalavimai",
+      "items": {
+        "authentic": "Autentiškas lietuviškas tradicinis amatas",
+        "handmade": "Tik rankų darbo gaminiai",
+        "quality": "Aukštos kokybės meistriškumas",
+        "photos": "Aiškios gaminių nuotraukos",
+        "shipping": "Galimybė siųsti ES viduje"
+      }
+    },
+    "applyTitle": "Pateikite paraišką tapti amatininku",
     "form": {
-      "fullName": "Vardas ir pavarde",
+      "fullName": "Vardas ir pavardė",
       "email": "El. paštas",
       "phone": "Telefonas",
       "businessName": "Verslo/Studijos pavadinimas",
       "craftType": "Amato tipas",
-      "selectCraft": "Pasirinkite savo amata...",
+      "selectCraft": "Pasirinkite savo amatą...",
       "craftOptions": {
-        "pottery": "Keramika / Puodžiudirbystė",
+        "pottery": "Keramika / Puodžiudirbyste",
         "weaving": "Audimas / Tekstilė",
         "basketry": "Pynimas",
         "woodwork": "Medžio dirbiniai",
         "blacksmithing": "Kalvystė",
         "jewelry": "Juvelyrika",
-        "felting": "Vilnos velimas",
+        "felting": "Vilnos vėlimas",
         "leather": "Odos gaminiai",
         "paper": "Popieriaus menas / Karpiniai",
+        "amber": "Gintaro papuošalai",
+        "strawArt": "Šiaudų pynimas / Sodai",
         "other": "Kitas tradicinis amatas"
       },
       "experience": "Patirties metai",
       "selectExperience": "Pasirinkite...",
+      "craftDescription": "Aprašykite savo amatą",
+      "craftDescriptionPlaceholder": "Papasakokite apie savo amato technikas, naudojamas medžiagas ir kas daro jūsų darbus unikalius...",
+      "socialMedia": "Socialiniai tinklai / Svetainė",
+      "socialMediaPlaceholder": "Instagram, Facebook arba jūsų svetainės URL",
+      "priceRange": "Tipinė kainų kategorija",
+      "priceRangeOptions": {
+        "select": "Pasirinkite kainų kategoriją...",
+        "under50": "Iki 50 EUR",
+        "50to100": "50 - 100 EUR",
+        "100to250": "100 - 250 EUR",
+        "over250": "Virš 250 EUR"
+      },
       "portfolio": "Portfelio nuoroda (neprivaloma)",
       "portfolioPlaceholder": "https://instagram.com/jusu-profilis",
-      "motivation": "Kodel norite prisijungti?",
-      "motivationPlaceholder": "Papasakokite apie savo amata ir kas ji išskiria...",
-      "submit": "Pateikti paraiska",
+      "motivation": "Kodėl norite prisijungti?",
+      "motivationPlaceholder": "Papasakokite apie savo amatą ir kas jį išskiria...",
+      "agreeTerms": "Sutinku su sąlygomis ir patvirtinu, kad mano gaminiai yra autentiški lietuviški rankų darbai",
+      "submit": "Pateikti paraišką",
       "submitting": "Siunčiama..."
     },
     "success": {
       "title": "Paraiška pateikta!",
-      "message": "Dekojame uz susidomejima prisijungimu prie Crafts And Hands. Mūsu komanda perziures jūsu paraiska ir susisieks per 5-7 darbo dienas."
+      "message": "Dėkojame už susidomėjimą prisijungimu prie Crafts And Hands. Mūsų komanda peržiūrės jūsų paraišką ir susisieks per 5-7 darbo dienas."
     },
-    "error": "Kazkas nepavyko. Bandykite dar karta."
+    "error": "Kažkas nepavyko. Bandykite dar kartą."
+  },
+  "common": {
+    "loading": "Kraunama...",
+    "error": "Įvyko klaida",
+    "tryAgain": "Bandyti dar kartą",
+    "backToHome": "Grįžti į pradžią",
+    "seeMore": "Žiūrėti daugiau",
+    "close": "Uždaryti"
   }
 }

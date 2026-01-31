@@ -2,48 +2,73 @@
   "nav": {
     "products": "Produits",
     "makers": "Artisans",
-    "events": "Événements",
-    "categories": "Catégories",
-    "search": "Rechercher des métiers traditionnels...",
+    "events": "Evenements",
+    "categories": "Categories",
+    "search": "Rechercher des metiers traditionnels...",
     "cart": "Panier",
     "wishlist": "Liste de souhaits",
     "profile": "Profil",
     "signIn": "Se connecter",
     "signUp": "S'inscrire",
-    "signOut": "Se déconnecter",
+    "signOut": "Se deconnecter",
     "myOrders": "Mes commandes",
-    "becomeMaker": "Devenir artisan"
+    "becomeMaker": "Devenir artisan",
+    "returns": "Retours"
+  },
+  "announcement": {
+    "kaziukoMuge": "Kaziuko Muge 2026 arrive! 6-8 mars a Vilnius",
+    "learnMore": "En savoir plus"
   },
   "home": {
     "hero": {
-      "title": "Découvrez des",
-      "titleHighlight": "Trésors Artisanaux Lituaniens Authentiques",
-      "subtitle": "Soutenez les artisans locaux de Lituanie. Chaque pièce raconte une histoire unique de tradition et de savoir-faire.",
+      "title": "Decouvrez des",
+      "titleHighlight": "Tresors Artisanaux Lituaniens Authentiques",
+      "subtitle": "Soutenez les artisans locaux de Lituanie. Chaque piece raconte une histoire unique de tradition et de savoir-faire.",
       "exploreProducts": "Explorer les produits",
       "meetMakers": "Rencontrer les artisans"
+    },
+    "trustBadges": {
+      "freeShipping": "Livraison gratuite",
+      "freeShippingDesc": "Pour les commandes de plus de 50 EUR",
+      "securePayment": "Paiement securise",
+      "securePaymentDesc": "Paiement 100% protege",
+      "returns": "Retours sous 30 jours",
+      "returnsDesc": "Retours faciles et sans tracas",
+      "authentic": "Artisanat authentique",
+      "authenticDesc": "Artisans lituaniens verifies"
     },
     "features": {
       "unique": {
         "title": "Fait main unique",
-        "description": "Chaque article est fabriqué avec soin par des artisans qualifiés, ce qui rend chaque pièce unique."
+        "description": "Chaque article est fabrique avec soin par des artisans qualifies, ce qui rend chaque piece unique."
       },
       "support": {
         "title": "Soutenir local",
-        "description": "Soutenez directement les artisans talentueux de Lituanie et aidez à préserver l'artisanat traditionnel."
+        "description": "Soutenez directement les artisans talentueux de Lituanie et aidez a preserver l'artisanat traditionnel."
       },
       "events": {
-        "title": "Événements et ateliers",
-        "description": "Participez à des marchés artisanaux, des ateliers et des expositions pour rencontrer des artisans."
+        "title": "Evenements et ateliers",
+        "description": "Participez a des marches artisanaux, des ateliers et des expositions pour rencontrer des artisans."
       }
     },
-    "categories": "Acheter par catégorie",
+    "categories": "Acheter par categorie",
     "featured": "Produits en vedette",
-    "newArrivals": "Nouveautés",
+    "featuredMakers": "Artisans en vedette",
+    "newArrivals": "Nouveautes",
     "viewAll": "Voir tout",
+    "viewAllMakers": "Voir tous les artisans",
+    "kaziukoMuge": {
+      "title": "Kaziuko Muge 2026",
+      "subtitle": "La plus grande foire artisanale traditionnelle de Lituanie",
+      "date": "6-8 mars 2026",
+      "location": "Vieille ville de Vilnius",
+      "description": "Rejoignez-nous a cette foire annuelle historique celebrant l'artisanat lituanien. Rencontrez nos artisans verifies en personne et decouvrez des tresors uniques faits main.",
+      "learnMore": "En savoir plus sur l'evenement"
+    },
     "becomeMakerCTA": {
       "title": "Devenir artisan",
-      "subtitle": "Partagez vos créations avec des milliers de clients en Lituanie et en Europe. Rejoignez notre communauté grandissante d'artisans talentueux.",
-      "button": "Commencer à vendre aujourd'hui"
+      "subtitle": "Partagez vos creations avec des milliers de clients en Lituanie et en Europe. Rejoignez notre communaute grandissante d'artisans talentueux.",
+      "button": "Commencer a vendre aujourd'hui"
     }
   },
   "products": {
@@ -51,10 +76,13 @@
     "items": "articles artisanaux",
     "by": "par",
     "addToCart": "Ajouter au panier",
-    "addToWishlist": "Ajouter à la liste",
+    "buyNow": "Acheter maintenant",
+    "addToWishlist": "Ajouter a la liste",
     "outOfStock": "Rupture de stock",
     "inStock": "en stock",
-    "customizable": "Personnalisable"
+    "customizable": "Personnalisable",
+    "freeShipping": "Livraison gratuite",
+    "freeReturns": "Retours gratuits"
   },
   "cart": {
     "title": "Panier",
@@ -65,12 +93,14 @@
     "total": "Total",
     "freeShipping": "GRATUIT",
     "checkout": "Passer la commande",
-    "continueShop": "Continuer les achats"
+    "continueShop": "Continuer les achats",
+    "remove": "Supprimer",
+    "quantity": "Quantite"
   },
   "auth": {
     "signIn": {
       "title": "Bon retour",
-      "subtitle": "Connectez-vous à votre compte",
+      "subtitle": "Connectez-vous a votre compte",
       "email": "E-mail",
       "password": "Mot de passe",
       "button": "Se connecter",
@@ -78,25 +108,41 @@
       "signUpLink": "S'inscrire"
     },
     "signUp": {
-      "title": "Créer un compte",
-      "subtitle": "Rejoignez notre communauté d'artisans et d'amateurs d'artisanat",
+      "title": "Creer un compte",
+      "subtitle": "Rejoignez notre communaute d'artisans et d'amateurs d'artisanat",
       "fullName": "Nom complet",
       "email": "E-mail",
       "password": "Mot de passe",
       "button": "S'inscrire",
-      "haveAccount": "Vous avez déjà un compte?",
+      "haveAccount": "Vous avez deja un compte?",
       "signInLink": "Se connecter"
     }
   },
   "makers": {
     "title": "Rencontrez nos artisans",
-    "subtitle": "Découvrez des artisans talentueux de toute la Lituanie",
-    "verified": "Vérifié",
+    "subtitle": "Decouvrez des artisans talentueux de toute la Lituanie",
+    "verified": "Verifie",
+    "unverified": "Non verifie",
     "sales": "ventes",
-    "location": "Emplacement"
+    "location": "Emplacement",
+    "total": "Total des artisans",
+    "newMaker": "Nouvel artisan",
+    "noResults": "Aucun artisan trouve",
+    "noResultsDesc": "Essayez d'ajuster vos filtres",
+    "filter": {
+      "all": "Tous les artisans"
+    },
+    "verificationNotice": {
+      "title": "Avis de verification",
+      "desc": "Nous contactons actuellement les artisans pour verification avant Kaziuko muge 2026 (6-8 mars). Les artisans non verifies attendent la confirmation d'approbation."
+    },
+    "becomeMaker": {
+      "title": "Etes-vous un artisan lituanien?",
+      "desc": "Rejoignez notre communaute grandissante d'artisans et partagez vos metiers traditionnels avec des clients a travers l'Europe."
+    }
   },
   "footer": {
-    "description": "Découvrez des produits artisanaux uniques d'artisans talentueux de toute la Lituanie.",
+    "description": "Decouvrez des produits artisanaux uniques d'artisans talentueux de toute la Lituanie.",
     "shop": "Boutique",
     "allProducts": "Tous les produits",
     "support": "Assistance",
@@ -106,12 +152,14 @@
     "contact": "Contact",
     "sell": "Vendre",
     "makerResources": "Ressources",
+    "makerGuidelines": "Guide des artisans",
     "successStories": "Success stories",
-    "copyright": "Crafts And Hands. Autonomiser les artisans lituaniens, une création à la fois."
+    "copyright": "Crafts And Hands. Autonomiser les artisans lituaniens, une creation a la fois."
   },
   "categories": {
     "jewelry": "Bijouterie",
     "pottery": "Poterie",
+    "ceramics": "Ceramique",
     "textiles": "Textiles",
     "woodwork": "Travail du bois",
     "leatherGoods": "Maroquinerie",
@@ -121,11 +169,39 @@
     "felting": "Feutrage",
     "blacksmithing": "Forge",
     "paperArt": "Art du papier",
-    "leather": "Cuir"
+    "leather": "Cuir",
+    "amber": "Ambre",
+    "strawArt": "Art de la paille",
+    "multiCraft": "Multi-artisanat"
+  },
+  "returns": {
+    "title": "Retours et remboursements",
+    "subtitle": "Retours faciles sous 30 jours pour la plupart des articles",
+    "policy": {
+      "title": "Politique de retour",
+      "description": "Nous voulons que vous soyez completement satisfait de votre achat. Si vous n'etes pas content de votre commande, vous pouvez retourner la plupart des articles dans les 30 jours suivant la livraison.",
+      "eligible": "Articles eligibles",
+      "eligibleDesc": "La plupart des articles peuvent etre retournes dans les 30 jours suivant la livraison dans leur etat d'origine.",
+      "nonEligible": "Articles non retournables",
+      "nonEligibleDesc": "Les articles personnalises ou sur mesure, les produits perissables et les articles marques comme vente finale ne peuvent pas etre retournes.",
+      "process": "Comment retourner",
+      "processSteps": {
+        "step1": "Contactez-nous dans les 30 jours suivant la livraison",
+        "step2": "Recevez votre autorisation de retour",
+        "step3": "Renvoyez l'article dans son emballage d'origine",
+        "step4": "Recevez le remboursement dans les 5-7 jours ouvrables"
+      }
+    },
+    "contact": "Besoin d'aide?",
+    "contactDesc": "Contactez notre equipe de support client pour toute question concernant les retours."
   },
   "becomeMaker": {
     "title": "Devenir artisan",
     "subtitle": "Rejoignez notre communaute d'artisans lituaniens talentueux et partagez votre metier avec des clients dans toute l'Europe.",
+    "kaziukoNotice": {
+      "title": "Inscription Kaziuko Muge 2026 ouverte",
+      "desc": "Postulez maintenant pour etre verifie avant la plus grande foire artisanale de Lituanie (6-8 mars). Les artisans verifies seront mis en avant lors de l'evenement."
+    },
     "growingCommunity": "Communaute grandissante",
     "growingCommunityDesc": "Rejoignez 150+ artisans lituaniens verifies",
     "globalReach": "Portee mondiale",
@@ -156,7 +232,19 @@
       "felting": "Feutrage",
       "leather": "Cuir",
       "paperArt": "Art du papier",
-      "textiles": "Textiles"
+      "textiles": "Textiles",
+      "amber": "Ambre",
+      "strawArt": "Art de la paille"
+    },
+    "requirements": {
+      "title": "Exigences",
+      "items": {
+        "authentic": "Artisanat traditionnel lituanien authentique",
+        "handmade": "Produits faits main uniquement",
+        "quality": "Artisanat de haute qualite",
+        "photos": "Photos de produits claires",
+        "shipping": "Capacite d'expedition dans l'UE"
+      }
     },
     "applyTitle": "Postuler pour devenir artisan",
     "form": {
@@ -176,14 +264,29 @@
         "felting": "Feutrage de laine",
         "leather": "Maroquinerie",
         "paper": "Art du papier / Karpiniai",
+        "amber": "Bijoux en ambre",
+        "strawArt": "Art de la paille / Sodai",
         "other": "Autre artisanat traditionnel"
       },
       "experience": "Annees d'experience",
       "selectExperience": "Selectionnez...",
+      "craftDescription": "Decrivez votre artisanat",
+      "craftDescriptionPlaceholder": "Parlez-nous de vos techniques artisanales, des materiaux que vous utilisez et de ce qui rend votre travail unique...",
+      "socialMedia": "Reseaux sociaux / Site web",
+      "socialMediaPlaceholder": "Instagram, Facebook ou URL de votre site web",
+      "priceRange": "Gamme de prix typique",
+      "priceRangeOptions": {
+        "select": "Selectionnez une gamme de prix...",
+        "under50": "Moins de 50 EUR",
+        "50to100": "50 - 100 EUR",
+        "100to250": "100 - 250 EUR",
+        "over250": "Plus de 250 EUR"
+      },
       "portfolio": "Lien portfolio (optionnel)",
       "portfolioPlaceholder": "https://instagram.com/votre-profil",
       "motivation": "Pourquoi voulez-vous nous rejoindre?",
       "motivationPlaceholder": "Parlez-nous de votre artisanat et de ce qui le rend special...",
+      "agreeTerms": "J'accepte les conditions generales et confirme que mes produits sont des artisanats lituaniens authentiques faits main",
       "submit": "Soumettre la candidature",
       "submitting": "Envoi en cours..."
     },
@@ -192,5 +295,13 @@
       "message": "Merci pour votre interet a rejoindre Crafts And Hands. Notre equipe examinera votre candidature et vous contactera dans les 5-7 jours ouvrables."
     },
     "error": "Une erreur s'est produite. Veuillez reessayer."
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "tryAgain": "Reessayer",
+    "backToHome": "Retour a l'accueil",
+    "seeMore": "Voir plus",
+    "close": "Fermer"
   }
 }

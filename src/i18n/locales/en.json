@@ -12,7 +12,12 @@
     "signUp": "Sign Up",
     "signOut": "Sign Out",
     "myOrders": "My Orders",
-    "becomeMaker": "Become a Maker"
+    "becomeMaker": "Become a Maker",
+    "returns": "Returns"
+  },
+  "announcement": {
+    "kaziukoMuge": "Kaziuko Muge 2026 is coming! March 6-8 in Vilnius",
+    "learnMore": "Learn More"
   },
   "home": {
     "hero": {
@@ -21,6 +26,16 @@
       "subtitle": "Support local artisans from Lithuania. Each piece tells a unique story of tradition and craftsmanship.",
       "exploreProducts": "Explore Products",
       "meetMakers": "Meet the Makers"
+    },
+    "trustBadges": {
+      "freeShipping": "Free Shipping",
+      "freeShippingDesc": "On orders over 50 EUR",
+      "securePayment": "Secure Payment",
+      "securePaymentDesc": "100% protected checkout",
+      "returns": "30-Day Returns",
+      "returnsDesc": "Easy hassle-free returns",
+      "authentic": "Authentic Crafts",
+      "authenticDesc": "Verified Lithuanian artisans"
     },
     "features": {
       "unique": {
@@ -38,8 +53,18 @@
     },
     "categories": "Shop by Category",
     "featured": "Featured Products",
+    "featuredMakers": "Featured Makers",
     "newArrivals": "New Arrivals",
     "viewAll": "View All",
+    "viewAllMakers": "View All Makers",
+    "kaziukoMuge": {
+      "title": "Kaziuko Muge 2026",
+      "subtitle": "Lithuania's Largest Traditional Craft Fair",
+      "date": "March 6-8, 2026",
+      "location": "Vilnius Old Town",
+      "description": "Join us at this historic annual fair celebrating Lithuanian craftsmanship. Meet our verified artisans in person and discover unique handmade treasures.",
+      "learnMore": "Learn More About the Event"
+    },
     "becomeMakerCTA": {
       "title": "Become a Maker",
       "subtitle": "Share your crafts with thousands of customers across Lithuania and Europe. Join our growing community of talented artisans.",
@@ -51,10 +76,13 @@
     "items": "handcrafted items",
     "by": "by",
     "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
     "addToWishlist": "Add to Wishlist",
     "outOfStock": "Out of Stock",
     "inStock": "in stock",
-    "customizable": "Customizable"
+    "customizable": "Customizable",
+    "freeShipping": "Free Shipping",
+    "freeReturns": "Free Returns"
   },
   "cart": {
     "title": "Shopping Cart",
@@ -65,7 +93,9 @@
     "total": "Total",
     "freeShipping": "FREE",
     "checkout": "Proceed to Checkout",
-    "continueShop": "Continue Shopping"
+    "continueShop": "Continue Shopping",
+    "remove": "Remove",
+    "quantity": "Quantity"
   },
   "auth": {
     "signIn": {
@@ -92,8 +122,24 @@
     "title": "Meet Our Artisans",
     "subtitle": "Discover talented makers from across Lithuania",
     "verified": "Verified",
+    "unverified": "Not Verified",
     "sales": "sales",
-    "location": "Location"
+    "location": "Location",
+    "total": "Total Makers",
+    "newMaker": "New maker",
+    "noResults": "No makers found",
+    "noResultsDesc": "Try adjusting your filters",
+    "filter": {
+      "all": "All Makers"
+    },
+    "verificationNotice": {
+      "title": "Verification Notice",
+      "desc": "We are currently contacting makers for verification before Kaziuko muge 2026 (March 6-8). Unverified makers are awaiting approval confirmation."
+    },
+    "becomeMaker": {
+      "title": "Are you a Lithuanian craftsperson?",
+      "desc": "Join our growing community of artisans and share your traditional crafts with customers across Europe."
+    }
   },
   "footer": {
     "description": "Discover unique handcrafted goods from talented artisans across Lithuania.",
@@ -106,12 +152,14 @@
     "contact": "Contact Us",
     "sell": "Sell",
     "makerResources": "Resources",
+    "makerGuidelines": "Maker Guidelines",
     "successStories": "Success Stories",
     "copyright": "Crafts And Hands. Empowering Lithuanian craftspeople, one creation at a time."
   },
   "categories": {
     "jewelry": "Jewelry",
     "pottery": "Pottery",
+    "ceramics": "Ceramics",
     "textiles": "Textiles",
     "woodwork": "Woodwork",
     "leatherGoods": "Leather Goods",
@@ -121,11 +169,39 @@
     "felting": "Felting",
     "blacksmithing": "Blacksmithing",
     "paperArt": "Paper Art",
-    "leather": "Leather"
+    "leather": "Leather",
+    "amber": "Amber",
+    "strawArt": "Straw Art",
+    "multiCraft": "Multi-craft"
+  },
+  "returns": {
+    "title": "Returns & Refunds",
+    "subtitle": "Easy 30-day returns on most items",
+    "policy": {
+      "title": "Return Policy",
+      "description": "We want you to be completely satisfied with your purchase. If you're not happy with your order, you can return most items within 30 days of delivery.",
+      "eligible": "Eligible Items",
+      "eligibleDesc": "Most items can be returned within 30 days of delivery in their original condition.",
+      "nonEligible": "Non-returnable Items",
+      "nonEligibleDesc": "Custom or personalized items, perishable goods, and items marked as final sale cannot be returned.",
+      "process": "How to Return",
+      "processSteps": {
+        "step1": "Contact us within 30 days of delivery",
+        "step2": "Receive your return authorization",
+        "step3": "Ship the item back in original packaging",
+        "step4": "Receive refund within 5-7 business days"
+      }
+    },
+    "contact": "Need Help?",
+    "contactDesc": "Contact our customer support team for any return-related questions."
   },
   "becomeMaker": {
     "title": "Become a Maker",
     "subtitle": "Join our community of talented Lithuanian artisans and share your craft with customers across Europe.",
+    "kaziukoNotice": {
+      "title": "Kaziuko Muge 2026 Registration Open",
+      "desc": "Apply now to get verified before Lithuania's largest craft fair (March 6-8). Verified makers will be featured prominently at the event."
+    },
     "growingCommunity": "Growing Community",
     "growingCommunityDesc": "Join 150+ verified Lithuanian artisans",
     "globalReach": "Global Reach",
@@ -156,7 +232,19 @@
       "felting": "Felting",
       "leather": "Leather",
       "paperArt": "Paper Art",
-      "textiles": "Textiles"
+      "textiles": "Textiles",
+      "amber": "Amber",
+      "strawArt": "Straw Art"
+    },
+    "requirements": {
+      "title": "Requirements",
+      "items": {
+        "authentic": "Authentic Lithuanian traditional craft",
+        "handmade": "Handmade products only",
+        "quality": "High quality craftsmanship",
+        "photos": "Clear product photos",
+        "shipping": "Ability to ship within EU"
+      }
     },
     "applyTitle": "Apply to Become a Maker",
     "form": {
@@ -176,14 +264,29 @@
         "felting": "Wool Felting",
         "leather": "Leather Goods",
         "paper": "Paper Art / Karpiniai",
+        "amber": "Amber Jewelry",
+        "strawArt": "Straw Art / Sodai",
         "other": "Other Traditional Craft"
       },
       "experience": "Years of Experience",
       "selectExperience": "Select...",
+      "craftDescription": "Describe Your Craft",
+      "craftDescriptionPlaceholder": "Tell us about your craft techniques, materials you use, and what makes your work unique...",
+      "socialMedia": "Social Media / Website",
+      "socialMediaPlaceholder": "Instagram, Facebook, or your website URL",
+      "priceRange": "Typical Price Range",
+      "priceRangeOptions": {
+        "select": "Select price range...",
+        "under50": "Under 50 EUR",
+        "50to100": "50 - 100 EUR",
+        "100to250": "100 - 250 EUR",
+        "over250": "Over 250 EUR"
+      },
       "portfolio": "Portfolio Link (optional)",
       "portfolioPlaceholder": "https://instagram.com/your-profile",
       "motivation": "Why do you want to join?",
       "motivationPlaceholder": "Tell us about your craft and what makes it special...",
+      "agreeTerms": "I agree to the terms and conditions and confirm that my products are authentic Lithuanian handcrafts",
       "submit": "Submit Application",
       "submitting": "Submitting..."
     },
@@ -192,5 +295,13 @@
       "message": "Thank you for your interest in joining Crafts And Hands. Our team will review your application and contact you within 5-7 business days."
     },
     "error": "Something went wrong. Please try again."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "tryAgain": "Try Again",
+    "backToHome": "Back to Home",
+    "seeMore": "See More",
+    "close": "Close"
   }
 }
