@@ -119,19 +119,28 @@
     "signIn": {
       "title": "Sveiki sugrįžę",
       "subtitle": "Prisijunkite prie savo paskyros",
-      "email": "El. paštas",
+      "email": "El. pašto adresas",
+      "emailPlaceholder": "jusu@elpastas.lt",
       "password": "Slaptažodis",
+      "passwordPlaceholder": "Įveskite slaptažodį",
       "button": "Prisijungti",
+      "signingIn": "Jungiamasi...",
       "noAccount": "Neturite paskyros?",
       "signUpLink": "Registruotis"
     },
     "signUp": {
       "title": "Sukurti paskyrą",
-      "subtitle": "Prisijunkite prie meistrų ir meno mylėtojų bendruomenės",
+      "subtitle": "Prisijunkite prie amatininkų prekyvietės bendruomenės",
       "fullName": "Vardas ir pavardė",
-      "email": "El. paštas",
+      "fullNamePlaceholder": "Jūsų vardas ir pavardė",
+      "email": "El. pašto adresas",
+      "emailPlaceholder": "jusu@elpastas.lt",
       "password": "Slaptažodis",
-      "button": "Registruotis",
+      "passwordPlaceholder": "Sukurkite slaptažodį",
+      "confirmPassword": "Patvirtinkite slaptažodį",
+      "confirmPasswordPlaceholder": "Pakartokite slaptažodį",
+      "button": "Sukurti paskyrą",
+      "creatingAccount": "Kuriama paskyra...",
       "haveAccount": "Jau turite paskyrą?",
       "signInLink": "Prisijungti"
     }

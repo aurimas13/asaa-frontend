@@ -4,6 +4,7 @@ import { RefreshCw, Clock, CheckCircle, XCircle, AlertCircle, Package, ArrowLeft
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { generateRMANumber } from '../services/shippingService'
+import { useTranslation } from 'react-i18next'
 
 interface Order {
   id: string
@@ -44,6 +45,7 @@ const RETURN_REASONS = [
 ]
 
 export const Returns: React.FC = () => {
+  const { t } = useTranslation()
   const [searchParams] = useSearchParams()
   const { user } = useAuth()
   const orderId = searchParams.get('order')
@@ -291,22 +293,22 @@ export const Returns: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Returns & Refunds</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">{t('returns.title')}</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          We want you to love your handcrafted purchase. If something is not right, we're here to help.
+          {t('returns.subtitle')}
         </p>
       </div>
 
       {user && myReturns.length > 0 && (
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-12">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">My Return Requests</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">{t('returns.myRequests', 'My Return Requests')}</h2>
           <div className="space-y-3">
             {myReturns.map(ret => (
               <div key={ret.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                 <div>
                   <p className="font-medium text-gray-900">RMA: {ret.rma_number}</p>
                   <p className="text-sm text-gray-500">
-                    Order {ret.orders?.order_number} - {RETURN_REASONS.find(r => r.value === ret.reason)?.label}
+                    {t('returns.order', 'Order')} {ret.orders?.order_number} - {RETURN_REASONS.find(r => r.value === ret.reason)?.label}
                   </p>
                 </div>
                 <span className={`text-xs font-medium px-3 py-1 rounded-full capitalize ${getStatusColor(ret.status)}`}>
@@ -321,18 +323,18 @@ export const Returns: React.FC = () => {
       <div className="grid md:grid-cols-3 gap-6 mb-12">
         <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
           <Clock className="w-10 h-10 text-amber-600 mx-auto mb-4" />
-          <h3 className="font-semibold text-gray-900 mb-2">30-Day Returns</h3>
-          <p className="text-sm text-gray-600">Return eligible items within 30 days of delivery</p>
+          <h3 className="font-semibold text-gray-900 mb-2">{t('returns.thirtyDayReturns')}</h3>
+          <p className="text-sm text-gray-600">{t('returns.thirtyDayReturnsDesc')}</p>
         </div>
         <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
           <RefreshCw className="w-10 h-10 text-amber-600 mx-auto mb-4" />
-          <h3 className="font-semibold text-gray-900 mb-2">Easy Process</h3>
-          <p className="text-sm text-gray-600">Start a return from your order history</p>
+          <h3 className="font-semibold text-gray-900 mb-2">{t('returns.easyProcess')}</h3>
+          <p className="text-sm text-gray-600">{t('returns.easyProcessDesc')}</p>
         </div>
         <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
           <Package className="w-10 h-10 text-amber-600 mx-auto mb-4" />
-          <h3 className="font-semibold text-gray-900 mb-2">Original Condition</h3>
-          <p className="text-sm text-gray-600">Items must be unused and in original packaging</p>
+          <h3 className="font-semibold text-gray-900 mb-2">{t('returns.originalCondition')}</h3>
+          <p className="text-sm text-gray-600">{t('returns.originalConditionDesc')}</p>
         </div>
       </div>
 
@@ -340,24 +342,24 @@ export const Returns: React.FC = () => {
         <div className="bg-green-50 rounded-2xl p-8">
           <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <CheckCircle className="w-6 h-6 text-green-500" />
-            Eligible for Return
+            {t('returns.eligibleTitle')}
           </h2>
           <ul className="space-y-3 text-gray-700">
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-              <span>Standard (non-customized) items in original condition</span>
+              <span>{t('returns.eligibleItems.standard')}</span>
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-              <span>Items with manufacturing defects or damage during shipping</span>
+              <span>{t('returns.eligibleItems.defects')}</span>
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-              <span>Items that significantly differ from the product description</span>
+              <span>{t('returns.eligibleItems.different')}</span>
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-              <span>Wrong item received</span>
+              <span>{t('returns.eligibleItems.wrong')}</span>
             </li>
           </ul>
         </div>
@@ -365,37 +367,37 @@ export const Returns: React.FC = () => {
         <div className="bg-red-50 rounded-2xl p-8">
           <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <XCircle className="w-6 h-6 text-red-500" />
-            Not Eligible for Return
+            {t('returns.notEligibleTitle')}
           </h2>
           <ul className="space-y-3 text-gray-700">
             <li className="flex items-start gap-2">
               <XCircle className="w-4 h-4 text-red-500 mt-1 flex-shrink-0" />
-              <span>Custom or personalized items made to your specifications</span>
+              <span>{t('returns.notEligibleItems.custom')}</span>
             </li>
             <li className="flex items-start gap-2">
               <XCircle className="w-4 h-4 text-red-500 mt-1 flex-shrink-0" />
-              <span>Items that have been used, worn, or altered</span>
+              <span>{t('returns.notEligibleItems.used')}</span>
             </li>
             <li className="flex items-start gap-2">
               <XCircle className="w-4 h-4 text-red-500 mt-1 flex-shrink-0" />
-              <span>Items returned after 30 days</span>
+              <span>{t('returns.notEligibleItems.late')}</span>
             </li>
             <li className="flex items-start gap-2">
               <XCircle className="w-4 h-4 text-red-500 mt-1 flex-shrink-0" />
-              <span>Food items or consumables</span>
+              <span>{t('returns.notEligibleItems.food')}</span>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-12">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">How to Return an Item</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-6">{t('returns.howToReturn')}</h2>
         <div className="grid md:grid-cols-4 gap-6">
           {[
-            { step: 1, title: 'Request Return', desc: 'Go to Orders in your account and select the item to return' },
-            { step: 2, title: 'Get Approval', desc: 'Wait for return approval from the maker (usually 1-2 days)' },
-            { step: 3, title: 'Ship Item', desc: 'Pack the item safely and ship to the provided address' },
-            { step: 4, title: 'Receive Refund', desc: 'Refund processed within 5-7 days of receiving the item' },
+            { step: 1, title: t('returns.steps.step1.title'), desc: t('returns.steps.step1.desc') },
+            { step: 2, title: t('returns.steps.step2.title'), desc: t('returns.steps.step2.desc') },
+            { step: 3, title: t('returns.steps.step3.title'), desc: t('returns.steps.step3.desc') },
+            { step: 4, title: t('returns.steps.step4.title'), desc: t('returns.steps.step4.desc') },
           ].map((item) => (
             <div key={item.step} className="text-center">
               <div className="w-10 h-10 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-3">
@@ -412,28 +414,28 @@ export const Returns: React.FC = () => {
         <div className="flex items-start gap-4">
           <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
           <div>
-            <h3 className="font-semibold text-gray-900 mb-2">Important: Handmade Variations</h3>
+            <h3 className="font-semibold text-gray-900 mb-2">{t('returns.handmadeNotice.title')}</h3>
             <p className="text-gray-600">
-              Each item is handcrafted by skilled artisans, which means slight variations in color, size, or pattern are normal and part of what makes each piece unique. These natural variations are not considered defects and are not eligible for return.
+              {t('returns.handmadeNotice.desc')}
             </p>
           </div>
         </div>
       </div>
 
       <div className="text-center">
-        <p className="text-gray-600 mb-4">Need help with a return?</p>
+        <p className="text-gray-600 mb-4">{t('returns.needHelp')}</p>
         <div className="flex justify-center gap-4">
           <Link
             to="/orders"
             className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors"
           >
-            View My Orders
+            {t('returns.viewOrders')}
           </Link>
           <Link
             to="/contact"
             className="bg-white text-amber-600 border-2 border-amber-600 px-6 py-3 rounded-lg font-semibold hover:bg-amber-50 transition-colors"
           >
-            Contact Support
+            {t('returns.contactSupport')}
           </Link>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Trash2, Plus, Minus, X, Truck, Clock, Zap } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { processOrder } from '../services/orderService'
+import { useTranslation } from 'react-i18next'
 import {
   getShippingZoneForCountry,
   getShippingRates,
@@ -32,6 +33,7 @@ interface CartItem {
 }
 
 export const Cart: React.FC = () => {
+  const { t } = useTranslation()
   const [cartItems, setCartItems] = useState<CartItem[]>([])
   const [loading, setLoading] = useState(true)
   const [showCheckout, setShowCheckout] = useState(false)
@@ -147,9 +149,9 @@ export const Cart: React.FC = () => {
   if (!user) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h2 className="text-2xl font-bold mb-4">Please sign in to view your cart</h2>
+        <h2 className="text-2xl font-bold mb-4">{t('cart.signInRequired')}</h2>
         <Link to="/signin" className="text-amber-600 hover:text-amber-700 font-semibold">
-          Sign In
+          {t('cart.signInButton')}
         </Link>
       </div>
     )

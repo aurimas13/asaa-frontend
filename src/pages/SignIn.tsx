@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Store, Mail, Lock } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
+import { useTranslation } from 'react-i18next'
 
 export const SignIn: React.FC = () => {
+  const { t } = useTranslation()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -34,8 +36,8 @@ export const SignIn: React.FC = () => {
             <Store className="w-10 h-10 text-amber-600" />
             <span className="text-2xl font-bold text-gray-900">Crafts And Hands</span>
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
-          <p className="text-gray-600 mt-2">Sign in to your account to continue</p>
+          <h1 className="text-2xl font-bold text-gray-900">{t('auth.signIn.title')}</h1>
+          <p className="text-gray-600 mt-2">{t('auth.signIn.subtitle')}</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
@@ -48,7 +50,7 @@ export const SignIn: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
+                {t('auth.signIn.email')}
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -58,14 +60,14 @@ export const SignIn: React.FC = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  placeholder="you@example.com"
+                  placeholder={t('auth.signIn.emailPlaceholder', 'you@example.com')}
                 />
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Password
+                {t('auth.signIn.password')}
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -75,7 +77,7 @@ export const SignIn: React.FC = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  placeholder="Enter your password"
+                  placeholder={t('auth.signIn.passwordPlaceholder', 'Enter your password')}
                 />
               </div>
             </div>
@@ -85,14 +87,14 @@ export const SignIn: React.FC = () => {
               disabled={loading}
               className="w-full bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? t('auth.signIn.signingIn', 'Signing in...') : t('auth.signIn.button')}
             </button>
           </form>
 
           <p className="text-center text-gray-600 mt-6">
-            Don't have an account?{' '}
+            {t('auth.signIn.noAccount')}{' '}
             <Link to="/signup" className="text-amber-600 hover:text-amber-700 font-semibold">
-              Sign Up
+              {t('auth.signIn.signUpLink')}
             </Link>
           </p>
         </div>

@@ -118,20 +118,29 @@
   "auth": {
     "signIn": {
       "title": "Bon retour",
-      "subtitle": "Connectez-vous a votre compte",
-      "email": "E-mail",
+      "subtitle": "Connectez-vous a votre compte pour continuer",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "votre@email.com",
       "password": "Mot de passe",
+      "passwordPlaceholder": "Entrez votre mot de passe",
       "button": "Se connecter",
+      "signingIn": "Connexion en cours...",
       "noAccount": "Vous n'avez pas de compte?",
       "signUpLink": "S'inscrire"
     },
     "signUp": {
       "title": "Creer un compte",
-      "subtitle": "Rejoignez notre communaute d'artisans et d'amateurs d'artisanat",
+      "subtitle": "Rejoignez notre communaute d'artisans",
       "fullName": "Nom complet",
-      "email": "E-mail",
+      "fullNamePlaceholder": "Votre nom complet",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "votre@email.com",
       "password": "Mot de passe",
-      "button": "S'inscrire",
+      "passwordPlaceholder": "Creez un mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "confirmPasswordPlaceholder": "Confirmez votre mot de passe",
+      "button": "Creer un compte",
+      "creatingAccount": "Creation du compte...",
       "haveAccount": "Vous avez deja un compte?",
       "signInLink": "Se connecter"
     }

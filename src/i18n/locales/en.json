@@ -118,22 +118,31 @@
   "auth": {
     "signIn": {
       "title": "Welcome Back",
-      "subtitle": "Sign in to your account",
-      "email": "Email",
+      "subtitle": "Sign in to your account to continue",
+      "email": "Email Address",
+      "emailPlaceholder": "you@example.com",
       "password": "Password",
+      "passwordPlaceholder": "Enter your password",
       "button": "Sign In",
+      "signingIn": "Signing in...",
       "noAccount": "Don't have an account?",
       "signUpLink": "Sign up"
     },
     "signUp": {
-      "title": "Create Account",
-      "subtitle": "Join our community of makers and craft lovers",
+      "title": "Create an account",
+      "subtitle": "Join our artisan marketplace community",
       "fullName": "Full Name",
-      "email": "Email",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "you@example.com",
       "password": "Password",
-      "button": "Sign Up",
+      "passwordPlaceholder": "Create a password",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "button": "Create Account",
+      "creatingAccount": "Creating account...",
       "haveAccount": "Already have an account?",
-      "signInLink": "Sign in"
+      "signInLink": "Sign In"
     }
   },
   "makers": {
@@ -221,24 +230,55 @@
   },
   "returns": {
     "title": "Returns & Refunds",
-    "subtitle": "Easy 30-day returns on most items",
-    "policy": {
-      "title": "Return Policy",
-      "description": "We want you to be completely satisfied with your purchase. If you're not happy with your order, you can return most items within 30 days of delivery.",
-      "eligible": "Eligible Items",
-      "eligibleDesc": "Most items can be returned within 30 days of delivery in their original condition.",
-      "nonEligible": "Non-returnable Items",
-      "nonEligibleDesc": "Custom or personalized items, perishable goods, and items marked as final sale cannot be returned.",
-      "process": "How to Return",
-      "processSteps": {
-        "step1": "Contact us within 30 days of delivery",
-        "step2": "Receive your return authorization",
-        "step3": "Ship the item back in original packaging",
-        "step4": "Receive refund within 5-7 business days"
+    "subtitle": "We want you to love your handcrafted purchase. If something is not right, we're here to help.",
+    "thirtyDayReturns": "30-Day Returns",
+    "thirtyDayReturnsDesc": "Return eligible items within 30 days of delivery",
+    "easyProcess": "Easy Process",
+    "easyProcessDesc": "Start a return from your order history",
+    "originalCondition": "Original Condition",
+    "originalConditionDesc": "Items must be unused and in original packaging",
+    "eligibleTitle": "Eligible for Return",
+    "eligibleItems": {
+      "standard": "Standard (non-customized) items in original condition",
+      "defects": "Items with manufacturing defects or damage during shipping",
+      "different": "Items that significantly differ from the product description",
+      "wrong": "Wrong item received"
+    },
+    "notEligibleTitle": "Not Eligible for Return",
+    "notEligibleItems": {
+      "custom": "Custom or personalized items made to your specifications",
+      "used": "Items that have been used, worn, or altered",
+      "late": "Items returned after 30 days",
+      "food": "Food items or consumables"
+    },
+    "howToReturn": "How to Return an Item",
+    "steps": {
+      "step1": {
+        "title": "Request Return",
+        "desc": "Go to Orders in your account and select the item to return"
+      },
+      "step2": {
+        "title": "Get Approval",
+        "desc": "Wait for return approval from the maker (usually 1-2 days)"
+      },
+      "step3": {
+        "title": "Ship Item",
+        "desc": "Pack the item safely and ship to the provided address"
+      },
+      "step4": {
+        "title": "Receive Refund",
+        "desc": "Refund processed within 5-7 days of receiving the item"
       }
     },
-    "contact": "Need Help?",
-    "contactDesc": "Contact our customer support team for any return-related questions."
+    "handmadeNotice": {
+      "title": "Important: Handmade Variations",
+      "desc": "Each item is handcrafted by skilled artisans, which means slight variations in color, size, or pattern are normal and part of what makes each piece unique. These natural variations are not considered defects and are not eligible for return."
+    },
+    "needHelp": "Need help with a return?",
+    "viewOrders": "View My Orders",
+    "contactSupport": "Contact Support",
+    "myRequests": "My Return Requests",
+    "order": "Order"
   },
   "successStories": {
     "title": "Success Stories",
