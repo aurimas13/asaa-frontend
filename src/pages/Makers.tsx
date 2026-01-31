@@ -16,15 +16,40 @@ interface Maker {
   total_sales: number
 }
 
+interface MakerCounts {
+  total: number
+  verified: number
+  unverified: number
+}
+
 export const Makers: React.FC = () => {
   const [makers, setMakers] = useState<Maker[]>([])
+  const [counts, setCounts] = useState<MakerCounts>({ total: 0, verified: 0, unverified: 0 })
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('')
   const { t } = useTranslation()
 
   useEffect(() => {
+    loadCounts()
+  }, [])
+
+  useEffect(() => {
     loadMakers()
   }, [filter])
+
+  const loadCounts = async () => {
+    const [totalRes, verifiedRes, unverifiedRes] = await Promise.all([
+      supabase.from('makers').select('id', { count: 'exact', head: true }),
+      supabase.from('makers').select('id', { count: 'exact', head: true }).eq('verified', true),
+      supabase.from('makers').select('id', { count: 'exact', head: true }).eq('verified', false)
+    ])
+
+    setCounts({
+      total: totalRes.count || 0,
+      verified: verifiedRes.count || 0,
+      unverified: unverifiedRes.count || 0
+    })
+  }
 
   const loadMakers = async () => {
     setLoading(true)
@@ -45,9 +70,6 @@ export const Makers: React.FC = () => {
     setLoading(false)
   }
 
-  const verifiedCount = makers.filter(m => m.verified).length
-  const unverifiedCount = makers.filter(m => !m.verified).length
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="bg-gradient-to-r from-secondary-50 to-primary-50 rounded-2xl p-8 mb-8">
@@ -63,7 +85,7 @@ export const Makers: React.FC = () => {
           </div>
           <div className="flex gap-3">
             <div className="bg-white rounded-xl px-4 py-3 shadow-sm text-center">
-              <p className="text-2xl font-bold text-secondary-600">{makers.length}</p>
+              <p className="text-2xl font-bold text-secondary-600">{counts.total}</p>
               <p className="text-sm text-gray-500">{t('makers.total', 'Total Makers')}</p>
             </div>
           </div>
@@ -89,7 +111,7 @@ export const Makers: React.FC = () => {
               : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
           }`}
         >
-          {t('makers.filter.all', 'All Makers')} ({makers.length})
+          {t('makers.filter.all', 'All Makers')} ({counts.total})
         </button>
         <button
           onClick={() => setFilter('verified')}
@@ -99,7 +121,7 @@ export const Makers: React.FC = () => {
               : 'bg-white text-gray-700 hover:bg-secondary-50 border border-gray-200'
           }`}
         >
-          <CheckCircle className="w-4 h-4" /> {t('makers.verified')} ({verifiedCount})
+          <CheckCircle className="w-4 h-4" /> {t('makers.verified')} ({counts.verified})
         </button>
         <button
           onClick={() => setFilter('unverified')}
@@ -109,7 +131,7 @@ export const Makers: React.FC = () => {
               : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
           }`}
         >
-          <XCircle className="w-4 h-4" /> {t('makers.unverified', 'Not Verified')} ({unverifiedCount})
+          <XCircle className="w-4 h-4" /> {t('makers.unverified', 'Not Verified')} ({counts.unverified})
         </button>
       </div>
 
@@ -192,7 +214,7 @@ export const Makers: React.FC = () => {
       <div className="mt-16 bg-gradient-to-r from-secondary-600 to-primary-500 rounded-2xl p-8 text-center text-white">
         <h2 className="text-2xl font-bold">{t('makers.becomeMaker.title', 'Are you a Lithuanian craftsperson?')}</h2>
         <p className="mt-2 text-secondary-100 max-w-xl mx-auto">
-          {t('makers.becomeMaker.desc', 'Join our growing community of artisans and share your traditional crafts with customers across Europe.')}
+          {t('makers.becomeMaker.desc', 'Join our growing community of makers and share your traditional crafts with customers across Europe.')}
         </p>
         <Link
           to="/become-maker"

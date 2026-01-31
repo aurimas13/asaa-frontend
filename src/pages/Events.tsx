@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Calendar, MapPin, Users, Clock, ExternalLink } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 
@@ -23,6 +24,7 @@ interface Event {
 
 export const Events: React.FC = () => {
   const { user } = useAuth()
+  const { t } = useTranslation()
   const [events, setEvents] = useState<Event[]>([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('upcoming')
@@ -96,19 +98,32 @@ export const Events: React.FC = () => {
     })
   }
 
-  const eventTypes: Record<string, string> = {
-    market: 'Market',
-    workshop: 'Workshop',
-    exhibition: 'Exhibition',
-    online: 'Online',
+  const getEventTypeLabel = (type: string) => {
+    const types: Record<string, string> = {
+      market: t('events.types.market'),
+      workshop: t('events.types.workshop'),
+      exhibition: t('events.types.exhibition'),
+      online: t('events.types.online'),
+      fair: t('events.types.fair'),
+    }
+    return types[type] || type
+  }
+
+  const getFilterLabel = (f: string) => {
+    const labels: Record<string, string> = {
+      upcoming: t('events.upcoming'),
+      ongoing: t('events.ongoing'),
+      all: t('events.all'),
+    }
+    return labels[f] || f
   }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Artisan Events</h1>
-          <p className="text-gray-600 mt-1">Discover workshops, markets, and exhibitions</p>
+          <h1 className="text-3xl font-bold text-gray-900">{t('events.title')}</h1>
+          <p className="text-gray-600 mt-1">{t('events.subtitle')}</p>
         </div>
 
         <div className="flex gap-2 flex-wrap">
@@ -116,11 +131,11 @@ export const Events: React.FC = () => {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-4 py-2 rounded-lg font-medium capitalize transition-colors ${
+              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 filter === f ? 'bg-amber-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {f}
+              {getFilterLabel(f)}
             </button>
           ))}
         </div>
@@ -135,8 +150,8 @@ export const Events: React.FC = () => {
       ) : events.length === 0 ? (
         <div className="text-center py-16">
           <Calendar className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-900">No events found</h3>
-          <p className="text-gray-600 mt-2">Check back later for upcoming events</p>
+          <h3 className="text-xl font-semibold text-gray-900">{t('events.noEvents')}</h3>
+          <p className="text-gray-600 mt-2">{t('events.noEventsDesc')}</p>
         </div>
       ) : (
         <div className="grid gap-6">
@@ -155,7 +170,7 @@ export const Events: React.FC = () => {
                     <span className={`text-xs font-medium px-2 py-1 rounded-full ${
                       event.event_type === 'online' ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'
                     }`}>
-                      {eventTypes[event.event_type] || event.event_type}
+                      {getEventTypeLabel(event.event_type)}
                     </span>
                     <h3 className="text-xl font-semibold text-gray-900 mt-2">{event.title}</h3>
                     <p className="text-sm text-gray-500 mt-1">by {event.makers?.business_name}</p>
@@ -181,7 +196,7 @@ export const Events: React.FC = () => {
                   {event.max_attendees && (
                     <div className="flex items-center gap-1">
                       <Users className="w-4 h-4" />
-                      Max {event.max_attendees} attendees
+                      {t('events.maxAttendees')}: {event.max_attendees}
                     </div>
                   )}
                 </div>
@@ -195,7 +210,7 @@ export const Events: React.FC = () => {
                         : 'bg-amber-600 text-white hover:bg-amber-700'
                     }`}
                   >
-                    {registrations.has(event.id) ? 'Registered' : 'Register'}
+                    {registrations.has(event.id) ? t('events.registered') : t('events.register')}
                   </button>
                   {event.online_url && (
                     <a
@@ -204,7 +219,7 @@ export const Events: React.FC = () => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 text-amber-600 hover:underline"
                     >
-                      Join Online <ExternalLink className="w-4 h-4" />
+                      {t('events.joinOnline')} <ExternalLink className="w-4 h-4" />
                     </a>
                   )}
                 </div>
