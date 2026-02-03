@@ -16,7 +16,7 @@
     "returns": "Returns"
   },
   "announcement": {
-    "kaziukoMuge": "Kaziuko Muge 2026 is coming! March 6-8 in Vilnius",
+    "kaziukoMuge": "Preparing for Kaziukas Fair 2026 - March 6-8, Vilnius",
     "learnMore": "Learn More"
   },
   "home": {
@@ -26,7 +26,7 @@
       "subtitle": "Support local makers from Lithuania. Each piece tells a unique story of tradition and craftsmanship.",
       "exploreProducts": "Explore Products",
       "meetMakers": "Meet the Makers",
-      "badge": "Preparing for Kaziuko muge 2026"
+      "badge": "Preparing for Kaziukas Fair 2026"
     },
     "trustBadges": {
       "shipping": "Free Shipping",
@@ -98,7 +98,9 @@
     "priceHigh": "Price: High to Low",
     "topRated": "Top Rated",
     "noProducts": "No products found",
-    "noProductsDesc": "Try adjusting your filters"
+    "noProductsDesc": "Try adjusting your filters",
+    "noProductsInCategory": "No products in this category yet",
+    "noProductsInCategoryDesc": "We'll be adding new products soon. Check out other categories."
   },
   "cart": {
     "title": "Shopping Cart",

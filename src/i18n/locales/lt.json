@@ -16,7 +16,7 @@
     "returns": "Grąžinimai"
   },
   "announcement": {
-    "kaziukoMuge": "Ruošiamės Kaziuko mugei 2026 – kovo 6–8 d., Vilnius",
+    "kaziukoMuge": "Ruošiamės Kaziuko mugei 2026 - Kovo 6-8, Vilnius",
     "learnMore": "Sužinoti daugiau"
   },
   "home": {
@@ -98,7 +98,9 @@
     "priceHigh": "Kaina: nuo didžiausios",
     "topRated": "Geriausiai įvertinti",
     "noProducts": "Gaminių nerasta",
-    "noProductsDesc": "Pabandykite pakeisti filtrus"
+    "noProductsDesc": "Pabandykite pakeisti filtrus",
+    "noProductsInCategory": "Šioje kategorijoje gaminių kol kas nėra",
+    "noProductsInCategoryDesc": "Greitai pridėsime naujų gaminių. Apsilankykite kitose kategorijose."
   },
   "cart": {
     "title": "Pirkinių krepšelis",

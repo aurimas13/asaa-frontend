@@ -12,6 +12,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   const [searchQuery, setSearchQuery] = useState('')
   const [cartCount, setCartCount] = useState(0)
   const [scrolled, setScrolled] = useState(false)
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false)
+  const accountMenuTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
   const { user, signOut } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
@@ -50,6 +52,20 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
   const isActive = (path: string) => location.pathname === path
 
+  const handleAccountMenuEnter = () => {
+    if (accountMenuTimeoutRef.current) {
+      clearTimeout(accountMenuTimeoutRef.current)
+      accountMenuTimeoutRef.current = null
+    }
+    setAccountMenuOpen(true)
+  }
+
+  const handleAccountMenuLeave = () => {
+    accountMenuTimeoutRef.current = setTimeout(() => {
+      setAccountMenuOpen(false)
+    }, 150)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-lg z-[60]">
@@ -57,8 +73,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       </a>
 
       <div className="bg-gradient-to-r from-secondary-600 via-secondary-500 to-primary-500 text-white text-center py-2 text-sm font-medium">
-        <span className="hidden sm:inline">{t('banner.text', 'Preparing for Kaziuko Muge 2026 - March 6-8, Vilnius')}</span>
-        <span className="sm:hidden">{t('banner.textShort', 'Kaziuko Muge 2026 - March 6-8')}</span>
+        <span className="hidden sm:inline">{t('announcement.kaziukoMuge')}</span>
+        <span className="sm:hidden">{t('announcement.kaziukoMuge')}</span>
       </div>
 
       <header className={`bg-white sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-md' : 'shadow-sm'}`} role="banner">
@@ -150,45 +166,74 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                   >
                     <ShoppingCart className="w-6 h-6" aria-hidden="true" />
                     {cartCount > 0 && (
-                      <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
-                        {cartCount}
+                      <span className="absolute -top-1 -right-1 min-w-5 h-5 px-1 bg-accent-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                        {cartCount > 10 ? '10+' : cartCount}
                       </span>
                     )}
                   </Link>
-                  <div className="relative group">
+                  <div
+                    className="relative"
+                    onMouseEnter={handleAccountMenuEnter}
+                    onMouseLeave={handleAccountMenuLeave}
+                  >
                     <button
                       className="flex items-center gap-1 p-2 text-gray-600 hover:text-primary-600 transition-colors rounded-lg hover:bg-primary-50"
                       aria-label="User menu"
                       aria-haspopup="true"
+                      aria-expanded={accountMenuOpen}
+                      onClick={() => setAccountMenuOpen(!accountMenuOpen)}
                     >
                       <User className="w-6 h-6" aria-hidden="true" />
                       <ChevronDown className="w-4 h-4 hidden sm:block" />
                     </button>
-                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg py-2 hidden group-hover:block z-50 border border-gray-100">
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <p className="text-sm font-medium text-gray-900">{user.email}</p>
+                    {accountMenuOpen && (
+                      <div className="absolute right-0 pt-2 z-50">
+                        <div className="w-56 bg-white rounded-xl shadow-lg py-2 border border-gray-100">
+                          <div className="px-4 py-2 border-b border-gray-100">
+                            <p className="text-sm font-medium text-gray-900">{user.email}</p>
+                          </div>
+                          <Link
+                            to="/profile"
+                            className="flex items-center gap-2 px-4 py-2.5 text-gray-700 hover:bg-gray-50"
+                            onClick={() => setAccountMenuOpen(false)}
+                          >
+                            {t('nav.profile')}
+                          </Link>
+                          <Link
+                            to="/orders"
+                            className="flex items-center gap-2 px-4 py-2.5 text-gray-700 hover:bg-gray-50"
+                            onClick={() => setAccountMenuOpen(false)}
+                          >
+                            {t('nav.myOrders')}
+                          </Link>
+                          <Link
+                            to="/wishlist"
+                            className="flex items-center gap-2 px-4 py-2.5 text-gray-700 hover:bg-gray-50"
+                            onClick={() => setAccountMenuOpen(false)}
+                          >
+                            {t('nav.wishlist')}
+                          </Link>
+                          <hr className="my-2" />
+                          <Link
+                            to="/become-maker"
+                            className="flex items-center gap-2 px-4 py-2.5 text-secondary-600 hover:bg-secondary-50 font-medium"
+                            onClick={() => setAccountMenuOpen(false)}
+                          >
+                            {t('nav.becomeMaker')}
+                          </Link>
+                          <hr className="my-2" />
+                          <button
+                            onClick={() => {
+                              setAccountMenuOpen(false)
+                              signOut()
+                            }}
+                            className="w-full text-left px-4 py-2.5 text-accent-600 hover:bg-accent-50"
+                          >
+                            {t('nav.signOut')}
+                          </button>
+                        </div>
                       </div>
-                      <Link to="/profile" className="flex items-center gap-2 px-4 py-2.5 text-gray-700 hover:bg-gray-50">
-                        {t('nav.profile')}
-                      </Link>
-                      <Link to="/orders" className="flex items-center gap-2 px-4 py-2.5 text-gray-700 hover:bg-gray-50">
-                        {t('nav.myOrders')}
-                      </Link>
-                      <Link to="/wishlist" className="flex items-center gap-2 px-4 py-2.5 text-gray-700 hover:bg-gray-50">
-                        {t('nav.wishlist')}
-                      </Link>
-                      <hr className="my-2" />
-                      <Link to="/become-maker" className="flex items-center gap-2 px-4 py-2.5 text-secondary-600 hover:bg-secondary-50 font-medium">
-                        {t('nav.becomeMaker')}
-                      </Link>
-                      <hr className="my-2" />
-                      <button
-                        onClick={() => signOut()}
-                        className="w-full text-left px-4 py-2.5 text-accent-600 hover:bg-accent-50"
-                      >
-                        {t('nav.signOut')}
-                      </button>
-                    </div>
+                    )}
                   </div>
                 </>
               ) : (

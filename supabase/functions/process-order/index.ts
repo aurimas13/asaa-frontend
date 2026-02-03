@@ -7,6 +7,8 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
+const COMPANY_EMAIL = "craftsandhands@pm.me";
+
 interface OrderItem {
   product_id: string;
   quantity: number;
@@ -18,6 +20,8 @@ interface OrderPayload {
   shipping_address: Record<string, any>;
   billing_address: Record<string, any>;
   shipping_method?: string;
+  shipping_cost?: number;
+  shipping_zone_id?: string;
   notes?: string;
 }
 
@@ -91,7 +95,7 @@ Deno.serve(async (req: Request) => {
     const productIds = payload.items.map(item => item.product_id);
     const { data: products, error: productsError } = await supabaseClient
       .from("products")
-      .select("id, title, price, stock_quantity, maker_id, makers(business_name, user_id, profiles(email))")
+      .select("id, title, price, stock_quantity, maker_id, makers(id, business_name, user_id)")
       .in("id", productIds);
 
     if (productsError || !products) {
@@ -131,13 +135,26 @@ Deno.serve(async (req: Request) => {
       }
     }
 
-    let totalAmount = 0;
+    let subtotal = 0;
+    const orderItemsData: any[] = [];
     for (const item of payload.items) {
       const product = products.find(p => p.id === item.product_id);
       if (product) {
-        totalAmount += product.price * item.quantity;
+        subtotal += product.price * item.quantity;
+        orderItemsData.push({
+          product_id: item.product_id,
+          maker_id: product.maker_id,
+          quantity: item.quantity,
+          price: product.price,
+          customization_details: item.customization_details,
+          title: product.title,
+          maker_name: (product.makers as any)?.business_name,
+        });
       }
     }
+
+    const shippingCost = payload.shipping_cost || 0;
+    const totalAmount = subtotal + shippingCost;
 
     const orderNumber = `ORD-${Date.now()}-${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
 
@@ -152,6 +169,8 @@ Deno.serve(async (req: Request) => {
         shipping_address: payload.shipping_address,
         billing_address: payload.billing_address,
         shipping_method: payload.shipping_method || "standard",
+        shipping_cost: shippingCost,
+        shipping_zone_id: payload.shipping_zone_id,
         notes: payload.notes,
       })
       .select()
@@ -168,17 +187,14 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const orderItems = payload.items.map(item => {
-      const product = products.find(p => p.id === item.product_id);
-      return {
-        order_id: order.id,
-        product_id: item.product_id,
-        maker_id: product?.maker_id,
-        quantity: item.quantity,
-        price: product?.price || 0,
-        customization_details: item.customization_details,
-      };
-    });
+    const orderItems = orderItemsData.map(item => ({
+      order_id: order.id,
+      product_id: item.product_id,
+      maker_id: item.maker_id,
+      quantity: item.quantity,
+      price: item.price,
+      customization_details: item.customization_details,
+    }));
 
     const { error: itemsError } = await supabaseClient
       .from("order_items")
@@ -209,29 +225,43 @@ Deno.serve(async (req: Request) => {
 
     const { data: profile } = await supabaseClient
       .from("profiles")
-      .select("email, full_name")
+      .select("email, full_name, phone")
       .eq("id", user.id)
       .single();
 
     const emailPromises = [];
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+    const shippingMethodLabel = payload.shipping_method === 'express' ? 'Express (1-2 days)' :
+      payload.shipping_method === 'economy' ? 'Economy (5-10 days)' : 'Standard (3-5 days)';
 
     if (profile?.email) {
       const customerEmailPromise = fetch(
-        `${Deno.env.get("SUPABASE_URL")}/functions/v1/send-email`,
+        `${supabaseUrl}/functions/v1/send-email`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": authHeader,
+            "Authorization": `Bearer ${serviceRoleKey}`,
           },
           body: JSON.stringify({
             to: profile.email,
-            subject: "Order Confirmation",
+            subject: `Užsakymas patvirtintas #${orderNumber}`,
             type: "order_confirmation",
             data: {
               orderNumber: orderNumber,
               totalAmount: totalAmount.toFixed(2),
-              status: "pending",
+              status: "Laukiama apmokėjimo / Pending",
+              shippingMethod: shippingMethodLabel,
+              estimatedDelivery: payload.shipping_method === 'express' ? '1-2 darbo dienos' :
+                payload.shipping_method === 'economy' ? '5-10 darbo dienų' : '3-5 darbo dienos',
+              items: orderItemsData.map(item => ({
+                title: item.title,
+                quantity: item.quantity,
+                price: item.price,
+              })),
+              shippingAddress: payload.shipping_address,
             },
           }),
         }
@@ -240,54 +270,94 @@ Deno.serve(async (req: Request) => {
       emailPromises.push(customerEmailPromise);
     }
 
-    const makerEmails = new Map();
-    for (const item of payload.items) {
-      const product = products.find(p => p.id === item.product_id);
-      if (product && product.makers) {
-        const makerData = product.makers as any;
-        const makerEmail = makerData.profiles?.email;
-        if (makerEmail && !makerEmails.has(makerEmail)) {
-          makerEmails.set(makerEmail, {
-            email: makerEmail,
-            business: makerData.business_name,
+    const makerGroups = new Map<string, any>();
+    for (const item of orderItemsData) {
+      if (item.maker_id) {
+        if (!makerGroups.has(item.maker_id)) {
+          makerGroups.set(item.maker_id, {
+            maker_id: item.maker_id,
+            maker_name: item.maker_name,
             items: [],
+            totalAmount: 0,
           });
         }
-        if (makerEmail) {
-          makerEmails.get(makerEmail).items.push({
-            title: product.title,
-            quantity: item.quantity,
-            price: product.price,
-          });
+        const group = makerGroups.get(item.maker_id);
+        group.items.push(item);
+        group.totalAmount += item.price * item.quantity;
+      }
+    }
+
+    for (const [makerId, data] of makerGroups) {
+      const { data: makerProfile } = await supabaseClient
+        .from("makers")
+        .select("user_id")
+        .eq("id", makerId)
+        .single();
+
+      if (makerProfile?.user_id) {
+        const { data: makerUser } = await supabaseClient
+          .from("profiles")
+          .select("email")
+          .eq("id", makerProfile.user_id)
+          .single();
+
+        if (makerUser?.email) {
+          const makerEmailPromise = fetch(
+            `${supabaseUrl}/functions/v1/send-email`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${serviceRoleKey}`,
+              },
+              body: JSON.stringify({
+                to: makerUser.email,
+                subject: `Naujas užsakymas #${orderNumber}`,
+                type: "maker_notification",
+                data: {
+                  orderNumber: orderNumber,
+                  productTitle: data.items.map((i: any) => i.title).join(", "),
+                  quantity: data.items.reduce((sum: number, i: any) => sum + i.quantity, 0),
+                  amount: data.totalAmount.toFixed(2),
+                  shippingAddress: payload.shipping_address,
+                },
+              }),
+            }
+          ).catch(err => console.error("Maker email error:", err));
+
+          emailPromises.push(makerEmailPromise);
         }
       }
     }
 
-    for (const [email, data] of makerEmails) {
-      const makerEmailPromise = fetch(
-        `${Deno.env.get("SUPABASE_URL")}/functions/v1/send-email`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": authHeader,
+    const companyEmailPromise = fetch(
+      `${supabaseUrl}/functions/v1/send-email`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${serviceRoleKey}`,
+        },
+        body: JSON.stringify({
+          to: COMPANY_EMAIL,
+          subject: `[NAUJAS UŽSAKYMAS] #${orderNumber} - €${totalAmount.toFixed(2)}`,
+          type: "company_notification",
+          data: {
+            orderNumber: orderNumber,
+            customerName: profile?.full_name || payload.shipping_address.full_name,
+            customerEmail: profile?.email || user.email,
+            customerPhone: profile?.phone || payload.shipping_address.phone,
+            totalAmount: totalAmount.toFixed(2),
+            itemCount: payload.items.reduce((sum, i) => sum + i.quantity, 0),
+            shippingMethod: shippingMethodLabel,
+            makers: Array.from(makerGroups.values()).map((m: any) => m.maker_name),
+            shippingAddress: payload.shipping_address,
           },
-          body: JSON.stringify({
-            to: email,
-            subject: "New Order Received",
-            type: "maker_notification",
-            data: {
-              orderNumber: orderNumber,
-              productTitle: data.items.map((i: any) => i.title).join(", "),
-              quantity: data.items.reduce((sum: number, i: any) => sum + i.quantity, 0),
-              amount: data.items.reduce((sum: number, i: any) => sum + (i.price * i.quantity), 0).toFixed(2),
-            },
-          }),
-        }
-      ).catch(err => console.error("Maker email error:", err));
+        }),
+      }
+    ).catch(err => console.error("Company email error:", err));
 
-      emailPromises.push(makerEmailPromise);
-    }
+    emailPromises.push(companyEmailPromise);
 
     await Promise.allSettled(emailPromises);
 

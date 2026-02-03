@@ -8,9 +8,9 @@ export const LanguageSwitcher: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const languages = [
-    { code: 'lt', name: 'Lietuviu', flag: 'LT' },
+    { code: 'lt', name: 'Lietuvių', flag: 'LT' },
     { code: 'en', name: 'English', flag: 'EN' },
-    { code: 'fr', name: 'Francais', flag: 'FR' },
+    { code: 'fr', name: 'Français', flag: 'FR' },
   ]
 
   useEffect(() => {

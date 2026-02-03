@@ -116,3 +116,87 @@ export function generateRMANumber(): string {
   const random = Math.random().toString(36).substring(2, 6).toUpperCase()
   return `${prefix}-${timestamp}-${random}`
 }
+
+export type ShippingCarrier = 'lietuvos_pastas' | 'omniva' | 'dpd'
+
+export interface CarrierInfo {
+  id: ShippingCarrier
+  name: string
+  nameLt: string
+  logo: string
+  trackingUrlTemplate: string
+  pickupPoints: boolean
+  homeDelivery: boolean
+  estimatedDays: { min: number; max: number }
+  supportedCountries: string[]
+}
+
+export const SHIPPING_CARRIERS: Record<ShippingCarrier, CarrierInfo> = {
+  lietuvos_pastas: {
+    id: 'lietuvos_pastas',
+    name: 'Lietuvos Pastas',
+    nameLt: 'Lietuvos paštas',
+    logo: 'https://www.post.lt/sites/default/files/LP_logo.png',
+    trackingUrlTemplate: 'https://www.post.lt/siuntu-sekimas?tracking_code={trackingNumber}',
+    pickupPoints: true,
+    homeDelivery: true,
+    estimatedDays: { min: 2, max: 5 },
+    supportedCountries: ['LT', 'LV', 'EE', 'PL', 'DE', 'FR', 'NL', 'BE', 'AT', 'IT', 'ES'],
+  },
+  omniva: {
+    id: 'omniva',
+    name: 'Omniva',
+    nameLt: 'Omniva',
+    logo: 'https://www.omniva.lt/images/omniva-logo.svg',
+    trackingUrlTemplate: 'https://www.omniva.lt/track/{trackingNumber}',
+    pickupPoints: true,
+    homeDelivery: true,
+    estimatedDays: { min: 1, max: 3 },
+    supportedCountries: ['LT', 'LV', 'EE', 'PL', 'FI'],
+  },
+  dpd: {
+    id: 'dpd',
+    name: 'DPD',
+    nameLt: 'DPD Lietuva',
+    logo: 'https://www.dpd.lt/templates/dpd/images/dpd-logo.svg',
+    trackingUrlTemplate: 'https://www.dpd.lt/lt/siuntos-sekimas?parcelNumber={trackingNumber}',
+    pickupPoints: true,
+    homeDelivery: true,
+    estimatedDays: { min: 1, max: 2 },
+    supportedCountries: ['LT', 'LV', 'EE', 'PL', 'DE', 'FR', 'NL', 'BE', 'AT', 'IT', 'ES', 'GB', 'SE', 'DK', 'FI', 'CZ', 'SK', 'HU', 'RO', 'BG'],
+  },
+}
+
+export function getCarrierTrackingUrl(carrier: ShippingCarrier, trackingNumber: string): string {
+  const carrierInfo = SHIPPING_CARRIERS[carrier]
+  if (!carrierInfo) return ''
+  return carrierInfo.trackingUrlTemplate.replace('{trackingNumber}', trackingNumber)
+}
+
+export function getCarriersForCountry(countryCode: string): CarrierInfo[] {
+  return Object.values(SHIPPING_CARRIERS).filter(
+    carrier => carrier.supportedCountries.includes(countryCode)
+  )
+}
+
+export function getRecommendedCarrier(countryCode: string, method: string): ShippingCarrier {
+  if (countryCode === 'LT') {
+    if (method === 'express') return 'dpd'
+    if (method === 'economy') return 'lietuvos_pastas'
+    return 'omniva'
+  }
+
+  if (['LV', 'EE'].includes(countryCode)) {
+    return method === 'express' ? 'dpd' : 'omniva'
+  }
+
+  return 'dpd'
+}
+
+export function generateTrackingNumber(carrier: ShippingCarrier): string {
+  const prefix = carrier === 'lietuvos_pastas' ? 'LP' :
+                 carrier === 'omniva' ? 'OM' : 'DPD'
+  const timestamp = Date.now().toString().slice(-8)
+  const random = Math.random().toString(36).substring(2, 6).toUpperCase()
+  return `${prefix}${timestamp}${random}`
+}

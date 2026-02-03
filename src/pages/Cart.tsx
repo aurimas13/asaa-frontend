@@ -106,10 +106,11 @@ export const Cart: React.FC = () => {
 
   const removeItem = async (itemId: string) => {
     try {
+      setCartItems(prev => prev.filter(item => item.id !== itemId))
       await supabase.from('carts').delete().eq('id', itemId)
-      loadCart()
     } catch (error) {
       console.error('Error removing item:', error)
+      loadCart()
     }
   }
 
@@ -172,12 +173,12 @@ export const Cart: React.FC = () => {
   if (cartItems.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h2 className="text-2xl font-bold mb-4">Your cart is empty</h2>
+        <h2 className="text-2xl font-bold mb-4">{t('cart.empty')}</h2>
         <Link
           to="/products"
           className="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors"
         >
-          Start Shopping
+          {t('cart.startShopping')}
         </Link>
       </div>
     )

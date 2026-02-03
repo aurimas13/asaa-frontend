@@ -13,7 +13,7 @@ interface Product {
   rating: number
   category_id: string
   makers: { business_name: string }
-  categories: { name: string } | null
+  categories: { name: string; slug: string } | null
 }
 
 interface Category {
@@ -45,7 +45,7 @@ export const Products: React.FC = () => {
     setLoading(true)
     let query = supabase
       .from('products')
-      .select('id, title, description, price, images, rating, category_id, makers(business_name), categories(name)')
+      .select('id, title, description, price, images, rating, category_id, makers(business_name), categories(name, slug)')
       .eq('status', 'active')
 
     if (selectedCategory) {
@@ -76,6 +76,12 @@ export const Products: React.FC = () => {
     if (!images) return 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
     const parsed = typeof images === 'string' ? JSON.parse(images) : images
     return parsed[0] || 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
+  }
+
+  const getCategoryName = (category: { name: string } | null, slug?: string) => {
+    if (!category) return ''
+    const categorySlug = slug || category.name.toLowerCase().replace(/\s+/g, '-')
+    return t(`categories.${categorySlug}`, category.name)
   }
 
   return (
@@ -150,8 +156,12 @@ export const Products: React.FC = () => {
       ) : products.length === 0 ? (
         <div className="text-center py-16">
           <Filter className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-900">{t('products.noProducts')}</h3>
-          <p className="text-gray-600 mt-2">{t('products.noProductsDesc')}</p>
+          <h3 className="text-xl font-semibold text-gray-900">
+            {selectedCategory ? t('products.noProductsInCategory') : t('products.noProducts')}
+          </h3>
+          <p className="text-gray-600 mt-2">
+            {selectedCategory ? t('products.noProductsInCategoryDesc') : t('products.noProductsDesc')}
+          </p>
         </div>
       ) : viewMode === 'grid' ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -166,7 +176,7 @@ export const Products: React.FC = () => {
                   />
                 </div>
                 <div className="p-4">
-                  <p className="text-xs text-amber-600 font-medium mb-1">{product.categories?.name}</p>
+                  <p className="text-xs text-amber-600 font-medium mb-1">{getCategoryName(product.categories, product.categories?.slug)}</p>
                   <h3 className="font-semibold text-gray-900 group-hover:text-amber-600 transition-colors line-clamp-1">
                     {product.title}
                   </h3>
@@ -198,7 +208,7 @@ export const Products: React.FC = () => {
                   />
                 </div>
                 <div className="p-4 flex-1">
-                  <p className="text-xs text-amber-600 font-medium mb-1">{product.categories?.name}</p>
+                  <p className="text-xs text-amber-600 font-medium mb-1">{getCategoryName(product.categories, product.categories?.slug)}</p>
                   <h3 className="text-lg font-semibold text-gray-900 group-hover:text-amber-600 transition-colors">
                     {product.title}
                   </h3>

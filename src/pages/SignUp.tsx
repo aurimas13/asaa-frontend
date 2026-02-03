@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Store, Mail, Lock, User } from 'lucide-react'
+import { Store, Mail, Lock, User, Phone } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { useTranslation } from 'react-i18next'
 
@@ -8,6 +8,7 @@ export const SignUp: React.FC = () => {
   const { t } = useTranslation()
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
@@ -32,7 +33,7 @@ export const SignUp: React.FC = () => {
     setLoading(true)
 
     try {
-      await signUp(email, password, fullName)
+      await signUp(email, password, fullName, phone)
       navigate('/')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to sign up')
@@ -91,6 +92,22 @@ export const SignUp: React.FC = () => {
                   required
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   placeholder={t('auth.signUp.emailPlaceholder', 'you@example.com')}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t('auth.signUp.phone', 'Phone Number')}
+              </label>
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  placeholder={t('auth.signUp.phonePlaceholder', '+370 xxx xxxxx')}
                 />
               </div>
             </div>

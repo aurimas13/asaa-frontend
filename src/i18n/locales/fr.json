@@ -16,7 +16,7 @@
     "returns": "Retours"
   },
   "announcement": {
-    "kaziukoMuge": "Preparation pour Kaziuko Muge 2026 – 6-8 mars, Vilnius",
+    "kaziukoMuge": "Préparation pour Kaziukas équitable 2026 - Mars 6-8, Vilnius",
     "learnMore": "En savoir plus"
   },
   "home": {
@@ -26,7 +26,7 @@
       "subtitle": "Soutenez les artisans locaux de Lituanie. Chaque piece raconte une histoire unique de tradition et de savoir-faire.",
       "exploreProducts": "Explorer les produits",
       "meetMakers": "Rencontrer les artisans",
-      "badge": "Preparation pour Kaziuko muge 2026"
+      "badge": "Préparation pour Kaziukas équitable 2026"
     },
     "trustBadges": {
       "shipping": "Livraison gratuite",
@@ -98,7 +98,9 @@
     "priceHigh": "Prix: decroissant",
     "topRated": "Meilleurs notes",
     "noProducts": "Aucun produit trouve",
-    "noProductsDesc": "Essayez d'ajuster vos filtres"
+    "noProductsDesc": "Essayez d'ajuster vos filtres",
+    "noProductsInCategory": "Pas encore de produits dans cette categorie",
+    "noProductsInCategoryDesc": "Nous ajouterons bientot de nouveaux produits. Decouvrez d'autres categories."
   },
   "cart": {
     "title": "Panier",
