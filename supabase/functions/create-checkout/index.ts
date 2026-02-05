@@ -7,6 +7,10 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
+const PLATFORM_FEE_PERCENT = 10;
+const IMMEDIATE_PAYOUT_PERCENT = 85;
+const RESERVE_DAYS = 30;
+
 interface CheckoutPayload {
   provider: 'stripe' | 'paysera';
   order_id: string;
@@ -14,6 +18,13 @@ interface CheckoutPayload {
   currency: string;
   success_url: string;
   cancel_url: string;
+}
+
+interface OrderItem {
+  id: string;
+  maker_id: string;
+  quantity: number;
+  price: number;
 }
 
 Deno.serve(async (req: Request) => {
@@ -80,6 +91,11 @@ Deno.serve(async (req: Request) => {
       );
     }
 
+    const { data: orderItems } = await supabaseClient
+      .from("order_items")
+      .select("id, maker_id, quantity, price")
+      .eq("order_id", payload.order_id);
+
     const { data: profile } = await supabaseClient
       .from("profiles")
       .select("email, full_name")
@@ -102,25 +118,95 @@ Deno.serve(async (req: Request) => {
         );
       }
 
+      const makerIds = [...new Set((orderItems || []).map(item => item.maker_id))];
+      const { data: stripeAccounts } = await supabaseClient
+        .from("stripe_accounts")
+        .select("maker_id, stripe_account_id, charges_enabled")
+        .in("maker_id", makerIds)
+        .eq("charges_enabled", true);
+
+      const stripeAccountMap = new Map(
+        (stripeAccounts || []).map(acc => [acc.maker_id, acc.stripe_account_id])
+      );
+
+      const makersWithoutStripe = makerIds.filter(id => !stripeAccountMap.has(id));
+
+      const transferGroups: { makerId: string; stripeAccountId: string; amount: number; items: OrderItem[] }[] = [];
+      let platformAmount = 0;
+
+      for (const item of (orderItems || [])) {
+        const itemTotal = item.price * item.quantity;
+        const stripeAccountId = stripeAccountMap.get(item.maker_id);
+
+        if (stripeAccountId) {
+          const existing = transferGroups.find(g => g.makerId === item.maker_id);
+          if (existing) {
+            existing.amount += itemTotal;
+            existing.items.push(item);
+          } else {
+            transferGroups.push({
+              makerId: item.maker_id,
+              stripeAccountId,
+              amount: itemTotal,
+              items: [item],
+            });
+          }
+        } else {
+          platformAmount += itemTotal;
+        }
+      }
+
+      const shippingCost = order.shipping_cost || 0;
+      platformAmount += shippingCost;
+
+      const transferData = transferGroups.map(group => {
+        const fee = Math.round(group.amount * PLATFORM_FEE_PERCENT / 100);
+        const netAmount = group.amount - fee;
+        const immediateAmount = Math.round(netAmount * IMMEDIATE_PAYOUT_PERCENT / 100);
+        const reserveAmount = netAmount - immediateAmount;
+
+        return {
+          ...group,
+          platformFee: fee,
+          netAmount,
+          immediateAmount,
+          reserveAmount,
+        };
+      });
+
+      const lineItems: Record<string, string>[] = [];
+      lineItems.push({
+        "price_data[currency]": payload.currency.toLowerCase(),
+        "price_data[product_data][name]": `Order #${order.order_number}`,
+        "price_data[product_data][description]": "Crafts And Hands - Lithuanian Handcrafted Products",
+        "price_data[unit_amount]": Math.round(payload.amount * 100).toString(),
+        "quantity": "1",
+      });
+
+      const formParams = new URLSearchParams({
+        "mode": "payment",
+        "success_url": payload.success_url,
+        "cancel_url": payload.cancel_url,
+        "customer_email": profile?.email || user.email || "",
+        "metadata[order_id]": payload.order_id,
+        "metadata[order_number]": order.order_number,
+        "payment_intent_data[metadata][order_id]": payload.order_id,
+        "payment_intent_data[metadata][order_number]": order.order_number,
+      });
+
+      formParams.append("line_items[0][price_data][currency]", payload.currency.toLowerCase());
+      formParams.append("line_items[0][price_data][product_data][name]", `Order #${order.order_number}`);
+      formParams.append("line_items[0][price_data][product_data][description]", "Crafts And Hands - Lithuanian Handcrafted Products");
+      formParams.append("line_items[0][price_data][unit_amount]", Math.round(payload.amount * 100).toString());
+      formParams.append("line_items[0][quantity]", "1");
+
       const stripeResponse = await fetch("https://api.stripe.com/v1/checkout/sessions", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${stripeSecretKey}`,
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams({
-          "mode": "payment",
-          "success_url": payload.success_url,
-          "cancel_url": payload.cancel_url,
-          "customer_email": profile?.email || user.email || "",
-          "line_items[0][price_data][currency]": payload.currency.toLowerCase(),
-          "line_items[0][price_data][product_data][name]": `Order #${order.order_number}`,
-          "line_items[0][price_data][product_data][description]": "Crafts And Hands - Lithuanian Handcrafted Products",
-          "line_items[0][price_data][unit_amount]": Math.round(payload.amount * 100).toString(),
-          "line_items[0][quantity]": "1",
-          "metadata[order_id]": payload.order_id,
-          "metadata[order_number]": order.order_number,
-        }),
+        body: formParams,
       });
 
       if (!stripeResponse.ok) {
@@ -145,6 +231,16 @@ Deno.serve(async (req: Request) => {
             ...JSON.parse(order.notes || "{}"),
             payment_provider: "stripe",
             stripe_session_id: stripeSession.id,
+            transfer_data: transferData.map(t => ({
+              maker_id: t.makerId,
+              stripe_account_id: t.stripeAccountId,
+              gross_amount: t.amount,
+              platform_fee: t.platformFee,
+              immediate_amount: t.immediateAmount,
+              reserve_amount: t.reserveAmount,
+              items: t.items.map(i => i.id),
+            })),
+            makers_without_stripe: makersWithoutStripe,
           }),
         })
         .eq("id", payload.order_id);

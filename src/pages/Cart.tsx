@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Trash2, Plus, Minus, X, Truck, Clock, Zap } from 'lucide-react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { Trash2, Plus, Minus, X, Truck, Clock, Zap, CreditCard, Building2 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { processOrder } from '../services/orderService'
@@ -15,6 +15,12 @@ import {
   ShippingRate,
   ShippingZone,
 } from '../services/shippingService'
+import {
+  PaymentMethod,
+  getAvailablePaymentMethods,
+  getCountryCode,
+  createCheckoutSession,
+} from '../services/paymentService'
 
 interface CartItem {
   id: string
@@ -34,10 +40,13 @@ interface CartItem {
 
 export const Cart: React.FC = () => {
   const { t } = useTranslation()
+  const [searchParams] = useSearchParams()
   const [cartItems, setCartItems] = useState<CartItem[]>([])
   const [loading, setLoading] = useState(true)
   const [showCheckout, setShowCheckout] = useState(false)
   const [processing, setProcessing] = useState(false)
+  const [paymentError, setPaymentError] = useState<string | null>(null)
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<PaymentMethod>('stripe')
   const [shippingAddress, setShippingAddress] = useState({
     full_name: '',
     address_line1: '',
@@ -51,7 +60,13 @@ export const Cart: React.FC = () => {
   const [shippingRates, setShippingRates] = useState<ShippingRate[]>([])
   const [selectedRate, setSelectedRate] = useState<ShippingRate | null>(null)
   const { user } = useAuth()
-  const navigate = useNavigate()
+
+  useEffect(() => {
+    const paymentParam = searchParams.get('payment')
+    if (paymentParam === 'cancelled') {
+      setPaymentError('Payment was cancelled. Please try again.')
+    }
+  }, [searchParams])
 
   useEffect(() => {
     if (user) {
@@ -117,6 +132,7 @@ export const Cart: React.FC = () => {
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault()
     setProcessing(true)
+    setPaymentError(null)
 
     try {
       const orderPayload = {
@@ -133,12 +149,25 @@ export const Cart: React.FC = () => {
 
       const result = await processOrder(orderPayload)
 
-      setShowCheckout(false)
-      navigate(`/order-confirmation?order=${result.order.id}`)
+      const checkoutResult = await createCheckoutSession(
+        result.order.id,
+        total,
+        selectedPaymentMethod,
+        'EUR'
+      )
+
+      if ('error' in checkoutResult) {
+        setPaymentError(checkoutResult.error)
+        setProcessing(false)
+        return
+      }
+
+      if (checkoutResult.sessionUrl) {
+        window.location.href = checkoutResult.sessionUrl
+      }
     } catch (error) {
       console.error('Checkout error:', error)
-      alert(error instanceof Error ? error.message : 'Failed to process order')
-    } finally {
+      setPaymentError(error instanceof Error ? error.message : 'Failed to process order')
       setProcessing(false)
     }
   }
@@ -146,6 +175,11 @@ export const Cart: React.FC = () => {
   const subtotal = cartItems.reduce((sum, item) => sum + item.products.price * item.quantity, 0)
   const shippingCost = selectedRate ? calculateShippingCost(selectedRate, subtotal) : { cost: 0, isFree: false }
   const total = subtotal + shippingCost.cost
+
+  const availablePaymentMethods = getAvailablePaymentMethods(
+    getCountryCode(shippingAddress.country),
+    'EUR'
+  )
 
   if (!user) {
     return (
@@ -188,6 +222,12 @@ export const Cart: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
 
+      {paymentError && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+          {paymentError}
+        </div>
+      )}
+
       <div className="grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
           {cartItems.map((item) => {
@@ -212,7 +252,7 @@ export const Cart: React.FC = () => {
                   </Link>
                   <p className="text-sm text-gray-500">by {item.products.makers.business_name}</p>
                   <p className="text-lg font-bold text-amber-600 mt-2">
-                    €{item.products.price.toFixed(2)}
+                    {item.products.price.toFixed(2)} EUR
                   </p>
                 </div>
                 <div className="flex flex-col items-end justify-between">
@@ -250,7 +290,7 @@ export const Cart: React.FC = () => {
             <div className="space-y-3 mb-6">
               <div className="flex justify-between">
                 <span className="text-gray-600">Subtotal</span>
-                <span className="font-semibold">€{subtotal.toFixed(2)}</span>
+                <span className="font-semibold">{subtotal.toFixed(2)} EUR</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Shipping</span>
@@ -258,18 +298,18 @@ export const Cart: React.FC = () => {
                   {shippingCost.isFree ? (
                     <span className="text-green-600">FREE</span>
                   ) : (
-                    `€${shippingCost.cost.toFixed(2)}`
+                    `${shippingCost.cost.toFixed(2)} EUR`
                   )}
                 </span>
               </div>
               {selectedRate && !shippingCost.isFree && (
                 <p className="text-sm text-gray-500">
-                  Add €{(selectedRate.free_shipping_threshold - subtotal).toFixed(2)} more for free shipping!
+                  Add {(selectedRate.free_shipping_threshold - subtotal).toFixed(2)} EUR more for free shipping!
                 </p>
               )}
               <div className="border-t pt-3 flex justify-between text-lg font-bold">
                 <span>Total</span>
-                <span className="text-amber-600">€{total.toFixed(2)}</span>
+                <span className="text-amber-600">{total.toFixed(2)} EUR</span>
               </div>
             </div>
             <button
@@ -295,6 +335,12 @@ export const Cart: React.FC = () => {
                   <X className="w-6 h-6" />
                 </button>
               </div>
+
+              {paymentError && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4">
+                  {paymentError}
+                </div>
+              )}
 
               <form onSubmit={handleCheckout} className="space-y-4">
                 <div>
@@ -416,7 +462,7 @@ export const Cart: React.FC = () => {
                               {cost.isFree ? (
                                 <span className="text-green-600 font-semibold">FREE</span>
                               ) : (
-                                <span className="font-semibold">€{cost.cost.toFixed(2)}</span>
+                                <span className="font-semibold">{cost.cost.toFixed(2)} EUR</span>
                               )}
                             </div>
                           </label>
@@ -439,20 +485,59 @@ export const Cart: React.FC = () => {
                   />
                 </div>
 
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Payment Method *
+                  </label>
+                  <div className="space-y-2">
+                    {availablePaymentMethods.map(method => (
+                      <label
+                        key={method.id}
+                        className={`flex items-center gap-3 p-3 border rounded-lg cursor-pointer transition-colors ${
+                          selectedPaymentMethod === method.id
+                            ? 'border-amber-500 bg-amber-50'
+                            : 'border-gray-200 hover:border-gray-300'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="payment"
+                          checked={selectedPaymentMethod === method.id}
+                          onChange={() => setSelectedPaymentMethod(method.id)}
+                          className="text-amber-600 focus:ring-amber-500"
+                        />
+                        <div className="flex items-center gap-3 flex-1">
+                          {method.id === 'stripe' ? (
+                            <CreditCard className="w-5 h-5 text-gray-600" />
+                          ) : (
+                            <Building2 className="w-5 h-5 text-gray-600" />
+                          )}
+                          <div>
+                            <span className="font-medium">{method.name}</span>
+                            {method.id === 'stripe' && (
+                              <p className="text-xs text-gray-500">Visa, Mastercard, Apple Pay, Google Pay</p>
+                            )}
+                          </div>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="bg-gray-50 p-4 rounded-lg mt-6">
                   <h3 className="font-semibold mb-2">Order Summary</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>Subtotal</span>
-                      <span>€{subtotal.toFixed(2)}</span>
+                      <span>{subtotal.toFixed(2)} EUR</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Shipping ({selectedRate ? getMethodLabel(selectedRate.method) : 'Standard'})</span>
-                      <span>{shippingCost.isFree ? 'FREE' : `€${shippingCost.cost.toFixed(2)}`}</span>
+                      <span>{shippingCost.isFree ? 'FREE' : `${shippingCost.cost.toFixed(2)} EUR`}</span>
                     </div>
                     <div className="flex justify-between font-bold text-base pt-2 border-t">
                       <span>Total</span>
-                      <span className="text-amber-600">€{total.toFixed(2)}</span>
+                      <span className="text-amber-600">{total.toFixed(2)} EUR</span>
                     </div>
                   </div>
                 </div>
@@ -460,9 +545,16 @@ export const Cart: React.FC = () => {
                 <button
                   type="submit"
                   disabled={processing}
-                  className="w-full bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  {processing ? 'Processing...' : 'Place Order'}
+                  {processing ? (
+                    'Processing...'
+                  ) : (
+                    <>
+                      <CreditCard className="w-5 h-5" />
+                      Pay {total.toFixed(2)} EUR
+                    </>
+                  )}
                 </button>
               </form>
             </div>
