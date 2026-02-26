@@ -27,6 +27,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (accountMenuOpen) setAccountMenuOpen(false)
+        if (mobileMenuOpen) setMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [accountMenuOpen, mobileMenuOpen])
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
@@ -74,7 +85,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <span className="text-xl font-bold text-gray-900 hidden sm:block">Crafts And Hands</span>
               </Link>
 
-              <nav className="hidden lg:flex items-center gap-1">
+              <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
                 <Link
                   to="/products"
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
@@ -259,7 +270,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-gray-200 bg-white animate-fade-in">
-            <nav className="px-4 py-4 space-y-1">
+            <nav className="px-4 py-4 space-y-1" aria-label="Mobile navigation">
               <Link
                 to="/products"
                 className={`block py-3 px-4 rounded-lg font-medium ${isActive('/products') ? 'bg-primary-50 text-primary-600' : 'text-gray-700 hover:bg-gray-50'}`}

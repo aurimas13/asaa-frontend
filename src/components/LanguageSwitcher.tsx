@@ -37,13 +37,16 @@ export const LanguageSwitcher: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200"
         type="button"
+        aria-label="Change language"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
       >
         <Globe className="w-4 h-4 text-gray-600" />
         <span className="text-sm font-medium text-gray-700">{currentLang.flag}</span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+        <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50" role="listbox" aria-label="Select language">
           {languages.map((lang) => (
             <button
               key={lang.code}

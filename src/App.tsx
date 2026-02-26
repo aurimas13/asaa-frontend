@@ -28,6 +28,8 @@ import { MakerGuidelines } from './pages/MakerGuidelines'
 import { SuccessStories } from './pages/SuccessStories'
 import { Privacy } from './pages/Privacy'
 import { Terms } from './pages/Terms'
+import { Admin } from './pages/Admin'
+import { GiftFinder } from './pages/GiftFinder'
 import { CookieConsent } from './components/CookieConsent'
 
 function App() {
@@ -63,6 +65,8 @@ function App() {
             <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/gift-finder" element={<GiftFinder />} />
           </Routes>
         </Layout>
         <CookieConsent />

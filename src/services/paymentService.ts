@@ -57,8 +57,10 @@ export async function createCheckoutSession(
       return { error: 'Not authenticated' }
     }
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001'
+
     const response = await fetch(
-      `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout`,
+      `${backendUrl}/checkout/create-session`,
       {
         method: 'POST',
         headers: {
