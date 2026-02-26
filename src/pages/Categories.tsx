@@ -37,6 +37,15 @@ export const Categories: React.FC = () => {
     textiles: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&fit=crop&q=80',
     woodwork: 'https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=600&fit=crop&q=80',
     jewelry: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&fit=crop&q=80',
+    'wool-felting': 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&fit=crop&q=80',
+    'straw-ornaments': 'https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=600&fit=crop&q=80',
+    blacksmithing: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&fit=crop&q=80',
+    leather: 'https://images.unsplash.com/photo-1473188588951-bf5fcf23a6af?w=600&fit=crop&q=80',
+    candles: 'https://images.unsplash.com/photo-1602607753498-b8485b090245?w=600&fit=crop&q=80',
+    glass: 'https://images.unsplash.com/photo-1518911710364-17ec553bde5d?w=600&fit=crop&q=80',
+    painting: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&fit=crop&q=80',
+    'easter-eggs': 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600&fit=crop&q=80',
+    amber: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&fit=crop&q=80',
     default: 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=600&fit=crop&q=80',
   }
 
@@ -69,6 +78,7 @@ export const Categories: React.FC = () => {
                   src={category.image_url || defaultImages[category.slug] || defaultImages.default}
                   alt={category.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => { (e.target as HTMLImageElement).src = defaultImages[category.slug] || defaultImages.default }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">

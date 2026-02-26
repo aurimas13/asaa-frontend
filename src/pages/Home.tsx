@@ -368,6 +368,7 @@ export const Home: React.FC = () => {
                       src={maker.cover_image || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&fit=crop&q=80'}
                       alt={maker.business_name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&fit=crop&q=80' }}
                     />
                     <div className="absolute top-3 right-3">
                       {maker.verified ? (

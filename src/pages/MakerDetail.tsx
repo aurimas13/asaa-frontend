@@ -139,6 +139,7 @@ export const MakerDetail: React.FC = () => {
             src={maker.cover_image || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&fit=crop&q=80'}
             alt={maker.business_name}
             className="w-full h-full object-cover"
+            onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&fit=crop&q=80' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
