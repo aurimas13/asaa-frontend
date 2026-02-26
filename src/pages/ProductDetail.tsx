@@ -172,9 +172,9 @@ export const ProductDetail: React.FC = () => {
   }
 
   const getImages = () => {
-    if (!product?.images) return ['https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80']
+    if (!product?.images) return ['https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&fit=crop&q=80']
     const parsed = typeof product.images === 'string' ? JSON.parse(product.images) : product.images
-    return parsed.length > 0 ? parsed : ['https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80']
+    return parsed.length > 0 ? parsed : ['https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&fit=crop&q=80']
   }
 
   if (loading) {

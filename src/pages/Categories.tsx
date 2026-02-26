@@ -57,7 +57,7 @@ export const Categories: React.FC = () => {
     painting: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&fit=crop&q=80',
     'easter-eggs': 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600&fit=crop&q=80',
     amber: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&fit=crop&q=80',
-    default: 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=600&fit=crop&q=80',
+    default: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&fit=crop&q=80',
   }
 
   return (

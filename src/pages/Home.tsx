@@ -76,9 +76,9 @@ export const Home: React.FC = () => {
   }
 
   const getImageUrl = (images: string[] | string | null) => {
-    if (!images) return 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
+    if (!images) return 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&fit=crop&q=80'
     const parsed = typeof images === 'string' ? JSON.parse(images) : images
-    return parsed[0] || 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
+    return parsed[0] || 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&fit=crop&q=80'
   }
 
   return (
@@ -249,7 +249,7 @@ export const Home: React.FC = () => {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <img
-                    src={category.image_url || 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=400&fit=crop&q=80'}
+                    src={category.image_url || 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&fit=crop&q=80'}
                     alt={t(`categories.${category.slug}`, category.name)}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />

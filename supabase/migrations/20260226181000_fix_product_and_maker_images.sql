@@ -14,12 +14,12 @@
 -- ============================================
 UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&fit=crop&q=80' WHERE slug = 'ceramics';
 UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=800&fit=crop&q=80' WHERE slug = 'amber';
-UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=800&fit=crop&q=80' WHERE slug = 'straw-art';
+UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&fit=crop&q=80' WHERE slug = 'straw-art';
 UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&fit=crop&q=80' WHERE slug = 'weaving';
-UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1629127726247-c5a21fdf41da?w=800&fit=crop&q=80' WHERE slug = 'basketry';
+UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&fit=crop&q=80' WHERE slug = 'basketry';
 UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=800&fit=crop&q=80' WHERE slug = 'woodwork';
 UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1535813547-99c456a41d4a?w=800&fit=crop&q=80' WHERE slug = 'blacksmithing';
-UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80' WHERE slug = 'multi-craft';
+UPDATE categories SET image_url = 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&fit=crop&q=80' WHERE slug = 'multi-craft';
 
 -- ============================================
 -- MAKER COVER IMAGES
@@ -56,7 +56,7 @@ UPDATE makers SET cover_image = 'https://images.unsplash.com/photo-1556761175-59
 WHERE business_name ILIKE '%OAK Ceramics%';
 
 -- Pintines (workshop - basket weaving)
-UPDATE makers SET cover_image = 'https://images.unsplash.com/photo-1629127726247-c5a21fdf41da?w=800&fit=crop&q=80'
+UPDATE makers SET cover_image = 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&fit=crop&q=80'
 WHERE business_name ILIKE '%Pintines%';
 
 -- Giedrius & Rita Maciuitis / Kampelis (family duo - woodwork)
@@ -126,7 +126,7 @@ UPDATE makers SET cover_image = 'https://images.unsplash.com/photo-1513364776144
 WHERE business_name ILIKE '%Svirnas%';
 
 -- Varenos kulturos centro Dargužiu amatu centras (organization)
-UPDATE makers SET cover_image = 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
+UPDATE makers SET cover_image = 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&fit=crop&q=80'
 WHERE business_name ILIKE '%Dargužių%' OR business_name ILIKE '%Varėnos%';
 
 -- Vilnius Ceramics Studio (organization)
@@ -148,7 +148,7 @@ UPDATE products SET images = '["https://images.unsplash.com/photo-1578749556568-
 WHERE title = 'Traditional Black Ceramic Vase';
 
 -- Black Ceramic Bowl Set
-UPDATE products SET images = '["https://images.unsplash.com/photo-1610701596007-11502f1ec5be?w=800&fit=crop&q=80"]'
+UPDATE products SET images = '["https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&fit=crop&q=80"]'
 WHERE title = 'Black Ceramic Bowl Set';
 
 -- Decorative Black Clay Plate
@@ -172,7 +172,7 @@ UPDATE products SET images = '["https://images.unsplash.com/photo-1602523961358-
 WHERE title = 'Ceramic Candle Holder Set';
 
 -- Ceramic Dinner Plate Set
-UPDATE products SET images = '["https://images.unsplash.com/photo-1603199506016-5ef8e0b24e44?w=800&fit=crop&q=80"]'
+UPDATE products SET images = '["https://images.unsplash.com/photo-1590422749897-47036da0b0ff?w=800&fit=crop&q=80"]'
 WHERE title = 'Ceramic Dinner Plate Set';
 
 -- Ceramic Tea Set
@@ -210,7 +210,7 @@ WHERE title = 'Amber Gift Box Set';
 
 -- === STRAW ART ===
 -- Traditional Straw Mobile - Small
-UPDATE products SET images = '["https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=800&fit=crop&q=80"]'
+UPDATE products SET images = '["https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&fit=crop&q=80"]'
 WHERE title = 'Traditional Straw Mobile - Small';
 
 -- Traditional Straw Mobile - Large
@@ -232,7 +232,7 @@ WHERE title = 'Wooden Spoon Collection';
 
 -- === BASKETRY ===
 -- Willow Shopping Basket
-UPDATE products SET images = '["https://images.unsplash.com/photo-1629127726247-c5a21fdf41da?w=800&fit=crop&q=80"]'
+UPDATE products SET images = '["https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&fit=crop&q=80"]'
 WHERE title = 'Willow Shopping Basket';
 
 -- Decorative Willow Bowl
@@ -262,7 +262,7 @@ WHERE title = 'Decorative Wooden Bowl';
 
 -- === WEAVING ===
 -- Handwoven Linen Scarf
-UPDATE products SET images = '["https://images.unsplash.com/photo-1601924921557-45e8e0db4aff?w=800&fit=crop&q=80"]'
+UPDATE products SET images = '["https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&fit=crop&q=80"]'
 WHERE title = 'Handwoven Linen Scarf';
 
 -- Linen Kitchen Towels Set
