@@ -405,22 +405,22 @@ By 8:00 PM on Sunday, you should have:
 Before starting tomorrow:
 
 1. **Do you have these API keys ready?**
-   - OpenAI API key (ChatGPT Business)
-   - Formspree form endpoint
+   - OpenAI API key (ChatGPT Business) - stored securely in environment variables
+   - Formspree form endpoint of https://formspree.io/f/xrblgezj
 
 2. **Product images?**
-   - Will you upload real photos?
-   - Or use stock images for now?
+   - Will you upload real photos? Yes, but not now, later. Use from unsplash.com
+   - Or use stock images for now? Use from unsplash.com
 
 3. **Domain name?**
-   - craftsandhands.com?
+   - craftsandhands.com? Yes
    - crafts-and-hands.lt?
    - amataiirankos.lt?
 
 4. **Priority craftsmen?**
-   - Which 5-10 makers to add first?
-   - Do you have their permission?
-   - Any existing relationships?
+   - Which 5-10 makers to add first? Select the best in your opinion
+   - Do you have their permission? No ut will get it as this is just to show how it will look
+   - Any existing relationships? None for MVP. Preparing to get makers to use my platform
 
 ---
 

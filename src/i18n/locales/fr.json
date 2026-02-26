@@ -244,6 +244,23 @@
     "glassArt": "Art du verre",
     "glass-art": "Art du verre"
   },
+  "categoryDescriptions": {
+    "amber": "Bijoux et pièces décoratives en ambre baltique authentique",
+    "straw-art": "Ornements traditionnels lituaniens en paille et sculptures de jardin",
+    "weaving": "Textiles tissés à la main selon les techniques traditionnelles lituaniennes",
+    "textiles": "Tissus, lins et art textile faits main",
+    "basketry": "Paniers tressés et artisanat d'osier traditionnels",
+    "woodwork": "Objets en bois sculptés à la main et artisanat traditionnel du bois",
+    "blacksmithing": "Pièces artisanales en fer et métal forgées à la main",
+    "jewelry": "Bijoux artisanaux d'artisans lituaniens",
+    "wool-felting": "Produits en laine feutrée et accessoires faits main",
+    "leather-goods": "Sacs, ceintures et accessoires en cuir faits main",
+    "paper-art": "Art traditionnel lituanien du découpage de papier",
+    "multi-craft": "Artisans travaillant dans plusieurs disciplines artisanales",
+    "pottery": "Pots, vases et poterie décorative en argile faits main",
+    "ceramics": "Vaisselle et pièces décoratives en céramique artisanale",
+    "glass-art": "Art du verre et vitraux artisanaux"
+  },
   "returns": {
     "title": "Retours et remboursements",
     "subtitle": "Nous voulons que votre achat artisanal vous plaise. Si quelque chose ne va pas, nous sommes là pour vous aider.",

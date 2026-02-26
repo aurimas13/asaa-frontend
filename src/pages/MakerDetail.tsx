@@ -4,6 +4,7 @@ import { Star, MapPin, CheckCircle, Globe, Instagram, ArrowLeft } from 'lucide-r
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { useTranslation } from 'react-i18next'
+import { getLocalizedField } from '../utils/localize'
 
 interface Maker {
   id: string
@@ -24,6 +25,8 @@ interface Maker {
 interface Product {
   id: string
   title: string
+  title_lt: string | null
+  title_fr: string | null
   price: number
   images: string[]
   rating: number
@@ -62,7 +65,7 @@ export const MakerDetail: React.FC = () => {
   const loadProducts = async () => {
     const { data } = await supabase
       .from('products')
-      .select('id, title, price, images, rating')
+      .select('id, title, title_lt, title_fr, price, images, rating')
       .eq('maker_id', id)
       .eq('status', 'active')
       .limit(12)
@@ -204,12 +207,12 @@ export const MakerDetail: React.FC = () => {
                   <div className="aspect-square overflow-hidden">
                     <img
                       src={getImageUrl(product.images)}
-                      alt={product.title}
+                      alt={getLocalizedField(product, 'title')}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold text-gray-900 line-clamp-1">{product.title}</h3>
+                    <h3 className="font-semibold text-gray-900 line-clamp-1">{getLocalizedField(product, 'title')}</h3>
                     <div className="flex items-center justify-between mt-2">
                       <span className="text-lg font-bold text-amber-600">€{product.price.toFixed(2)}</span>
                       {product.rating > 0 && (

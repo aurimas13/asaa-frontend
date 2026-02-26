@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 
 interface Category {
@@ -12,6 +13,7 @@ interface Category {
 }
 
 export const Categories: React.FC = () => {
+  const { t } = useTranslation()
   const [categories, setCategories] = useState<Category[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -41,8 +43,8 @@ export const Categories: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Categories</h1>
-        <p className="text-gray-600 mt-1">Browse products by category</p>
+        <h1 className="text-3xl font-bold text-gray-900">{t('categories.title')}</h1>
+        <p className="text-gray-600 mt-1">{t('categories.subtitle')}</p>
       </div>
 
       {loading ? (
@@ -70,9 +72,9 @@ export const Categories: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-xl font-bold text-white">{category.name}</h3>
+                  <h3 className="text-xl font-bold text-white">{t(`categories.${category.slug}`, category.name)}</h3>
                   {category.description && (
-                    <p className="text-white/80 text-sm mt-1 line-clamp-2">{category.description}</p>
+                    <p className="text-white/80 text-sm mt-1 line-clamp-2">{t(`categoryDescriptions.${category.slug}`, category.description)}</p>
                   )}
                 </div>
               </div>

@@ -6,11 +6,16 @@ import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { useCart } from '../contexts/CartContext'
 import { WriteReview } from '../components/WriteReview'
+import { getLocalizedField } from '../utils/localize'
 
 interface Product {
   id: string
   title: string
+  title_lt: string | null
+  title_fr: string | null
   description: string
+  description_lt: string | null
+  description_fr: string | null
   price: number
   compare_at_price: number | null
   images: string[]
@@ -70,7 +75,7 @@ export const ProductDetail: React.FC = () => {
   const loadProduct = async () => {
     const { data, error } = await supabase
       .from('products')
-      .select('*, makers(id, business_name, cover_image, verified), categories(name)')
+      .select('*, makers(id, business_name, cover_image, verified), categories(name, slug)')
       .eq('id', id)
       .single()
 
@@ -211,7 +216,7 @@ export const ProductDetail: React.FC = () => {
           <div className="aspect-square rounded-xl overflow-hidden bg-gray-100">
             <img
               src={images[selectedImage]}
-              alt={product.title}
+              alt={getLocalizedField(product, 'title')}
               className="w-full h-full object-cover"
             />
           </div>
@@ -234,9 +239,9 @@ export const ProductDetail: React.FC = () => {
 
         <div>
           {product.categories && (
-            <p className="text-sm text-amber-600 font-medium mb-2">{product.categories.name}</p>
+            <p className="text-sm text-amber-600 font-medium mb-2">{t(`categories.${(product.categories as any).slug || product.categories.name.toLowerCase().replace(/\s+/g, '-')}`, product.categories.name)}</p>
           )}
-          <h1 className="text-3xl font-bold text-gray-900">{product.title}</h1>
+          <h1 className="text-3xl font-bold text-gray-900">{getLocalizedField(product, 'title')}</h1>
 
           <Link to={`/maker/${product.makers?.id}`} className="flex items-center gap-3 mt-4">
             <img
@@ -278,7 +283,7 @@ export const ProductDetail: React.FC = () => {
             </p>
           </div>
 
-          <p className="text-gray-700 mt-6 leading-relaxed">{product.description}</p>
+          <p className="text-gray-700 mt-6 leading-relaxed">{getLocalizedField(product, 'description')}</p>
 
           {product.materials && product.materials.length > 0 && (
             <div className="mt-4">
@@ -420,7 +425,7 @@ export const ProductDetail: React.FC = () => {
       {showReviewModal && product && (
         <WriteReview
           productId={product.id}
-          productTitle={product.title}
+          productTitle={getLocalizedField(product, 'title')}
           onClose={() => setShowReviewModal(false)}
           onSuccess={() => {
             loadReviews()

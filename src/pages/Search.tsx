@@ -3,11 +3,16 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { Search as SearchIcon, Star, Filter, ChevronDown, X, TrendingUp, Clock, Grid, List } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
+import { getLocalizedField } from '../utils/localize'
 
 interface Product {
   id: string
   title: string
+  title_lt: string | null
+  title_fr: string | null
   description: string
+  description_lt: string | null
+  description_fr: string | null
   price: number
   images: string[]
   rating: number
@@ -88,7 +93,7 @@ export const Search: React.FC = () => {
   const loadRecommendations = async () => {
     const { data } = await supabase
       .from('products')
-      .select('id, title, price, images, rating, makers(business_name)')
+      .select('id, title, title_lt, title_fr, price, images, rating, makers(business_name)')
       .eq('status', 'active')
       .eq('featured', true)
       .limit(4)
@@ -100,7 +105,7 @@ export const Search: React.FC = () => {
 
     let queryBuilder = supabase
       .from('products')
-      .select('id, title, description, price, images, rating, view_count, created_at, category_id, makers(business_name), categories(name, slug)')
+      .select('id, title, title_lt, title_fr, description, description_lt, description_fr, price, images, rating, view_count, created_at, category_id, makers(business_name), categories(name, slug)')
       .eq('status', 'active')
       .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
 
@@ -381,13 +386,13 @@ export const Search: React.FC = () => {
                       <div className="aspect-square overflow-hidden">
                         <img
                           src={getImageUrl(product.images)}
-                          alt={product.title}
+                          alt={getLocalizedField(product, 'title')}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                       <div className="p-4">
                         <h3 className="font-semibold text-gray-900 group-hover:text-amber-600 transition-colors line-clamp-1">
-                          {product.title}
+                          {getLocalizedField(product, 'title')}
                         </h3>
                         <p className="text-sm text-gray-500 mt-1">{product.makers?.business_name}</p>
                         <div className="flex items-center justify-between mt-3">
@@ -431,7 +436,7 @@ export const Search: React.FC = () => {
                     <div className="aspect-square overflow-hidden">
                       <img
                         src={getImageUrl(product.images)}
-                        alt={product.title}
+                        alt={getLocalizedField(product, 'title')}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
@@ -440,7 +445,7 @@ export const Search: React.FC = () => {
                         {product.categories ? t(`categories.${product.categories.slug}`, product.categories.name) : ''}
                       </p>
                       <h3 className="font-semibold text-gray-900 group-hover:text-amber-600 transition-colors line-clamp-2">
-                        {product.title}
+                        {getLocalizedField(product, 'title')}
                       </h3>
                       <p className="text-sm text-gray-500 mt-1">{product.makers?.business_name}</p>
                       <div className="flex items-center justify-between mt-3">
@@ -465,7 +470,7 @@ export const Search: React.FC = () => {
                     <div className="w-48 h-48 flex-shrink-0 overflow-hidden">
                       <img
                         src={getImageUrl(product.images)}
-                        alt={product.title}
+                        alt={getLocalizedField(product, 'title')}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -474,10 +479,10 @@ export const Search: React.FC = () => {
                         {product.categories ? t(`categories.${product.categories.slug}`, product.categories.name) : ''}
                       </p>
                       <h3 className="text-lg font-semibold text-gray-900 group-hover:text-amber-600 transition-colors">
-                        {product.title}
+                        {getLocalizedField(product, 'title')}
                       </h3>
                       <p className="text-sm text-gray-500 mt-1">{product.makers?.business_name}</p>
-                      <p className="text-sm text-gray-600 mt-2 line-clamp-2">{product.description}</p>
+                      <p className="text-sm text-gray-600 mt-2 line-clamp-2">{getLocalizedField(product, 'description')}</p>
                       <div className="flex items-center gap-4 mt-4">
                         <span className="text-xl font-bold text-amber-600">€{product.price.toFixed(2)}</span>
                         {product.rating > 0 && (

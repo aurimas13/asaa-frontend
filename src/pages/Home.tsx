@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Star, TrendingUp, Award, ShoppingBag, Truck, Shield, Clock, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
+import { getLocalizedField } from '../utils/localize'
 
 interface Product {
   id: string
   title: string
+  title_lt: string | null
+  title_fr: string | null
   price: number
   images: string[]
   rating: number
@@ -46,7 +49,7 @@ export const Home: React.FC = () => {
       const [productsRes, makersRes, categoriesRes] = await Promise.all([
         supabase
           .from('products')
-          .select('id, title, price, images, rating, makers(business_name)')
+          .select('id, title, title_lt, title_fr, price, images, rating, makers(business_name)')
           .eq('status', 'active')
           .order('created_at', { ascending: false })
           .limit(8),
@@ -247,12 +250,12 @@ export const Home: React.FC = () => {
                 >
                   <img
                     src={category.image_url || 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=400'}
-                    alt={category.name}
+                    alt={t(`categories.${category.slug}`, category.name)}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white font-semibold text-sm md:text-base">{category.name}</h3>
+                    <h3 className="text-white font-semibold text-sm md:text-base">{t(`categories.${category.slug}`, category.name)}</h3>
                   </div>
                   <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary-500 rounded-2xl transition-colors"></div>
                 </Link>
@@ -302,7 +305,7 @@ export const Home: React.FC = () => {
                     <div className="aspect-square overflow-hidden relative">
                       <img
                         src={getImageUrl(product.images)}
-                        alt={product.title}
+                        alt={getLocalizedField(product, 'title')}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -313,7 +316,7 @@ export const Home: React.FC = () => {
                     </div>
                     <div className="p-4">
                       <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors line-clamp-1">
-                        {product.title}
+                        {getLocalizedField(product, 'title')}
                       </h3>
                       <p className="text-sm text-gray-500 mt-1">{product.makers?.business_name}</p>
                       <div className="flex items-center justify-between mt-3">

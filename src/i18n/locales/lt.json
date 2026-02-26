@@ -244,6 +244,23 @@
     "glassArt": "Stiklo menas",
     "glass-art": "Stiklo menas"
   },
+  "categoryDescriptions": {
+    "amber": "Autentiški Baltijos gintaro papuošalai ir dekoratyviniai dirbiniai",
+    "straw-art": "Tradiciniai lietuviški šiaudiniai sodai ir ornamentai",
+    "weaving": "Rankomis austi tekstilės dirbiniai tradicinėmis lietuviškomis technikomis",
+    "textiles": "Rankų darbo audiniai, linas ir tekstilės menas",
+    "basketry": "Tradiciniai pinti krepšiai ir vytelių dirbiniai",
+    "woodwork": "Rankomis drožti mediniai dirbiniai ir tradicinis medžio apdirbimas",
+    "blacksmithing": "Rankomis kalti geležies ir metalo dirbiniai",
+    "jewelry": "Rankų darbo juvelyriniai dirbiniai iš Lietuvos amatininkų",
+    "wool-felting": "Rankų darbo veltinio gaminiai ir aksesuarai",
+    "leather-goods": "Rankų darbo odinės rankinės, diržai ir aksesuarai",
+    "paper-art": "Tradiciniai lietuviški karpiniai",
+    "multi-craft": "Amatininkai, dirbantys keliose amatų srityse",
+    "pottery": "Rankų darbo moliniai puodai, indai ir dekoratyvinė keramika",
+    "ceramics": "Amatininkų keraminiai indai ir dekoratyviniai dirbiniai",
+    "glass-art": "Rankų darbo stiklo menas ir vitražai"
+  },
   "returns": {
     "title": "Grąžinimai ir pinigų grąžinimas",
     "subtitle": "Norime, kad jūsų rankų darbo pirkinys jus džiugintų. Jei kažkas negerai, esame pasirengę padėti.",

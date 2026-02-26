@@ -240,6 +240,23 @@
     "strawArt": "Straw Art",
     "multiCraft": "Multi-craft"
   },
+  "categoryDescriptions": {
+    "amber": "Authentic Baltic amber jewelry and decorative pieces",
+    "straw-art": "Traditional Lithuanian straw ornaments and garden sculptures",
+    "weaving": "Handwoven textiles using traditional Lithuanian techniques",
+    "textiles": "Handcrafted fabrics, linens, and textile art",
+    "basketry": "Traditional woven baskets and wicker crafts",
+    "woodwork": "Hand-carved wooden items and traditional woodcraft",
+    "blacksmithing": "Hand-forged iron and metal artisan pieces",
+    "jewelry": "Handcrafted jewelry from Lithuanian artisans",
+    "wool-felting": "Handmade felted wool products and accessories",
+    "leather-goods": "Handcrafted leather bags, belts, and accessories",
+    "paper-art": "Traditional Lithuanian paper cutting art",
+    "multi-craft": "Artisans working across multiple craft disciplines",
+    "pottery": "Handmade clay pots, vessels, and decorative pottery",
+    "ceramics": "Artisan ceramic tableware and decorative pieces",
+    "glass-art": "Handcrafted glass art and stained glass creations"
+  },
   "returns": {
     "title": "Returns & Refunds",
     "subtitle": "We want you to love your handcrafted purchase. If something is not right, we're here to help.",
