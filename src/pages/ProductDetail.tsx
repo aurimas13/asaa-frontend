@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Star, Heart, ShoppingCart, Truck, Shield, ArrowLeft, Edit3, CheckCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
+import { useCart } from '../contexts/CartContext'
 import { WriteReview } from '../components/WriteReview'
 
 interface Product {
@@ -42,6 +44,8 @@ interface Review {
 export const ProductDetail: React.FC = () => {
   const { id } = useParams()
   const { user } = useAuth()
+  const { t } = useTranslation()
+  const { refreshCart } = useCart()
   const [product, setProduct] = useState<Product | null>(null)
   const [reviews, setReviews] = useState<Review[]>([])
   const [loading, setLoading] = useState(true)
@@ -112,7 +116,7 @@ export const ProductDetail: React.FC = () => {
 
   const toggleWishlist = async () => {
     if (!user) {
-      alert('Please sign in to add items to wishlist')
+      alert(t('productDetail.signInToWishlist'))
       return
     }
 
@@ -127,7 +131,7 @@ export const ProductDetail: React.FC = () => {
 
   const addToCart = async () => {
     if (!user) {
-      alert('Please sign in to add items to cart')
+      alert(t('productDetail.signInToCart'))
       return
     }
 
@@ -152,10 +156,11 @@ export const ProductDetail: React.FC = () => {
           quantity,
         })
       }
-      alert('Added to cart!')
+      await refreshCart()
+      alert(t('productDetail.addedToCart'))
     } catch (error) {
       console.error('Error adding to cart:', error)
-      alert('Failed to add to cart')
+      alert(t('productDetail.failedToAdd'))
     } finally {
       setAddingToCart(false)
     }
@@ -185,9 +190,9 @@ export const ProductDetail: React.FC = () => {
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h2 className="text-2xl font-bold">Product not found</h2>
+        <h2 className="text-2xl font-bold">{t('productDetail.notFound')}</h2>
         <Link to="/products" className="text-amber-600 hover:underline mt-4 inline-block">
-          Browse all products
+          {t('productDetail.browseAll')}
         </Link>
       </div>
     )
@@ -198,7 +203,7 @@ export const ProductDetail: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Link to="/products" className="flex items-center gap-2 text-gray-600 hover:text-amber-600 mb-6">
-        <ArrowLeft className="w-4 h-4" /> Back to Products
+        <ArrowLeft className="w-4 h-4" /> {t('productDetail.backToProducts')}
       </Link>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -243,7 +248,7 @@ export const ProductDetail: React.FC = () => {
               <p className="font-medium text-gray-900 flex items-center gap-2">
                 {product.makers?.business_name}
                 {product.makers?.verified && (
-                  <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">Verified</span>
+                  <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">{t('productDetail.verified')}</span>
                 )}
               </p>
             </div>
@@ -258,7 +263,7 @@ export const ProductDetail: React.FC = () => {
                 />
               ))}
             </div>
-            <span className="text-gray-600">({reviews.length} reviews)</span>
+            <span className="text-gray-600">({reviews.length} {t('productDetail.reviews')})</span>
           </div>
 
           <div className="mt-6">
@@ -269,7 +274,7 @@ export const ProductDetail: React.FC = () => {
               )}
             </div>
             <p className="text-sm text-gray-500 mt-1">
-              {product.stock_quantity > 0 ? `${product.stock_quantity} in stock` : 'Out of stock'}
+              {product.stock_quantity > 0 ? `${product.stock_quantity} ${t('productDetail.inStock')}` : t('productDetail.outOfStock')}
             </p>
           </div>
 
@@ -277,7 +282,7 @@ export const ProductDetail: React.FC = () => {
 
           {product.materials && product.materials.length > 0 && (
             <div className="mt-4">
-              <p className="text-sm font-medium text-gray-900">Materials:</p>
+              <p className="text-sm font-medium text-gray-900">{t('productDetail.materials')}:</p>
               <div className="flex flex-wrap gap-2 mt-1">
                 {product.materials.map((material, idx) => (
                   <span key={idx} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
@@ -290,7 +295,7 @@ export const ProductDetail: React.FC = () => {
 
           {product.dimensions && (
             <p className="text-sm text-gray-600 mt-4">
-              <span className="font-medium">Dimensions:</span> {product.dimensions}
+              <span className="font-medium">{t('productDetail.dimensions')}:</span> {product.dimensions}
             </p>
           )}
 
@@ -317,7 +322,7 @@ export const ProductDetail: React.FC = () => {
               className="flex-1 bg-amber-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-amber-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               <ShoppingCart className="w-5 h-5" />
-              {addingToCart ? 'Adding...' : 'Add to Cart'}
+              {addingToCart ? t('productDetail.adding') : t('productDetail.addToCart')}
             </button>
 
             <button
@@ -336,15 +341,15 @@ export const ProductDetail: React.FC = () => {
             <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
               <Truck className="w-6 h-6 text-amber-600" />
               <div>
-                <p className="font-medium text-sm">Shipping</p>
+                <p className="font-medium text-sm">{t('productDetail.shipping')}</p>
                 <p className="text-xs text-gray-500">{product.shipping_time}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
               <Shield className="w-6 h-6 text-amber-600" />
               <div>
-                <p className="font-medium text-sm">Secure Purchase</p>
-                <p className="text-xs text-gray-500">Buyer protection</p>
+                <p className="font-medium text-sm">{t('productDetail.securePurchase')}</p>
+                <p className="text-xs text-gray-500">{t('productDetail.buyerProtection')}</p>
               </div>
             </div>
           </div>
@@ -353,13 +358,13 @@ export const ProductDetail: React.FC = () => {
 
       <div className="mt-16">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Customer Reviews</h2>
+            <h2 className="text-2xl font-bold text-gray-900">{t('productDetail.customerReviews')}</h2>
             {user && canReview && (
               <button
                 onClick={() => setShowReviewModal(true)}
                 className="flex items-center gap-2 bg-amber-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-amber-700 transition-colors"
               >
-                <Edit3 className="w-4 h-4" /> Write a Review
+                <Edit3 className="w-4 h-4" /> {t('productDetail.writeReview')}
               </button>
             )}
           </div>
@@ -378,7 +383,7 @@ export const ProductDetail: React.FC = () => {
                     </div>
                     {review.verified_purchase && (
                       <span className="flex items-center gap-1 text-xs text-green-700 bg-green-50 px-2 py-1 rounded-full">
-                        <CheckCircle className="w-3 h-3" /> Verified Purchase
+                        <CheckCircle className="w-3 h-3" /> {t('productDetail.verifiedPurchase')}
                       </span>
                     )}
                     <span className="text-sm text-gray-500">
@@ -390,7 +395,7 @@ export const ProductDetail: React.FC = () => {
                   <p className="text-sm text-gray-500 mt-2">- {review.profiles?.full_name || 'Anonymous'}</p>
                   {review.maker_response && (
                     <div className="mt-4 pl-4 border-l-2 border-amber-300 bg-amber-50 p-3 rounded-r-lg">
-                      <p className="text-sm font-medium text-amber-800">Maker Response:</p>
+                      <p className="text-sm font-medium text-amber-800">{t('productDetail.makerResponse')}:</p>
                       <p className="text-sm text-gray-700 mt-1">{review.maker_response}</p>
                     </div>
                   )}
@@ -399,13 +404,13 @@ export const ProductDetail: React.FC = () => {
             </div>
           ) : (
             <div className="text-center py-12 bg-gray-50 rounded-xl">
-              <p className="text-gray-500 mb-4">No reviews yet. Be the first to review!</p>
+              <p className="text-gray-500 mb-4">{t('productDetail.noReviews')}</p>
               {user && canReview && (
                 <button
                   onClick={() => setShowReviewModal(true)}
                   className="text-amber-600 hover:text-amber-700 font-medium"
                 >
-                  Write a Review
+                  {t('productDetail.writeReview')}
                 </button>
               )}
             </div>

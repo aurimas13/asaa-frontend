@@ -3,18 +3,18 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { ShoppingCart, Heart, User, Search, Menu, X, Store, RotateCcw, ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../contexts/AuthContext'
+import { useCart } from '../contexts/CartContext'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { CraftConcierge } from './CraftConcierge'
-import { supabase } from '../lib/supabase'
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [cartCount, setCartCount] = useState(0)
   const [scrolled, setScrolled] = useState(false)
   const [accountMenuOpen, setAccountMenuOpen] = useState(false)
   const accountMenuTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
   const { user, signOut } = useAuth()
+  const { cartCount } = useCart()
   const navigate = useNavigate()
   const location = useLocation()
   const { t } = useTranslation()
@@ -26,21 +26,6 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  useEffect(() => {
-    if (user) {
-      loadCartCount()
-    }
-  }, [user])
-
-  const loadCartCount = async () => {
-    if (!user) return
-    const { count } = await supabase
-      .from('carts')
-      .select('*', { count: 'exact', head: true })
-      .eq('user_id', user.id)
-    setCartCount(count || 0)
-  }
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -386,8 +371,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
             <p>&copy; 2026 {t('footer.copyright')}</p>
             <div className="flex gap-6">
-              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/privacy" className="hover:text-white transition-colors">{t('footer.privacy')}</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">{t('footer.terms')}</Link>
             </div>
           </div>
         </div>

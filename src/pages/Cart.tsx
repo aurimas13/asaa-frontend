@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { Trash2, Plus, Minus, X, Truck, Clock, Zap, CreditCard, Building2 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
+import { useCart } from '../contexts/CartContext'
 import { processOrder } from '../services/orderService'
 import { useTranslation } from 'react-i18next'
 import {
@@ -39,6 +40,8 @@ interface CartItem {
 }
 
 export const Cart: React.FC = () => {
+  const { user } = useAuth()
+  const { refreshCart } = useCart()
   const { t } = useTranslation()
   const [searchParams] = useSearchParams()
   const [cartItems, setCartItems] = useState<CartItem[]>([])
@@ -59,12 +62,11 @@ export const Cart: React.FC = () => {
   const [shippingZone, setShippingZone] = useState<ShippingZone | null>(null)
   const [shippingRates, setShippingRates] = useState<ShippingRate[]>([])
   const [selectedRate, setSelectedRate] = useState<ShippingRate | null>(null)
-  const { user } = useAuth()
 
   useEffect(() => {
     const paymentParam = searchParams.get('payment')
     if (paymentParam === 'cancelled') {
-      setPaymentError('Payment was cancelled. Please try again.')
+      setPaymentError(t('checkout.paymentCancelled'))
     }
   }, [searchParams])
 
@@ -123,6 +125,7 @@ export const Cart: React.FC = () => {
     try {
       setCartItems(prev => prev.filter(item => item.id !== itemId))
       await supabase.from('carts').delete().eq('id', itemId)
+      await refreshCart()
     } catch (error) {
       console.error('Error removing item:', error)
       loadCart()
@@ -220,7 +223,7 @@ export const Cart: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
+      <h1 className="text-3xl font-bold mb-8">{t('cart.title')}</h1>
 
       {paymentError && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
@@ -250,7 +253,7 @@ export const Cart: React.FC = () => {
                       {item.products.title}
                     </h3>
                   </Link>
-                  <p className="text-sm text-gray-500">by {item.products.makers.business_name}</p>
+                  <p className="text-sm text-gray-500">{t('products.by')} {item.products.makers.business_name}</p>
                   <p className="text-lg font-bold text-amber-600 mt-2">
                     {item.products.price.toFixed(2)} EUR
                   </p>
@@ -286,17 +289,17 @@ export const Cart: React.FC = () => {
 
         <div className="lg:col-span-1">
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 sticky top-20">
-            <h2 className="text-xl font-bold mb-4">Order Summary</h2>
+            <h2 className="text-xl font-bold mb-4">{t('cart.orderSummary')}</h2>
             <div className="space-y-3 mb-6">
               <div className="flex justify-between">
-                <span className="text-gray-600">Subtotal</span>
+                <span className="text-gray-600">{t('cart.subtotal')}</span>
                 <span className="font-semibold">{subtotal.toFixed(2)} EUR</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
+                <span className="text-gray-600">{t('cart.shipping')}</span>
                 <span className="font-semibold">
                   {shippingCost.isFree ? (
-                    <span className="text-green-600">FREE</span>
+                    <span className="text-green-600">{t('cart.freeShipping')}</span>
                   ) : (
                     `${shippingCost.cost.toFixed(2)} EUR`
                   )}
@@ -304,11 +307,11 @@ export const Cart: React.FC = () => {
               </div>
               {selectedRate && !shippingCost.isFree && (
                 <p className="text-sm text-gray-500">
-                  Add {(selectedRate.free_shipping_threshold - subtotal).toFixed(2)} EUR more for free shipping!
+                  {t('checkout.addMoreForFree', { amount: (selectedRate.free_shipping_threshold - subtotal).toFixed(2) })}
                 </p>
               )}
               <div className="border-t pt-3 flex justify-between text-lg font-bold">
-                <span>Total</span>
+                <span>{t('cart.total')}</span>
                 <span className="text-amber-600">{total.toFixed(2)} EUR</span>
               </div>
             </div>
@@ -316,7 +319,7 @@ export const Cart: React.FC = () => {
               onClick={() => setShowCheckout(true)}
               className="w-full bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors"
             >
-              Proceed to Checkout
+              {t('cart.checkout')}
             </button>
           </div>
         </div>
@@ -327,7 +330,7 @@ export const Cart: React.FC = () => {
           <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold">Checkout</h2>
+                <h2 className="text-2xl font-bold">{t('checkout.title')}</h2>
                 <button
                   onClick={() => setShowCheckout(false)}
                   className="text-gray-400 hover:text-gray-600"
@@ -345,7 +348,7 @@ export const Cart: React.FC = () => {
               <form onSubmit={handleCheckout} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Full Name *
+                    {t('checkout.fullName')} *
                   </label>
                   <input
                     type="text"
@@ -358,7 +361,7 @@ export const Cart: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Address Line 1 *
+                    {t('checkout.addressLine1')} *
                   </label>
                   <input
                     type="text"
@@ -371,7 +374,7 @@ export const Cart: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Address Line 2
+                    {t('checkout.addressLine2')}
                   </label>
                   <input
                     type="text"
@@ -384,7 +387,7 @@ export const Cart: React.FC = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      City *
+                      {t('checkout.city')} *
                     </label>
                     <input
                       type="text"
@@ -397,7 +400,7 @@ export const Cart: React.FC = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Postal Code *
+                      {t('checkout.postalCode')} *
                     </label>
                     <input
                       type="text"
@@ -411,7 +414,7 @@ export const Cart: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Country *
+                    {t('checkout.country')} *
                   </label>
                   <select
                     required
@@ -428,7 +431,7 @@ export const Cart: React.FC = () => {
                 {shippingRates.length > 0 && (
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Shipping Method *
+                      {t('checkout.shippingMethod')} *
                     </label>
                     <div className="space-y-2">
                       {shippingRates.map(rate => {
@@ -474,7 +477,7 @@ export const Cart: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number *
+                    {t('checkout.phone')} *
                   </label>
                   <input
                     type="tel"
@@ -487,7 +490,7 @@ export const Cart: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Payment Method *
+                    {t('checkout.paymentMethod')} *
                   </label>
                   <div className="space-y-2">
                     {availablePaymentMethods.map(method => (
@@ -525,10 +528,10 @@ export const Cart: React.FC = () => {
                 </div>
 
                 <div className="bg-gray-50 p-4 rounded-lg mt-6">
-                  <h3 className="font-semibold mb-2">Order Summary</h3>
+                  <h3 className="font-semibold mb-2">{t('cart.orderSummary')}</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span>Subtotal</span>
+                      <span>{t('cart.subtotal')}</span>
                       <span>{subtotal.toFixed(2)} EUR</span>
                     </div>
                     <div className="flex justify-between">
@@ -548,11 +551,11 @@ export const Cart: React.FC = () => {
                   className="w-full bg-amber-600 text-white py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {processing ? (
-                    'Processing...'
+                    t('checkout.processing')
                   ) : (
                     <>
                       <CreditCard className="w-5 h-5" />
-                      Pay {total.toFixed(2)} EUR
+                      {t('checkout.pay')} {total.toFixed(2)} EUR
                     </>
                   )}
                 </button>
