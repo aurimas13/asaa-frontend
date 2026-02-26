@@ -33,11 +33,11 @@ export const Categories: React.FC = () => {
   }
 
   const defaultImages: Record<string, string> = {
-    ceramics: 'https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=600',
-    textiles: 'https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=600',
-    woodwork: 'https://images.pexels.com/photos/4219528/pexels-photo-4219528.jpeg?auto=compress&cs=tinysrgb&w=600',
-    jewelry: 'https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=600',
-    default: 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=600',
+    ceramics: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&fit=crop&q=80',
+    textiles: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&fit=crop&q=80',
+    woodwork: 'https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=600&fit=crop&q=80',
+    jewelry: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&fit=crop&q=80',
+    default: 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=600&fit=crop&q=80',
   }
 
   return (

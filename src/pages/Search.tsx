@@ -177,9 +177,9 @@ export const Search: React.FC = () => {
   }
 
   const getImageUrl = (images: string[] | string | null) => {
-    if (!images) return 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
+    if (!images) return 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
     const parsed = typeof images === 'string' ? JSON.parse(images) : images
-    return parsed[0] || 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
+    return parsed[0] || 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
   }
 
   const hasActiveFilters = filters.category || filters.minPrice || filters.maxPrice || filters.rating

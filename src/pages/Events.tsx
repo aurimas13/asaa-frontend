@@ -159,7 +159,7 @@ export const Events: React.FC = () => {
             <div key={event.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col md:flex-row">
               <div className="w-full md:w-72 h-48 md:h-auto flex-shrink-0">
                 <img
-                  src={event.image_url || 'https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=800'}
+                  src={event.image_url || 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&fit=crop&q=80'}
                   alt={event.title}
                   className="w-full h-full object-cover"
                 />

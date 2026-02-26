@@ -172,7 +172,7 @@ export const Makers: React.FC = () => {
               <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primary-200">
                 <div className="h-48 overflow-hidden relative">
                   <img
-                    src={maker.cover_image || 'https://images.pexels.com/photos/3094218/pexels-photo-3094218.jpeg?auto=compress&cs=tinysrgb&w=800'}
+                    src={maker.cover_image || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&fit=crop&q=80'}
                     alt={maker.business_name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />

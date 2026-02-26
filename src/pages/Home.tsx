@@ -76,9 +76,9 @@ export const Home: React.FC = () => {
   }
 
   const getImageUrl = (images: string[] | string | null) => {
-    if (!images) return 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
+    if (!images) return 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
     const parsed = typeof images === 'string' ? JSON.parse(images) : images
-    return parsed[0] || 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
+    return parsed[0] || 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
   }
 
   return (
@@ -122,7 +122,7 @@ export const Home: React.FC = () => {
                 <div className="space-y-4">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                     <img
-                      src="https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&fit=crop&q=80"
                       alt="Handcrafted pottery"
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -130,7 +130,7 @@ export const Home: React.FC = () => {
                   </div>
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                     <img
-                      src="https://images.pexels.com/photos/5708069/pexels-photo-5708069.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=600&fit=crop&q=80"
                       alt="Straw ornaments"
                       className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -139,14 +139,14 @@ export const Home: React.FC = () => {
                 <div className="space-y-4 pt-8">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                     <img
-                      src="https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&fit=crop&q=80"
                       alt="Artisan at work"
                       className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                     <img
-                      src="https://images.pexels.com/photos/5370697/pexels-photo-5370697.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&fit=crop&q=80"
                       alt="Baltic amber"
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -249,7 +249,7 @@ export const Home: React.FC = () => {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <img
-                    src={category.image_url || 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=400'}
+                    src={category.image_url || 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=400&fit=crop&q=80'}
                     alt={t(`categories.${category.slug}`, category.name)}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -365,7 +365,7 @@ export const Home: React.FC = () => {
                 <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
                   <div className="aspect-video overflow-hidden relative">
                     <img
-                      src={maker.cover_image || 'https://images.pexels.com/photos/3094218/pexels-photo-3094218.jpeg?auto=compress&cs=tinysrgb&w=800'}
+                      src={maker.cover_image || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&fit=crop&q=80'}
                       alt={maker.business_name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -448,7 +448,7 @@ export const Home: React.FC = () => {
               </div>
               <div className="relative">
                 <img
-                  src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&fit=crop&q=80"
                   alt="Kaziuko muge fair"
                   className="rounded-2xl shadow-xl"
                 />

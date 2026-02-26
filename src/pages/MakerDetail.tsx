@@ -100,9 +100,9 @@ export const MakerDetail: React.FC = () => {
   }
 
   const getImageUrl = (images: string[] | string | null) => {
-    if (!images) return 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
+    if (!images) return 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
     const parsed = typeof images === 'string' ? JSON.parse(images) : images
-    return parsed[0] || 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
+    return parsed[0] || 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
   }
 
   if (loading) {
@@ -136,7 +136,7 @@ export const MakerDetail: React.FC = () => {
       <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
         <div className="h-64 relative">
           <img
-            src={maker.cover_image || 'https://images.pexels.com/photos/3094218/pexels-photo-3094218.jpeg?auto=compress&cs=tinysrgb&w=1200'}
+            src={maker.cover_image || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&fit=crop&q=80'}
             alt={maker.business_name}
             className="w-full h-full object-cover"
           />

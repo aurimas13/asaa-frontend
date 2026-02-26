@@ -172,9 +172,9 @@ export const ProductDetail: React.FC = () => {
   }
 
   const getImages = () => {
-    if (!product?.images) return ['https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800']
+    if (!product?.images) return ['https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80']
     const parsed = typeof product.images === 'string' ? JSON.parse(product.images) : product.images
-    return parsed.length > 0 ? parsed : ['https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800']
+    return parsed.length > 0 ? parsed : ['https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80']
   }
 
   if (loading) {
@@ -245,7 +245,7 @@ export const ProductDetail: React.FC = () => {
 
           <Link to={`/maker/${product.makers?.id}`} className="flex items-center gap-3 mt-4">
             <img
-              src={product.makers?.cover_image || 'https://images.pexels.com/photos/3094218/pexels-photo-3094218.jpeg?auto=compress&cs=tinysrgb&w=200'}
+              src={product.makers?.cover_image || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=200&fit=crop&q=80'}
               alt={product.makers?.business_name}
               className="w-10 h-10 rounded-full object-cover"
             />

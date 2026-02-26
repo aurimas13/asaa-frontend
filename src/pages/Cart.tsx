@@ -236,7 +236,7 @@ export const Cart: React.FC = () => {
           {cartItems.map((item) => {
             const imageUrl = item.products.images && item.products.images.length > 0
               ? (typeof item.products.images === 'string' ? JSON.parse(item.products.images)[0] : item.products.images[0])
-              : 'https://images.pexels.com/photos/1070971/pexels-photo-1070971.jpeg?auto=compress&cs=tinysrgb&w=800'
+              : 'https://images.unsplash.com/photo-1452860606245-08f8e384cc1c?w=800&fit=crop&q=80'
 
             return (
               <div key={item.id} className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex gap-4">
