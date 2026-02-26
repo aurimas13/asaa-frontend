@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Star, Filter, Grid, List, Package } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
@@ -29,10 +29,11 @@ interface Category {
 
 export const Products: React.FC = () => {
   const { t } = useTranslation()
+  const [searchParams, setSearchParams] = useSearchParams()
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<Category[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedCategory, setSelectedCategory] = useState<string>('')
+  const [selectedCategory, setSelectedCategory] = useState<string>(searchParams.get('category') || '')
   const [sortBy, setSortBy] = useState('newest')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
@@ -112,7 +113,15 @@ export const Products: React.FC = () => {
       <div className="flex flex-wrap items-center gap-4 mb-8">
         <select
           value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
+          onChange={(e) => {
+            const val = e.target.value
+            setSelectedCategory(val)
+            if (val) {
+              setSearchParams({ category: val })
+            } else {
+              setSearchParams({})
+            }
+          }}
           className="px-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white shadow-sm max-h-60 overflow-y-auto"
         >
           <option value="">{t('products.allCategories')}</option>
