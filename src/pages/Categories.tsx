@@ -28,7 +28,18 @@ export const Categories: React.FC = () => {
       .is('parent_id', null)
       .order('name')
 
-    if (data) setCategories(data)
+    if (data) {
+      const countsPromises = data.map(async (cat) => {
+        const { count } = await supabase
+          .from('products')
+          .select('id', { count: 'exact', head: true })
+          .eq('status', 'active')
+          .eq('category_id', cat.id)
+        return { ...cat, product_count: count || 0 }
+      })
+      const catsWithCounts = await Promise.all(countsPromises)
+      setCategories(catsWithCounts)
+    }
     setLoading(false)
   }
 
@@ -82,7 +93,7 @@ export const Categories: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-xl font-bold text-white">{t(`categories.${category.slug}`, category.name)}</h3>
+                  <h3 className="text-xl font-bold text-white">{t(`categories.${category.slug}`, category.name)} ({category.product_count ?? 0})</h3>
                   {category.description && (
                     <p className="text-white/80 text-sm mt-1 line-clamp-2">{t(`categoryDescriptions.${category.slug}`, category.description)}</p>
                   )}

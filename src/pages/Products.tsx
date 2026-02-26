@@ -25,6 +25,7 @@ interface Category {
   id: string
   name: string
   slug: string
+  product_count?: number
 }
 
 export const Products: React.FC = () => {
@@ -33,6 +34,7 @@ export const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<Category[]>([])
   const [loading, setLoading] = useState(true)
+  const [totalCount, setTotalCount] = useState(0)
   const [selectedCategory, setSelectedCategory] = useState<string>(searchParams.get('category') || '')
   const [sortBy, setSortBy] = useState('newest')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
@@ -43,8 +45,23 @@ export const Products: React.FC = () => {
   }, [selectedCategory, sortBy])
 
   const loadCategories = async () => {
-    const { data } = await supabase.from('categories').select('id, name, slug')
-    if (data) setCategories(data)
+    const { data: cats } = await supabase.from('categories').select('id, name, slug')
+    if (!cats) return
+
+    const countsPromises = cats.map(async (cat) => {
+      const { count } = await supabase
+        .from('products')
+        .select('id', { count: 'exact', head: true })
+        .eq('status', 'active')
+        .eq('category_id', cat.id)
+      return { ...cat, product_count: count || 0 }
+    })
+
+    const catsWithCounts = await Promise.all(countsPromises)
+    setCategories(catsWithCounts)
+
+    const total = catsWithCounts.reduce((sum, c) => sum + (c.product_count || 0), 0)
+    setTotalCount(total)
   }
 
   const loadProducts = async () => {
@@ -72,7 +89,7 @@ export const Products: React.FC = () => {
         query = query.order('created_at', { ascending: false })
     }
 
-    const { data, error } = await query.limit(24)
+    const { data, error } = await query
     if (error) console.error('Error loading products:', error)
     if (data) setProducts(data as unknown as Product[])
     setLoading(false)
@@ -104,7 +121,7 @@ export const Products: React.FC = () => {
             <p className="text-gray-600 mt-2">{t('products.subtitle')}</p>
           </div>
           <div className="bg-white rounded-xl px-4 py-3 shadow-sm text-center">
-            <p className="text-2xl font-bold text-primary-600">{products.length}+</p>
+            <p className="text-2xl font-bold text-primary-600">{selectedCategory ? products.length : totalCount}</p>
             <p className="text-sm text-gray-500">{t('products.items')}</p>
           </div>
         </div>
@@ -126,7 +143,7 @@ export const Products: React.FC = () => {
         >
           <option value="">{t('products.allCategories')}</option>
           {categories.map((cat) => (
-            <option key={cat.id} value={cat.id}>{t(`categories.${cat.slug || cat.name.toLowerCase().replace(/\s+/g, '')}`, cat.name)}</option>
+            <option key={cat.id} value={cat.id}>{t(`categories.${cat.slug || cat.name.toLowerCase().replace(/\s+/g, '')}`, cat.name)} ({cat.product_count ?? 0})</option>
           ))}
         </select>
 
