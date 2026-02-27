@@ -82,7 +82,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                   <Store className="w-8 h-8 text-primary-500 group-hover:text-primary-600 transition-colors" />
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-secondary-500 rounded-full"></div>
                 </div>
-                <span className="text-xl font-bold text-gray-900 hidden sm:block">{t('siteName')}</span>
+                <span className="text-xl font-bold text-gray-900 hidden sm:block whitespace-nowrap">{t('siteName')}</span>
               </Link>
 
               <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
