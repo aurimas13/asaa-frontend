@@ -1,16 +1,16 @@
--- Fix 6 product images: replace Unsplash URLs that don't render with Pexels URLs
+-- Fix 6 product images: use Supabase Storage self-hosted images
 -- Also add 3 missing products (Easter eggs + Handcrafted Cutting Board)
 
 -- 1. Wooden Spoon Collection
-UPDATE products SET images = '["https://images.pexels.com/photos/350417/pexels-photo-350417.jpeg?auto=compress&cs=tinysrgb&w=800"]'
+UPDATE products SET images = '["https://adtzxfiurwefcjhzdrjx.supabase.co/storage/v1/object/public/product-images/wooden-spoon-collection.jpg"]'
 WHERE title = 'Wooden Spoon Collection';
 
 -- 2. Handcarved Cutting Board
-UPDATE products SET images = '["https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&w=800"]'
+UPDATE products SET images = '["https://adtzxfiurwefcjhzdrjx.supabase.co/storage/v1/object/public/product-images/handcarved-cutting-board.jpg"]'
 WHERE title = 'Handcarved Cutting Board';
 
 -- 3. Linen Kitchen Towels Set
-UPDATE products SET images = '["https://images.pexels.com/photos/6752271/pexels-photo-6752271.jpeg?auto=compress&cs=tinysrgb&w=800"]'
+UPDATE products SET images = '["https://adtzxfiurwefcjhzdrjx.supabase.co/storage/v1/object/public/product-images/linen-kitchen-towels-set.jpg"]'
 WHERE title = 'Linen Kitchen Towels Set';
 
 -- 4. Traditional Decorated Easter Egg (insert if missing)
@@ -24,7 +24,7 @@ SELECT
   'Ranka tapytas tradicinis lietuviškas Velykų kiaušinis (margutis) su sudėtingais vaško ornamentais.',
   'Oeuf de Pâques traditionnel lituanien peint à la main avec des motifs complexes à la cire.',
   25.00,
-  '["https://images.pexels.com/photos/998708/pexels-photo-998708.jpeg?auto=compress&cs=tinysrgb&w=800"]',
+  '["https://adtzxfiurwefcjhzdrjx.supabase.co/storage/v1/object/public/product-images/traditional-decorated-easter-egg.jpg"]',
   20, 'active', false, '3-5 business days'
 FROM makers m, categories c
 WHERE m.business_name = 'Senuju amatu dirbtuves' AND c.slug = 'multi-craft'
@@ -41,7 +41,7 @@ SELECT
   '6 rankomis dekoruotų lietuviškų Velykų kiaušinių kolekcija su tradiciniais vaško ir natūralių dažų ornamentais.',
   'Collection de 6 oeufs de Pâques lituaniens décorés à la main.',
   120.00,
-  '["https://images.pexels.com/photos/6897341/pexels-photo-6897341.jpeg?auto=compress&cs=tinysrgb&w=800"]',
+  '["https://adtzxfiurwefcjhzdrjx.supabase.co/storage/v1/object/public/product-images/decorated-easter-egg-collection.jpg"]',
   5, 'active', true, '5-7 business days'
 FROM makers m, categories c
 WHERE m.business_name = 'Senuju amatu dirbtuves' AND c.slug = 'multi-craft'
@@ -58,7 +58,7 @@ SELECT
   'Didelė rankomis daryta ąžuolinė pjaustymo lenta su natūraliu kraštu.',
   'Grande planche à découper en chêne artisanale avec bord naturel.',
   75.00,
-  '["https://images.pexels.com/photos/5758784/pexels-photo-5758784.jpeg?auto=compress&cs=tinysrgb&w=800"]',
+  '["https://adtzxfiurwefcjhzdrjx.supabase.co/storage/v1/object/public/product-images/handcrafted-wooden-cutting-board.jpg"]',
   8, 'active', false, '5-7 business days'
 FROM makers m, categories c
 WHERE m.business_name ILIKE '%Kampelis%' AND c.slug = 'woodwork'
