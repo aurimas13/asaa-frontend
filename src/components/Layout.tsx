@@ -77,7 +77,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <Link to="/" className="flex items-center gap-2 group">
+              <Link to="/" className="flex items-center gap-2 group shrink-0">
                 <div className="relative">
                   <Store className="w-8 h-8 text-primary-500 group-hover:text-primary-600 transition-colors" />
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-secondary-500 rounded-full"></div>
