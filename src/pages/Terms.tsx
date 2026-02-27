@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, FileText, ShoppingBag, CreditCard, Truck, RotateCcw, Scale } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export const Terms: React.FC = () => {
+  const { t } = useTranslation()
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-amber-600 mb-8">
@@ -20,14 +22,14 @@ export const Terms: React.FC = () => {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">1. Introduction</h2>
             <p className="text-gray-600 leading-relaxed">
-              Welcome to Crafts And Hands. These Terms of Service ("Terms") govern your use of our website and services. By accessing or using our platform, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our services.
+              Welcome to {t('siteName')}. These Terms of Service ("Terms") govern your use of our website and services. By accessing or using our platform, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our services.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">2. About Our Platform</h2>
             <p className="text-gray-600 leading-relaxed">
-              Crafts And Hands is an online marketplace connecting buyers with Lithuanian artisans and craftspeople. We facilitate transactions between buyers and independent makers but are not ourselves the sellers of the products listed on our platform.
+              {t('siteName')} is an online marketplace connecting buyers with Lithuanian artisans and craftspeople. We facilitate transactions between buyers and independent makers but are not ourselves the sellers of the products listed on our platform.
             </p>
           </section>
 
@@ -90,14 +92,14 @@ export const Terms: React.FC = () => {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">8. Intellectual Property</h2>
             <p className="text-gray-600 leading-relaxed">
-              All content on our platform, including text, graphics, logos, and images, is the property of Crafts And Hands or our makers and is protected by intellectual property laws. Product images and descriptions remain the property of the respective artisans.
+              All content on our platform, including text, graphics, logos, and images, is the property of {t('siteName')} or our makers and is protected by intellectual property laws. Product images and descriptions remain the property of the respective artisans.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">9. Limitation of Liability</h2>
             <p className="text-gray-600 leading-relaxed">
-              To the maximum extent permitted by law, Crafts And Hands shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services. Our total liability shall not exceed the amount you paid for the product in question.
+              To the maximum extent permitted by law, {t('siteName')} shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services. Our total liability shall not exceed the amount you paid for the product in question.
             </p>
           </section>
 
@@ -124,7 +126,7 @@ export const Terms: React.FC = () => {
             </p>
             <div className="bg-gray-50 rounded-lg p-4">
               <p className="text-gray-700">
-                <strong>Crafts And Hands</strong><br />
+                <strong>{t('siteName')}</strong><br />
                 Email: legal@craftsandhands.lt<br />
                 Address: Vilnius, Lithuania
               </p>

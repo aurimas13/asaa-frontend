@@ -1,4 +1,5 @@
 {
+  "siteName": "Amatai Rankos",
   "nav": {
     "products": "Gaminiai",
     "makers": "Meistrai",
@@ -217,7 +218,7 @@
     "successStories": "Sėkmės istorijos",
     "privacy": "Privatumo politika",
     "terms": "Paslaugų teikimo sąlygos",
-    "copyright": "Crafts And Hands. Įgaliname Lietuvos amatininkus, vienas kūrinys vienu metu."
+    "copyright": "Amatai Rankos. Įgaliname Lietuvos amatininkus, vienas kūrinys vienu metu."
   },
   "categories": {
     "title": "Kategorijos",
@@ -327,7 +328,7 @@
     "lastUpdated": "Atnaujinta",
     "intro": {
       "title": "Įvadas",
-      "content": "Crafts And Hands (\"mes\", \"mūsų\") įsipareigoja saugoti jūsų privatumą. Ši Privatumo politika paaiškina, kaip renkame, naudojame, atskleidžiame ir saugome jūsų informaciją, kai lankotės mūsų svetainėje ir naudojatės mūsų paslaugomis."
+      "content": "Amatai Rankos (\"mes\", \"mūsų\") įsipareigoja saugoti jūsų privatumą. Ši Privatumo politika paaiškina, kaip renkame, naudojame, atskleidžiame ir saugome jūsų informaciją, kai lankotės mūsų svetainėje ir naudojatės mūsų paslaugomis."
     },
     "infoCollect": {
       "title": "Renkama informacija",
@@ -406,11 +407,11 @@
     "lastUpdated": "Atnaujinta",
     "intro": {
       "title": "1. Įvadas",
-      "content": "Sveiki atvykę į Crafts And Hands. Šios Paslaugų teikimo sąlygos (\"Sąlygos\") reglamentuoja jūsų naudojimąsi mūsų svetaine ir paslaugomis. Naudodamiesi mūsų platforma, sutinkate laikytis šių Sąlygų."
+      "content": "Sveiki atvykę į Amatai Rankos. Šios Paslaugų teikimo sąlygos (\"Sąlygos\") reglamentuoja jūsų naudojimąsi mūsų svetaine ir paslaugomis. Naudodamiesi mūsų platforma, sutinkate laikytis šių Sąlygų."
     },
     "platform": {
       "title": "2. Apie mūsų platformą",
-      "content": "Crafts And Hands yra internetinė prekyvietė, jungianti pirkėjus su Lietuvos meistrais ir amatininkais. Mes palengviname sandorius tarp pirkėjų ir nepriklausomų meistrų, bet patys nesame mūsų platformoje skelbiamų produktų pardavėjai."
+      "content": "Amatai Rankos yra internetinė prekyvietė, jungianti pirkėjus su Lietuvos meistrais ir amatininkais. Mes palengviname sandorius tarp pirkėjų ir nepriklausomų meistrų, bet patys nesame mūsų platformoje skelbiamų produktų pardavėjai."
     },
     "products": {
       "title": "3. Produktai ir užsakymai",
@@ -447,11 +448,11 @@
     },
     "ip": {
       "title": "8. Intelektinė nuosavybė",
-      "content": "Visas mūsų platformos turinys, įskaitant tekstą, grafiką, logotipus ir vaizdus, yra Crafts And Hands arba mūsų meistrų nuosavybė ir yra saugomas intelektinės nuosavybės įstatymų. Produktų vaizdai ir aprašymai lieka atitinkamų meistrų nuosavybė."
+      "content": "Visas mūsų platformos turinys, įskaitant tekstą, grafiką, logotipus ir vaizdus, yra Amatai Rankos arba mūsų meistrų nuosavybė ir yra saugomas intelektinės nuosavybės įstatymų. Produktų vaizdai ir aprašymai lieka atitinkamų meistrų nuosavybė."
     },
     "liability": {
       "title": "9. Atsakomybės apribojimas",
-      "content": "Kiek leidžia įstatymas, Crafts And Hands neatsako už jokius netiesioginius, atsitiktinius, specialius, pasekminius ar baudžiamuosius nuostolius, kylančius iš jūsų naudojimosi mūsų paslaugomis. Mūsų bendra atsakomybė neviršys sumos, kurią sumokėjote už aptariamą produktą."
+      "content": "Kiek leidžia įstatymas, Amatai Rankos neatsako už jokius netiesioginius, atsitiktinius, specialius, pasekminius ar baudžiamuosius nuostolius, kylančius iš jūsų naudojimosi mūsų paslaugomis. Mūsų bendra atsakomybė neviršys sumos, kurią sumokėjote už aptariamą produktą."
     },
     "law": {
       "title": "10. Taikoma teisė",
@@ -577,7 +578,7 @@
     },
     "success": {
       "title": "Paraiška pateikta!",
-      "message": "Dėkojame už susidomėjimą prisijungimu prie Crafts And Hands. Mūsų komanda peržiūrės jūsų paraišką ir susisieks per 5-7 darbo dienas.",
+      "message": "Dėkojame už susidomėjimą prisijungimu prie Amatai Rankos. Mūsų komanda peržiūrės jūsų paraišką ir susisieks per 5-7 darbo dienas.",
       "nextSteps": "Kas bus toliau?",
       "step1": "Mūsų komanda peržiūrės jūsų paraišką per 5-7 darbo dienas",
       "step2": "Galime susisiekti dėl papildomos informacijos ar nuotraukų",

@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Quote, MapPin, Star, ArrowRight } from 'lucide-react'
-
 const stories = [
   {
     name: 'Deividas Jotautis',
     craft: 'Traditional Pottery',
     location: 'Kaunas',
     image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
-    quote: 'Crafts And Hands helped me reach customers I never could have found on my own. My pottery now ships across Europe, and I can focus on what I love - creating.',
+    quote: 'This platform helped me reach customers I never could have found on my own. My pottery now ships across Europe, and I can focus on what I love - creating.',
     stats: { sales: 250, rating: 4.9, years: 2 }
   },
   {

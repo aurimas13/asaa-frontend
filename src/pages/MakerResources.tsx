@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Camera, Package, TrendingUp, Users, FileText, Video, Download, ExternalLink } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export const MakerResources: React.FC = () => {
+  const { t } = useTranslation()
   const resources = [
     {
       icon: Camera,
@@ -53,7 +55,7 @@ export const MakerResources: React.FC = () => {
       <div className="text-center mb-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Maker Resources</h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Everything you need to succeed as an artisan on Crafts And Hands. Free guides, templates, and tools.
+          Everything you need to succeed as an artisan on {t('siteName')}. Free guides, templates, and tools.
         </p>
       </div>
 

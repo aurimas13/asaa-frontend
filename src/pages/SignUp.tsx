@@ -48,7 +48,7 @@ export const SignUp: React.FC = () => {
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2 mb-4">
             <Store className="w-10 h-10 text-amber-600" />
-            <span className="text-2xl font-bold text-gray-900">Crafts And Hands</span>
+            <span className="text-2xl font-bold text-gray-900">{t('siteName')}</span>
           </Link>
           <h1 className="text-2xl font-bold text-gray-900">{t('auth.signUp.title')}</h1>
           <p className="text-gray-600 mt-2">{t('auth.signUp.subtitle')}</p>

@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Shield, Eye, Lock, Database, Mail, Users } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export const Privacy: React.FC = () => {
+  const { t } = useTranslation()
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-amber-600 mb-8">
@@ -22,7 +24,7 @@ export const Privacy: React.FC = () => {
               <Eye className="w-5 h-5 text-amber-600" /> Introduction
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              Crafts And Hands ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. Please read this policy carefully. By using our services, you consent to the practices described in this policy.
+              {t('siteName')} ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. Please read this policy carefully. By using our services, you consent to the practices described in this policy.
             </p>
           </section>
 
@@ -122,7 +124,7 @@ export const Privacy: React.FC = () => {
             </p>
             <div className="bg-gray-50 rounded-lg p-4">
               <p className="text-gray-700">
-                <strong>Crafts And Hands</strong><br />
+                <strong>{t('siteName')}</strong><br />
                 Email: privacy@craftsandhands.lt<br />
                 Address: Vilnius, Lithuania
               </p>

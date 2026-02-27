@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { Calendar, MapPin, Users, Clock, ExternalLink } from 'lucide-react'
+import { Calendar, MapPin, Clock, ExternalLink } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
+import { getLocalizedField } from '../utils/localize'
 
 interface Event {
   id: string
   title: string
+  title_lt: string | null
+  title_fr: string | null
   description: string
+  description_lt: string | null
+  description_fr: string | null
   event_type: string
   start_date: string
   end_date: string
@@ -16,7 +21,6 @@ interface Event {
   country: string
   online_url: string
   price: number
-  max_attendees: number
   image_url: string
   status: string
   makers: { business_name: string }
@@ -24,7 +28,7 @@ interface Event {
 
 export const Events: React.FC = () => {
   const { user } = useAuth()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [events, setEvents] = useState<Event[]>([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('upcoming')
@@ -89,7 +93,9 @@ export const Events: React.FC = () => {
   }
 
   const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString('en-US', {
+    const localeMap: Record<string, string> = { lt: 'lt-LT', en: 'en-US', fr: 'fr-FR' }
+    const locale = localeMap[i18n.language] || 'lt-LT'
+    return new Date(date).toLocaleDateString(locale, {
       weekday: 'short',
       month: 'short',
       day: 'numeric',
@@ -172,7 +178,7 @@ export const Events: React.FC = () => {
                     }`}>
                       {getEventTypeLabel(event.event_type)}
                     </span>
-                    <h3 className="text-xl font-semibold text-gray-900 mt-2">{event.title}</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 mt-2">{getLocalizedField(event, 'title')}</h3>
                     <p className="text-sm text-gray-500 mt-1">by {event.makers?.business_name}</p>
                   </div>
                   {event.price > 0 && (
@@ -180,7 +186,7 @@ export const Events: React.FC = () => {
                   )}
                 </div>
 
-                <p className="text-gray-600 mt-3 line-clamp-2">{event.description}</p>
+                <p className="text-gray-600 mt-3 line-clamp-2">{getLocalizedField(event, 'description')}</p>
 
                 <div className="flex flex-wrap gap-4 mt-4 text-sm text-gray-500">
                   <div className="flex items-center gap-1">
@@ -191,12 +197,6 @@ export const Events: React.FC = () => {
                     <div className="flex items-center gap-1">
                       <MapPin className="w-4 h-4" />
                       {[event.location, event.city, event.country].filter(Boolean).join(', ')}
-                    </div>
-                  )}
-                  {event.max_attendees && (
-                    <div className="flex items-center gap-1">
-                      <Users className="w-4 h-4" />
-                      {t('events.maxAttendees')}: {event.max_attendees}
                     </div>
                   )}
                 </div>
