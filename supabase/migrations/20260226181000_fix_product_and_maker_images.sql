@@ -227,7 +227,7 @@ UPDATE products SET images = '["https://images.unsplash.com/photo-1620799140408-
 WHERE title = 'Traditional Linen Table Runner';
 
 -- Wooden Spoon Collection
-UPDATE products SET images = '["https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&fit=crop&q=80"]'
+UPDATE products SET images = '["https://images.pexels.com/photos/350417/pexels-photo-350417.jpeg?auto=compress&cs=tinysrgb&w=800"]'
 WHERE title = 'Wooden Spoon Collection';
 
 -- === BASKETRY ===
@@ -245,7 +245,7 @@ WHERE title = 'Willow Picnic Basket';
 
 -- === WOODWORK ===
 -- Handcarved Cutting Board
-UPDATE products SET images = '["https://images.unsplash.com/photo-1588165171080-c89acfa5ee83?w=800&fit=crop&q=80"]'
+UPDATE products SET images = '["https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&w=800"]'
 WHERE title = 'Handcarved Cutting Board';
 
 -- Wooden Serving Platter
@@ -266,5 +266,5 @@ UPDATE products SET images = '["https://images.unsplash.com/photo-1620799140408-
 WHERE title = 'Handwoven Linen Scarf';
 
 -- Linen Kitchen Towels Set
-UPDATE products SET images = '["https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&fit=crop&q=80"]'
+UPDATE products SET images = '["https://images.pexels.com/photos/6752271/pexels-photo-6752271.jpeg?auto=compress&cs=tinysrgb&w=800"]'
 WHERE title = 'Linen Kitchen Towels Set';
